@@ -4,10 +4,11 @@ import './banner.css';
 import { MdHomeWork, MdWorkspaces } from 'react-icons/md';
 import { IoIosPeople } from 'react-icons/io';
 import { GiClockwork } from 'react-icons/gi';
+import { BsSearch } from 'react-icons/bs';
 
 const Banner = () => {
   return (
-    <div className="bannerBg lg:px-16 px-3 ">
+    <div className="bannerBg lg:px-16 px-3 mt-[-100px] pt-[100px]">
       <div className="flex lg:flex-row-reverse flex-col">
         <div className="w-2/4 m-5 grid">
           <div className="flex justify-between w-full mt-8">
@@ -53,11 +54,27 @@ const Banner = () => {
             The <span className="textColor mx-2 ">Easiest Way</span>
             to Get Your New Job
           </h1>
-          <p className="py-6 text-lg">
+          <p className="py-6 text-xl font-semibold">
             Each month, more than 3 million job seekers turn to website in their
             search for work, making over 140,000 applications every single day
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <div>
+            <p className="my-3">Find Jobs, Employment & Career Opportunities</p>
+            <div className="grid grid-cols-7 gap-5 w-3/4 ">
+              <input
+                type="text"
+                placeholder={`Job title, keywords or company `}
+                className="text-sm col-span-5 px-5 py-4  input input-bordered"
+              />
+              <button className="btn col-span-2  btn-xl px-10">
+                Find Jobs
+              </button>
+            </div>
+            <p className="my-4  text-xs">
+              <span className="font-bold">Popular Searches : </span> Frontend
+              Developer, Full stack developer, Backend Developer, Web Designer
+            </p>
+          </div>
         </div>
       </div>
     </div>

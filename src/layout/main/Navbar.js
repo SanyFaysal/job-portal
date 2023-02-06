@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BsList } from 'react-icons/bs';
+
 const Navbar = () => {
   const li = (
     <>
@@ -15,8 +16,9 @@ const Navbar = () => {
       </Link>
     </>
   );
+
   return (
-    <div className="navbar bg-base-100 lg:px-16 px-6 shadow-2xl">
+    <div className={` navbar  lg:px-16 px-6 l sticky top-0 bg-none`}>
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
       </div>

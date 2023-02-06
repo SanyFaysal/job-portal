@@ -1,5 +1,6 @@
 .bannerBg {
     animation:  changeBg 15s ease  infinite ;
+    
     transition: background 1s;
 }
 .textColor {
