@@ -1,7 +1,12 @@
 import React from 'react';
+import Path from '../../components/reuseable/Path';
 
 const Profile = () => {
-  return <div>this is profile page</div>;
+  return (
+    <div>
+      <Path form="dashboard" to="Profile" />
+    </div>
+  );
 };
 
 export default Profile;

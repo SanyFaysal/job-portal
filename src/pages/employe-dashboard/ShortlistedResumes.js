@@ -1,7 +1,12 @@
 import React from 'react';
+import Path from '../../components/reuseable/Path';
 
 const ShortlistedResumes = () => {
-  return <div>this is short listed resumes page;</div>;
+  return (
+    <div>
+      <Path from="dashboard" to="Shortlisted Resumes" />
+    </div>
+  );
 };
 
 export default ShortlistedResumes;

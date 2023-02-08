@@ -1,7 +1,12 @@
 import React from 'react';
+import Path from '../../components/reuseable/Path';
 
 const AllApplicants = () => {
-  return <div>this is all applicants page ;</div>;
+  return (
+    <div>
+      <Path from="dashboard" to="All Applicants" />
+    </div>
+  );
 };
 
 export default AllApplicants;

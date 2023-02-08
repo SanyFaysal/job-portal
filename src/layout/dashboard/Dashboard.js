@@ -13,13 +13,14 @@ const Dashboard = () => {
             <SideNav />
           </div>
         </div>
-        <div className="lg:col-span-10 col-span-12 bg-blue-50 p-16">
+        <div className="lg:col-span-10 col-span-12 bg-blue-50 px-6 py-8">
           <label
             htmlFor="my-drawer-3"
             className="btn btn-square btn-ghost lg:hidden"
           >
             <RxHamburgerMenu className="text-xl" />
           </label>
+          <h1 className="text-3xl font-semibold mb-1">Dashboard</h1>
           <Outlet />
         </div>
       </div>

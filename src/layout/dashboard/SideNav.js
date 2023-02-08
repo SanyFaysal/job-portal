@@ -5,6 +5,7 @@ import { CgProfile } from 'react-icons/cg';
 import { IoMdSend } from 'react-icons/io';
 import { AiOutlineFileText } from 'react-icons/ai';
 import { BiBookmark } from 'react-icons/bi';
+import { RxDashboard } from 'react-icons/rx';
 
 const SideNav = () => {
   return (
@@ -16,6 +17,13 @@ const SideNav = () => {
         <MdOutlineArrowBackIosNew className="inline mr-2 " /> Back to Home
       </Link>
 
+      <Link
+        to="/dashboard"
+        className="p-3 inline-block rounded-lg mt-1 hover:bg-blue-50 flex items-center  ease-in"
+      >
+        <RxDashboard className="inline mr-2 text-xl" />
+        <span className=""> Dashboard</span>
+      </Link>
       <Link
         to="/dashboard/profile"
         className="p-3 inline-block rounded-lg mt-1 hover:bg-blue-50 flex items-center  ease-in"
