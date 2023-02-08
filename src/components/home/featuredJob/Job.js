@@ -10,9 +10,11 @@ const Job = () => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`border bg-white px-6 py-4 rounded-lg ${
-        hover && 'shadow-lg transition duration-400 '
-      }`}
+      className={`border bg-white px-6 py-4 rounded-lg 
+      
+     
+      
+      ${hover && 'shadow-lg transition duration-400 '}`}
     >
       <div className="flex justify-around">
         <div className="mr-4">

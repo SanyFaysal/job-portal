@@ -1,6 +1,7 @@
 import React from 'react';
 import Job from '../../components/home/featuredJob/Job';
 import JobFilter from '../../components/jobs/JobFilter';
+import JobHeader from '../../components/jobs/JobHeader';
 import PathBanner from '../../components/reuseable/PathBanner';
 
 const Jobs = () => {
@@ -12,9 +13,7 @@ const Jobs = () => {
           <JobFilter />
         </div>
         <div className=" col-span-9 px-8">
-          <div>
-            <h3>Total jobs: 1120</h3>
-          </div>
+          <JobHeader />
           <div className="grid  gap-5">
             <Job />
             <Job />

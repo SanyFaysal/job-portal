@@ -7,15 +7,16 @@ const CategoryCard = () => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`border flex justify-between items-center px-5 py-5 rounded-lg ${
-        hover && 'shadow-lg transition duration-400 '
-      }`}
+      className={`border flex justify-between items-center px-5 py-5 rounded-lg
+      bg-gradient-to-r from-blue-50  via-white to-green-50
+      
+      ${hover && 'shadow-lg transition duration-400 '}`}
     >
       <GiClockwork
         className={`text-5xl  p-2 rounded-lg transition duration-400 ease-in ${
           hover
             ? 'bg-blue-500 text-white scale-110'
-            : 'bg-gray-100  text-blue-500'
+            : 'bg-blue-100  text-blue-500'
         }`}
       />
       <div>

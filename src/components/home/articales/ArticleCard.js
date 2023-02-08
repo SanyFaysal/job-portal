@@ -12,7 +12,10 @@ const ArticleCard = () => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className=" px-6 py-7 bg-white rounded-lg shadow hover:shadow-lg"
+      className=" px-6 py-7 
+      bg-gradient-to-t from-blue-50  via-white to-green-50
+      
+      rounded-lg shadow hover:shadow-lg"
     >
       <img
         src={article1}
