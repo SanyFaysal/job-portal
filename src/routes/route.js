@@ -1,7 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
+import Dashboard from '../layout/dashboard/Dashboard';
+
+import PostJob from '../pages/employe-dashboard/PostJob';
 import Main from '../layout/main/Main';
 import Home from '../pages/home/Home';
 import Jobs from '../pages/jobs/Jobs';
+import ManageJobs from '../pages/employe-dashboard/ManageJobs';
+import AllApplicants from '../pages/employe-dashboard/AllApplicants';
+import Profile from '../pages/employe-dashboard/Profile';
+import ShortlistedResumes from '../pages/employe-dashboard/ShortlistedResumes';
 
 const routes = createBrowserRouter([
   {
@@ -27,6 +34,32 @@ const routes = createBrowserRouter([
       {
         path: 'jobs',
         element: <Jobs />,
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    children: [
+      {
+        path: '/dashboard/post-job',
+        element: <PostJob />,
+      },
+      {
+        path: '/dashboard/manage-jobs',
+        element: <ManageJobs />,
+      },
+      {
+        path: '/dashboard/all-applicants',
+        element: <AllApplicants />,
+      },
+      {
+        path: '/dashboard/profile',
+        element: <Profile />,
+      },
+      {
+        path: '/dashboard/shortlisted-resumes',
+        element: <ShortlistedResumes />,
       },
     ],
   },
