@@ -8,10 +8,10 @@
     transition: background 1s;
 }
 .featureCard1 {
-    animation:  changePosition1 3s ease  infinite ;
+    animation:  changePosition1 5s ease  infinite ;
 }
 .featureCard2 {
-    animation:  changePosition2 3s ease  infinite ;
+    animation:  changePosition2 5s ease  infinite ;
 }
 
 

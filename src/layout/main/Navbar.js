@@ -5,7 +5,7 @@ import { BsList } from 'react-icons/bs';
 const Navbar = () => {
   const li = (
     <>
-      <Link to="/">
+      <Link to="/jobs">
         <li className="mx-3 ">Jobs</li>
       </Link>
       <Link to="/">
@@ -18,7 +18,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className={` navbar  lg:px-16 px-6 l sticky top-0 bg-none`}>
+    <div className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0   z-40`}>
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
       </div>
