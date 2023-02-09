@@ -19,9 +19,9 @@ const ManageJobsTableRow = () => {
           </div>
         </div>
       </td>
-      <td className="text-blue-500">30+ Applied</td>
-      <td>30 January, 2023</td>
-      <td>Active</td>
+      <td className="text-blue-500 ">30+ Applied</td>
+      <td className="">30 January, 2023</td>
+      <td className=" ">Active</td>
       <td>
         {' '}
         <div className="form-control ">

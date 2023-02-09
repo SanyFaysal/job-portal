@@ -30,6 +30,9 @@ const ManageJobs = () => {
               <ManageJobsTableRow />
               <ManageJobsTableRow />
               <ManageJobsTableRow />
+              <ManageJobsTableRow />
+              <ManageJobsTableRow />
+              <ManageJobsTableRow />
             </tbody>
           </table>
         </div>

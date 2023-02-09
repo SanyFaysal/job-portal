@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0 font-semibold  z-40`}
+      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0 shadow-md  font-semibold  z-40`}
     >
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>

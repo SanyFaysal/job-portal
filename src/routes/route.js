@@ -10,6 +10,8 @@ import AllApplicants from '../pages/employe-dashboard/AllApplicants';
 import Profile from '../pages/employe-dashboard/Profile';
 import ShortlistedResumes from '../pages/employe-dashboard/ShortlistedResumes';
 import EmployeeDashboardHome from '../pages/employe-dashboard/EmployeeDashboardHome';
+import Login from '../pages/authentication/Login';
+import Signup from '../pages/authentication/Signup';
 
 const routes = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const routes = createBrowserRouter([
       {
         path: 'jobs',
         element: <Jobs />,
+      },
+      {
+        path: 'signup',
+        element: <Signup />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
       },
     ],
   },
