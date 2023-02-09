@@ -13,7 +13,7 @@ const Dashboard = () => {
             <SideNav />
           </div>
         </div>
-        <div className="lg:col-span-9 col-span-11 bg-blue-50 lg:px-8 px-6  py-8">
+        <div className="lg:col-span-9 col-span-11 bg-blue-50 lg:px-5 px-4 py-8">
           <label
             htmlFor="my-drawer-3"
             className="btn btn-square btn-ghost lg:hidden"

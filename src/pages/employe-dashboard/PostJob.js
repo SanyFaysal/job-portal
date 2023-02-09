@@ -28,7 +28,7 @@ const PostJob = () => {
   return (
     <div>
       <Path from="dashboard" to="Post Job" />
-      <div className="  overflow-auto p-10 ">
+      <div className="  overflow-auto mt-4 ">
         <form
           className=" shadow-lg p-10 rounded-2xl flex flex-wrap gap-3 bg-white justify-between"
           onSubmit={handleSubmit(onSubmit)}
