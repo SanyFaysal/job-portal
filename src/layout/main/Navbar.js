@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0 shadow-md  font-semibold  z-40`}
+      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0   font-semibold  z-40`}
     >
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
@@ -28,8 +28,11 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{li}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/dashboard" className="mr-2">
+        <Link to="/dashboard" className="mr-4">
           Dashboard
+        </Link>
+        <Link to="/register" className="mr-4">
+          Register
         </Link>
         <Link to="/signup">Sign Up</Link>
         <div className="dropdown  dropdown-end">

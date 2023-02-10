@@ -12,6 +12,9 @@ import ShortlistedResumes from '../pages/employe-dashboard/ShortlistedResumes';
 import EmployeeDashboardHome from '../pages/employe-dashboard/EmployeeDashboardHome';
 import Login from '../pages/authentication/Login';
 import Signup from '../pages/authentication/Signup';
+import Register from '../pages/authentication/Register';
+import CandidateRegister from '../pages/authentication/CandidateRegister';
+import EmployeeRegister from '../pages/authentication/EmployerRegister';
 
 const routes = createBrowserRouter([
   {
@@ -45,6 +48,28 @@ const routes = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+        // children: [
+        //   {
+        //     path: 'candidate',
+        //     element: <CandidateRegister />,
+        //   },
+        //   {
+        //     path: 'employer',
+        //     element: <EmployeeRegister />,
+        //   },
+        // ],
+      },
+      {
+        path: 'register/candidate',
+        element: <CandidateRegister />,
+      },
+      {
+        path: 'register/employer',
+        element: <EmployeeRegister />,
       },
     ],
   },
