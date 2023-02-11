@@ -1,6 +1,6 @@
 import React from 'react';
+import Job from '../../reuseable/Job';
 import Category from '../JobCategory/CategoryCard';
-import Job from './Job';
 
 const FeaturedJob = () => {
   return (

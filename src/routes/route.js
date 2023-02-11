@@ -15,6 +15,7 @@ import Signup from '../pages/authentication/Signup';
 import Register from '../pages/authentication/Register';
 import CandidateRegister from '../pages/authentication/CandidateRegister';
 import EmployeeRegister from '../pages/authentication/EmployerRegister';
+import JobDetails from '../pages/jobDetails/JobDetails';
 
 const routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const routes = createBrowserRouter([
       {
         path: 'jobs',
         element: <Jobs />,
+      },
+      {
+        path: 'jobsDetails/:id',
+        element: <JobDetails />,
       },
       {
         path: 'signup',

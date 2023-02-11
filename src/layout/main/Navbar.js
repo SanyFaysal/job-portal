@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { BsList } from 'react-icons/bs';
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+  const isHome = pathname === '/' || pathname === '/home';
   const li = (
     <>
       <Link to="/jobs">
@@ -19,7 +21,9 @@ const Navbar = () => {
 
   return (
     <div
-      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0   font-semibold  z-40`}
+      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0  font-semibold  z-40 ${
+        !isHome && 'bg-white'
+      }`}
     >
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>

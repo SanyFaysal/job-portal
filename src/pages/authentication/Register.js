@@ -8,7 +8,7 @@ const Register = () => {
   const { pathname } = useLocation('');
 
   return (
-    <div className="h-[90vh] ">
+    <div className="h-[80vh] ">
       <h1 className="text-center my-10 text-2xl">Continue as ...</h1>
       <div className="flex justify-evenly ">
         <div

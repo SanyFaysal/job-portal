@@ -1,5 +1,5 @@
 import React from 'react';
-import Job from '../../components/home/featuredJob/Job';
+import Job from '../../components/reuseable/Job';
 import JobFilter from '../../components/jobs/JobFilter';
 import JobHeader from '../../components/jobs/JobHeader';
 import PathBanner from '../../components/reuseable/PathBanner';

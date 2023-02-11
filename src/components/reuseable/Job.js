@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { BsBag } from 'react-icons/bs';
 import { GiClockwork, GiTimeBomb } from 'react-icons/gi';
 import { MdMoney } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const Job = () => {
   const [hover, setHover] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <div
       onMouseEnter={() => setHover(true)}
@@ -63,7 +64,10 @@ const Job = () => {
           </div>
         </div>
         <div className="flex justify-end h-full mt-auto ml-auto">
-          <button className=" btn btn-sm rounded-lg bg-blue-100 text-blue-500 border-none hover:bg-blue-500 hover:text-white hover:border-none ">
+          <button
+            onClick={() => navigate('/jobsDetails/1')}
+            className=" btn btn-sm rounded-lg bg-blue-100 text-blue-500 border-none hover:bg-blue-500 hover:text-white hover:border-none "
+          >
             Details
           </button>
         </div>

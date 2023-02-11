@@ -14,7 +14,7 @@ const JobFilter = () => {
       className=" px-8 py-5 rounded h-[90vh]
   shadow
       bg-gradient-to-l from-white  via-white to-slate-50
-    sticky top-[68px] "
+    sticky top-10 "
     >
       <div>
         <h3 className="font-semibold  mt-3 mb-1">Search by keywords</h3>
