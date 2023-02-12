@@ -4,7 +4,7 @@ import Category from '../JobCategory/CategoryCard';
 
 const FeaturedJob = () => {
   return (
-    <div className="lg:px-16 px-6  py-12  bg-gradient-to-t from-green-50  via-white to-purple-50">
+    <div className="lg:px-16 px-6  py-12  bg-sky-50">
       <h1 className="text-3xl font-semibold text-center ">Featured Jobs</h1>
       <p className="text-center text-sm font-semibold">
         Know your worth and find the job that qualify your life

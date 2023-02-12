@@ -25,7 +25,11 @@ const ManageJobsTableRow = () => {
       <td>
         {' '}
         <div className="form-control ">
-          <input type="checkbox" className="toggle toggle-xs toggle-success" />
+          <input
+            type="checkbox"
+            className="toggle toggle-xs toggle-success"
+            defaultChecked
+          />
         </div>
       </td>
       <th>

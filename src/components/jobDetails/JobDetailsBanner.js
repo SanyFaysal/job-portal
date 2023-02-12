@@ -7,7 +7,7 @@ import photo from '../../assets/images/photo1.jpg';
 const JobDetailsBanner = () => {
   return (
     <div
-      className={` bg-blue-50 px-16 py-20 rounded-lg  transition duration-400 `}
+      className={` bg-indigo-50 px-16 py-20 rounded-lg  transition duration-400 `}
     >
       <div className="flex justify-around items-center">
         <div className="mr-4">

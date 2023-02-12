@@ -6,7 +6,7 @@ import { BsClock, BsClockFill, BsFillPersonFill } from 'react-icons/bs';
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 const JobOverView = () => {
   return (
-    <div className="bg-gray-50 rounded-lg">
+    <div className="bg-slate-100 rounded-lg">
       <div className="px-6 py-8">
         <h1 className="font-semibold text-xl  mb-3">Job Overview</h1>
         <div className="flex gap-3 mt-5">
@@ -26,7 +26,7 @@ const JobOverView = () => {
         <div className="flex gap-3 mt-5">
           <CiLocationOn className="text-xl mt-2" />
           <div>
-            <h3 className="font-semibold">Location</h3>
+            <h3 className="font-semibold">Job Location</h3>
             <p className="text-sm">London, UK</p>
           </div>
         </div>

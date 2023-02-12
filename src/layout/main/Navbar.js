@@ -1,10 +1,18 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BsList } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { logOut } from '../../features/auth/authSlice';
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const isHome = pathname === '/' || pathname === '/home';
+  const handleLogOut = () => {
+    localStorage.removeItem('accessToken');
+    dispatch(logOut());
+  };
   const li = (
     <>
       <Link to="/jobs">
@@ -26,19 +34,28 @@ const Navbar = () => {
       }`}
     >
       <div className="navbar-start">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link to="/" className="">
+          Job Portal
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{li}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/dashboard" className="mr-4">
-          Dashboard
-        </Link>
-        <Link to="/register" className="mr-4">
-          Register
-        </Link>
-        <Link to="/signup">Sign Up</Link>
+        {user?.email && !user?.role ? (
+          <>
+            <Link to="/register" className="mr-4">
+              Register
+            </Link>
+            <button onClick={handleLogOut}>Logout</button>
+          </>
+        ) : user?.email && user?.role ? (
+          <Link to="/dashboard" className="mr-4">
+            Dashboard
+          </Link>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
         <div className="dropdown  dropdown-end">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <BsList />
