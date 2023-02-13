@@ -1,25 +1,37 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import sideImg from '../../assets/images/login-animate.gif';
 import { useLoginMutation } from '../../features/auth/authApi';
+import { login } from '../../features/auth/authSlice';
 const LoginPage = () => {
   const { handleSubmit, register, errors } = useForm();
-  const [login, { data, isLoading, isSuccess, isError, error }] =
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [loginUser, { data, isLoading, isSuccess, isError, error }] =
     useLoginMutation();
+
   const [open, setOpen] = useState(false);
   const onSubmit = (data) => {
-    login(data);
+    loginUser(data);
   };
-  console.log(data);
   useEffect(() => {
     if (isSuccess) {
       localStorage.setItem('accessToken', data.token);
+      toast.success('Success', { id: 'login' });
+      navigate('/')
+      dispatch(login(data?.data))
     }
-  }, [isSuccess, data]);
-  console.log(isLoading, isSuccess, isError, error);
+    if (isError) {
+      toast.error(error?.data?.error, { id: 'login' })
+
+    }
+  }, [isSuccess, data, navigate, dispatch, isError, error]);
+  console.log(error?.data?.error);
   return (
     <div className="h-[90vh]  w-full grid lg:grid-cols-11 duration-700 ease-in">
       <div className="col-span-6 px-1">

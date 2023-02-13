@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 const CandidateRegister = () => {
   const [countries, setCountries] = useState([]);
   const { handleSubmit, register, control } = useForm();
+  const { user: { fullName, email } } = useSelector(state => state.auth)
   const term = useWatch({ control, name: 'term' });
   console.log(term);
   const navigate = useNavigate();
@@ -22,10 +24,10 @@ const CandidateRegister = () => {
 
   return (
     <div className="">
-      <div className="flex justify-center items-center overflow-auto h-[90vh]">
+      <div className="flex justify-center items-center overflow-auto lg:h-[90vh]">
         <div className="bg-gradient-to-t from-gray-100 via-blue-300 to-gray-100 p-2 rounded-2xl">
           <form
-            className=" shadow-2lg p-8 bg-white border rounded-2xl  gap-3  justify-between"
+            className=" shadow-2lg lg:p-8 p-4 bg-white border rounded-2xl  gap-3  justify-between"
             onSubmit={handleSubmit(onSubmit)}
           >
             <h1 className="w-full text-2xl  mb-5 font-semibold ">
@@ -34,16 +36,17 @@ const CandidateRegister = () => {
             <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="firstName">
-                  First Name
+                  Full Name
                 </label>
                 <input
                   type="text"
-                  id="firstName"
-                  {...register('firstName')}
+                  id="fullName"
+                  defaultValue={fullName}
+                  {...register('fullName')}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
-              <div className="flex flex-col w-full max-w-xs">
+              {/* <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="lastName">
                   Last Name
                 </label>
@@ -53,7 +56,7 @@ const CandidateRegister = () => {
                   {...register('lastName')}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
-              </div>
+              </div> */}
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="email">
                   Email
@@ -61,8 +64,10 @@ const CandidateRegister = () => {
                 <input
                   type="email"
                   id="email"
+                  value={email}
+                  disabled
                   {...register('email')}
-                  className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
+                  className={` w-full bg-blue-50  cursor-not-allowed	   focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
 
@@ -107,25 +112,37 @@ const CandidateRegister = () => {
                   </div>
                 </div>
               </div>
+
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="address">
-                  Designation
+                  Date of Birth
                 </label>
                 <input
-                  type="text"
-                  {...register('address')}
+                  type="date"
+                  {...register('dob')}
                   id="address"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="address">
-                  Contact info
+                  Designation
                 </label>
                 <input
                   type="text"
-                  {...register('address')}
-                  id="address"
+                  {...register('designation')}
+                  id="designation"
+                  className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
+                />
+              </div>
+              <div className="flex flex-col w-full max-w-xs">
+                <label className="mb-1" htmlFor="address">
+                  Contact Number
+                </label>
+                <input
+                  type="text"
+                  {...register('contactNumber')}
+                  id="contactNumber"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
@@ -176,18 +193,18 @@ const CandidateRegister = () => {
             <div className="grid lg:grid-cols-6 grid-cols-1 gap-5 ">
               <div className="flex flex-col w-full mt-2 col-span-4">
                 <label className="mb-1" htmlFor="postcode">
-                  About You (optional)
+                  About You
                 </label>
                 <textarea
                   rows={3}
                   type="text"
-                  {...register('postcode')}
-                  id="postcode"
+                  {...register('bio')}
+                  id="bio"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
 
-              <div className="flex justify-end items-center w-full my-auto col-span-2 ">
+              <div className="flex lg:justify-end justify-center items-center w-full my-auto col-span-2 ">
                 {/* <div className="flex  w-full max-w-xs">
                 <input
                   className="mr-3 checkbox checkbox-sm"
@@ -198,7 +215,7 @@ const CandidateRegister = () => {
                 <label for="terms">I agree to terms and conditions</label>
               </div> */}
                 <button
-                  className="btn inline-block mt-20 w-2/4 bg-blue-200 text-blue-500 border-none hover:border-none hover:bg-blue-500  hover:text-white"
+                  className="btn inline-block lg:mt-20 w-2/4  bg-blue-200 text-blue-500 border-none hover:border-none hover:bg-blue-500  hover:text-white"
                   type="submit"
                 >
                   Submit

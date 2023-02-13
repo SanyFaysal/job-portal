@@ -13,6 +13,7 @@ const Navbar = () => {
     localStorage.removeItem('accessToken');
     dispatch(logOut());
   };
+
   const li = (
     <>
       <Link to="/jobs">
@@ -29,9 +30,8 @@ const Navbar = () => {
 
   return (
     <div
-      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0  font-semibold  z-40 ${
-        !isHome && 'bg-white'
-      }`}
+      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0  font-semibold  z-40 ${!isHome && 'bg-white'
+        }`}
     >
       <div className="navbar-start">
         <Link to="/" className="">
@@ -60,7 +60,7 @@ const Navbar = () => {
         )}
         {!user?.email && (
           <>
-            <Link to="/register" className="mr-4">
+            <Link to="/login" className="mr-4">
               Login
             </Link>
           </>
