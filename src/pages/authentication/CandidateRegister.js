@@ -3,13 +3,16 @@ import { useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useUserRegisterMutation } from '../../features/auth/authApi';
+import { toast } from 'react-hot-toast';
+import { setUser } from '../../features/auth/authSlice';
 const CandidateRegister = () => {
   const [countries, setCountries] = useState([]);
-  const { handleSubmit, register, control } = useForm();
-  const { user: { fullName, email } } = useSelector(state => state.auth)
-  const term = useWatch({ control, name: 'term' });
-  console.log(term);
+  const { handleSubmit, register, control, reset } = useForm();
+  const { user: { fullName, email, _id } } = useSelector(state => state.auth)
+  const [candidateRegister, { data, isLoading, isSuccess, isError, error }] = useUserRegisterMutation()
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,9 +22,26 @@ const CandidateRegister = () => {
   }, []);
 
   const onSubmit = (data) => {
+    data.role = 'candidate'
+    data.email = email;
     console.log(data);
-  };
+    console.log(_id);
+    candidateRegister({ id: _id, data })
 
+  };
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Register success..', { id: 'register' });
+      reset()
+      dispatch(setUser(data?.data))
+      navigate('/jobs');
+    }
+    if (isError) {
+      toast.error(error?.data?.error, { id: 'register' });
+
+    }
+  }, [isSuccess, isError, error, navigate, reset, data, dispatch]);
+  console.log(data);
   return (
     <div className="">
       <div className="flex justify-center items-center overflow-auto lg:h-[90vh]">
@@ -41,6 +61,7 @@ const CandidateRegister = () => {
                 <input
                   type="text"
                   id="fullName"
+                  required
                   defaultValue={fullName}
                   {...register('fullName')}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -78,6 +99,7 @@ const CandidateRegister = () => {
                     <input
                       type="radio"
                       id="male"
+                      required
                       {...register('gender')}
                       value="male"
                       className="radio radio-sm "
@@ -118,6 +140,7 @@ const CandidateRegister = () => {
                   Date of Birth
                 </label>
                 <input
+                  required
                   type="date"
                   {...register('dob')}
                   id="address"
@@ -130,6 +153,7 @@ const CandidateRegister = () => {
                 </label>
                 <input
                   type="text"
+                  required
                   {...register('designation')}
                   id="designation"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -141,6 +165,7 @@ const CandidateRegister = () => {
                 </label>
                 <input
                   type="text"
+                  required
                   {...register('contactNumber')}
                   id="contactNumber"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -154,6 +179,7 @@ const CandidateRegister = () => {
                   Country
                 </label>
                 <select
+                  required
                   {...register('country')}
                   id="country"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -169,10 +195,11 @@ const CandidateRegister = () => {
               </div>
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="address">
-                  Street Address
+                  Address
                 </label>
                 <input
                   type="text"
+                  required
                   {...register('address')}
                   id="address"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -183,6 +210,7 @@ const CandidateRegister = () => {
                   City
                 </label>
                 <input
+                  required
                   type="text"
                   {...register('city')}
                   id="city"
@@ -192,11 +220,12 @@ const CandidateRegister = () => {
             </div>
             <div className="grid lg:grid-cols-6 grid-cols-1 gap-5 ">
               <div className="flex flex-col w-full mt-2 col-span-4">
-                <label className="mb-1" htmlFor="postcode">
+                <label className="mb-1" htmlFor="bio">
                   About You
                 </label>
                 <textarea
                   rows={3}
+                  required
                   type="text"
                   {...register('bio')}
                   id="bio"

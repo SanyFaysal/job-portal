@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { FaChevronLeft } from 'react-icons/fa';
+
 
 const EmployerRegister = () => {
   const [countries, setCountries] = useState([]);
 
   const { handleSubmit, register, control } = useForm();
-  const term = useWatch({ control, name: 'term' });
+
   const navigate = useNavigate();
 
   const businessCategory = [
@@ -57,16 +57,17 @@ const EmployerRegister = () => {
             <div className="grid lg:grid-cols-3 gap-5">
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="firstName">
-                  First Name
+                  Full Name
                 </label>
                 <input
                   type="text"
+                  required
                   id="firstName"
                   {...register('firstName')}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
-              <div className="flex flex-col w-full max-w-xs">
+              {/* <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="lastName">
                   Last Name
                 </label>
@@ -76,7 +77,7 @@ const EmployerRegister = () => {
                   {...register('lastName')}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
-              </div>
+              </div> */}
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-1" htmlFor="email">
                   Email
@@ -84,6 +85,7 @@ const EmployerRegister = () => {
                 <input
                   type="email"
                   id="email"
+                  required
                   {...register('email')}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
@@ -97,6 +99,7 @@ const EmployerRegister = () => {
                     <input
                       type="radio"
                       id="male"
+                      required
                       {...register('gender')}
                       value="male"
                       className="radio radio-sm "
@@ -136,9 +139,10 @@ const EmployerRegister = () => {
                   Contact Number
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  {...register('email')}
+                  type="contactNumber"
+                  id="contactNumber"
+                  required
+                  {...register('contactNumber')}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
@@ -149,6 +153,7 @@ const EmployerRegister = () => {
                 <select
                   {...register('country')}
                   id="country"
+                  required
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 >
                   {countries
@@ -169,6 +174,7 @@ const EmployerRegister = () => {
                 </label>
                 <input
                   type="text"
+                  required
                   {...register('companyName')}
                   id="companyName"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -176,12 +182,25 @@ const EmployerRegister = () => {
               </div>
               <div className="flex flex-col w-full max-w-xs">
                 <label className="mb-2" htmlFor="companyName">
+                  Company's website/Email
+                </label>
+                <input
+                  type="text"
+                  required
+                  {...register('companyWebsite')}
+                  id="companyWebsite"
+                  className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
+                />
+              </div>
+              <div className="flex flex-col w-full max-w-xs">
+                <label className="mb-2" htmlFor="companyLocation">
                   Company's Location
                 </label>
                 <input
                   type="text"
-                  {...register('companyName')}
-                  id="companyName"
+                  required
+                  {...register('companyLocation')}
+                  id="companyLocation"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
@@ -190,6 +209,7 @@ const EmployerRegister = () => {
                   Company's Category
                 </label>
                 <select
+                  required
                   {...register('companyCategory')}
                   id="companyCategory"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -206,6 +226,7 @@ const EmployerRegister = () => {
                   Number of employee
                 </label>
                 <select
+                  required
                   {...register('employeeRange')}
                   id="employeeRange"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
@@ -223,6 +244,7 @@ const EmployerRegister = () => {
                   Your role in company
                 </label>
                 <input
+                  required
                   type="text"
                   {...register('roleInCompany')}
                   id="roleInCompany"

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import sideImg from '../../assets/images/login-animate.gif';
 import { useLoginMutation } from '../../features/auth/authApi';
-import { login } from '../../features/auth/authSlice';
+import { setUser } from '../../features/auth/authSlice';
 const LoginPage = () => {
   const { handleSubmit, register, errors } = useForm();
   const navigate = useNavigate()
@@ -24,7 +24,7 @@ const LoginPage = () => {
       localStorage.setItem('accessToken', data.token);
       toast.success('Success', { id: 'login' });
       navigate('/')
-      dispatch(login(data?.data))
+      dispatch(setUser(data?.data))
     }
     if (isError) {
       toast.error(error?.data?.error, { id: 'login' })

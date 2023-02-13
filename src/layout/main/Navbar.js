@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { BsList } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../features/auth/authSlice';
+import { toast } from 'react-hot-toast';
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -12,6 +13,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     localStorage.removeItem('accessToken');
     dispatch(logOut());
+    toast('Logout Successful')
   };
 
   const li = (
@@ -56,6 +58,7 @@ const Navbar = () => {
             <Link to="/dashboard" className="mr-4">
               Dashboard
             </Link>
+            <button onClick={handleLogOut}>Logout</button>
           </>
         )}
         {!user?.email && (
@@ -63,6 +66,7 @@ const Navbar = () => {
             <Link to="/login" className="mr-4">
               Login
             </Link>
+
           </>
         )}
         <div className="dropdown  dropdown-end">

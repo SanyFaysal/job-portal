@@ -18,6 +18,14 @@ const authApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
+    userRegister: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/user/register/${id}`,
+        method: 'PATCH',
+        body: data,
+      }),
+      invalidatesTags: ['User'],
+    }),
 
     // jobById: builder.query({
     //   query: (id) => ({
@@ -27,4 +35,4 @@ const authApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useSignupMutation, useLoginMutation } = authApi;
+export const { useSignupMutation, useLoginMutation, useUserRegisterMutation } = authApi;

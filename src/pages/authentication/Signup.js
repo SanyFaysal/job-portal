@@ -9,11 +9,14 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import login from '../../assets/images/login-animate.gif';
 import { useSignupMutation } from '../../features/auth/authApi';
+import { fetchUser, setUser } from '../../features/auth/authSlice';
 const Signup = () => {
   const [open, setOpen] = useState(true);
+  const dispatch = useDispatch()
   const {
     handleSubmit,
     register,
@@ -22,25 +25,28 @@ const Signup = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  const [signup, { isSuccess, error, isLoading, isError, data }] =
+  const [signup, { data: result, isSuccess, error, isLoading, isError, data }] =
     useSignupMutation();
 
   const onSubmit = (data) => {
     signup(data);
+
   };
+
   useEffect(() => {
     if (isSuccess) {
       localStorage.setItem('accessToken', data?.token);
       toast.success('Signup success..', { id: 'signup' });
       reset();
+      dispatch(fetchUser(result?.token))
       navigate('/register');
     }
     if (isError) {
-      toast.error(error, { id: 'signup' });
-      reset();
-    }
-  }, [isSuccess, reset, isError, error, navigate, data]);
+      toast.error(error?.data?.error, { id: 'signup' });
 
+    }
+  }, [isSuccess, isError, error, navigate, dispatch, reset, data?.token, result]);
+  console.log(error);
   return (
     <div className="h-[90vh]   w-full grid lg:grid-cols-11 duration-500 ease-in">
       <div className="col-span-6 px-1 lg:block hidden">
