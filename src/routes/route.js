@@ -16,6 +16,7 @@ import Register from '../pages/authentication/Register';
 import CandidateRegister from '../pages/authentication/CandidateRegister';
 import EmployeeRegister from '../pages/authentication/EmployerRegister';
 import JobDetails from '../pages/jobDetails/JobDetails';
+import PrivateRoute from '../utils/PrivateRoute';
 
 const routes = createBrowserRouter([
   {
@@ -56,7 +57,11 @@ const routes = createBrowserRouter([
       },
       {
         path: 'register',
-        element: <Register />,
+        element: (
+          <PrivateRoute>
+            <Register />
+          </PrivateRoute>
+        ),
         // children: [
         //   {
         //     path: 'candidate',

@@ -26,11 +26,9 @@ const Signup = () => {
     useSignupMutation();
 
   const onSubmit = (data) => {
-    console.log(data);
     signup(data);
   };
   useEffect(() => {
-    console.log(data);
     if (isSuccess) {
       localStorage.setItem('accessToken', data?.token);
       toast.success('Signup success..', { id: 'signup' });
@@ -42,10 +40,10 @@ const Signup = () => {
       reset();
     }
   }, [isSuccess, reset, isError, error, navigate, data]);
-  console.log(isSuccess);
+
   return (
-    <div className="h-[90vh]   w-full grid grid-cols-11 duration-500 ease-in">
-      <div className="col-span-6 px-1">
+    <div className="h-[90vh]   w-full grid lg:grid-cols-11 duration-500 ease-in">
+      <div className="col-span-6 px-1 lg:block hidden">
         <img src={login} alt="" className=" h-[88vh] mx-20  bg-none my-auto" />
       </div>
 
@@ -163,7 +161,7 @@ const Signup = () => {
                   </div>
                 </div>
               </form>
-              <div>
+              <div className="mt-4">
                 <p className="text-center">
                   {' '}
                   Already have an account?{' '}

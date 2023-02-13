@@ -42,19 +42,28 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{li}</ul>
       </div>
       <div className="navbar-end">
-        {user?.email && !user?.role ? (
+        {user?.email && !user?.role && (
           <>
             <Link to="/register" className="mr-4">
               Register
             </Link>
             <button onClick={handleLogOut}>Logout</button>
           </>
-        ) : user?.email && user?.role ? (
-          <Link to="/dashboard" className="mr-4">
-            Dashboard
-          </Link>
-        ) : (
-          <Link to="/login">Login</Link>
+        )}
+
+        {user?.email && user?.role && (
+          <>
+            <Link to="/dashboard" className="mr-4">
+              Dashboard
+            </Link>
+          </>
+        )}
+        {!user?.email && (
+          <>
+            <Link to="/register" className="mr-4">
+              Login
+            </Link>
+          </>
         )}
         <div className="dropdown  dropdown-end">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

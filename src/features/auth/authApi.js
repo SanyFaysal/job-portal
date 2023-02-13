@@ -10,15 +10,15 @@ const authApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
-    getMe: builder.query({
-      query: (token) => ({
-        url: '/user/me',
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
+    login: builder.mutation({
+      query: (data) => ({
+        url: '/user/login',
+        method: 'POST',
+        body: data,
       }),
-      providesTags: ['User'],
+      invalidatesTags: ['User'],
     }),
+
     // jobById: builder.query({
     //   query: (id) => ({
     //     url: `/job/${id}`,
@@ -27,4 +27,4 @@ const authApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useSignupMutation, useGetMeQuery } = authApi;
+export const { useSignupMutation, useLoginMutation } = authApi;
