@@ -26,8 +26,7 @@ const CandidateRegister = () => {
     data.email = email;
     console.log(data);
     console.log(_id);
-    candidateRegister({ id: _id, data })
-
+    candidateRegister({ id: _id, user: data })
   };
   useEffect(() => {
     if (isSuccess) {

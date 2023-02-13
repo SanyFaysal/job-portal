@@ -19,10 +19,10 @@ const authApi = apiSlice.injectEndpoints({
       invalidatesTags: ['User'],
     }),
     userRegister: builder.mutation({
-      query: ({ id, data }) => ({
+      query: ({ id, user }) => ({
         url: `/user/register/${id}`,
         method: 'PATCH',
-        body: data,
+        body: user,
       }),
       invalidatesTags: ['User'],
     }),

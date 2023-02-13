@@ -7,7 +7,7 @@ import Home from '../pages/home/Home';
 import Jobs from '../pages/jobs/Jobs';
 import ManageJobs from '../pages/employe-dashboard/ManageJobs';
 import AllApplicants from '../pages/employe-dashboard/AllApplicants';
-import Profile from '../pages/employe-dashboard/Profile';
+import Profile from '../pages/candidate-dashboard/CandidateProfile';
 import ShortlistedResumes from '../pages/employe-dashboard/ShortlistedResumes';
 import EmployeeDashboardHome from '../pages/employe-dashboard/EmployeeDashboardHome';
 import Login from '../pages/authentication/Login';
@@ -17,6 +17,8 @@ import CandidateRegister from '../pages/authentication/CandidateRegister';
 import EmployeeRegister from '../pages/authentication/EmployerRegister';
 import JobDetails from '../pages/jobDetails/JobDetails';
 import PrivateRoute from '../utils/PrivateRoute';
+import CandidateProfile from '../pages/candidate-dashboard/CandidateProfile';
+import EmployerProfile from '../pages/employe-dashboard/EmployerProfile';
 
 const routes = createBrowserRouter([
   {
@@ -75,17 +77,27 @@ const routes = createBrowserRouter([
       },
       {
         path: 'register/candidate',
-        element: <CandidateRegister />,
+        element:
+          <PrivateRoute>
+            <CandidateRegister />
+          </PrivateRoute>
+        ,
       },
       {
         path: 'register/employer',
-        element: <EmployeeRegister />,
+        element:
+          <PrivateRoute>
+            <EmployeeRegister />
+          </PrivateRoute>
       },
     ],
   },
   {
     path: '/dashboard',
-    element: <Dashboard />,
+    element: <PrivateRoute>
+      <Dashboard />
+    </PrivateRoute>
+    ,
     children: [
       {
         path: '/dashboard',
@@ -104,8 +116,13 @@ const routes = createBrowserRouter([
         element: <AllApplicants />,
       },
       {
-        path: '/dashboard/profile',
-        element: <Profile />,
+        path: '/dashboard/candidate-profile',
+        element: <CandidateProfile />,
+      },
+
+      {
+        path: '/dashboard/employee-profile',
+        element: <EmployerProfile />,
       },
       {
         path: '/dashboard/shortlisted-resumes',
