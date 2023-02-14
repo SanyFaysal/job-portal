@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import Path from '../../components/reuseable/Path';
 import { FiTrash } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import { useCreateJobMutation } from '../../features/job/jobApi';
+import { toast } from 'react-hot-toast';
 
 const PostJob = () => {
-  const { handleSubmit, register, control } = useForm();
+  const { user: { _id, fullName, company: { companyName } } } = useSelector(state => state.auth);
+  const [postJob, { data, isLoading, isSuccess, isError, error }] = useCreateJobMutation();
+  const { handleSubmit, register, control, reset } = useForm();
+  console.log(companyName);
   const {
     fields: resFields,
     append: resAppend,
@@ -22,16 +28,28 @@ const PostJob = () => {
   } = useFieldArray({ control, name: 'requirements' });
 
   const onSubmit = (data) => {
-    data.companyName = 'Brain Quest Consultancy and Training';
-    console.log(data);
+    data.companyName = companyName;
+    const token = localStorage.getItem('accessToken')
+    postJob({ token, data });
+
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Success', { id: 'postJob' })
+      reset();
+    }
+    if (isError) {
+      toast.error(error?.data?.error, { id: 'postJob' })
+    }
+  }, [data, isLoading, isSuccess, isError, error, reset])
+  console.log({ data, isLoading, isSuccess, isError, error });
   return (
-    <div>
+    <div className=''>
       <Path from="dashboard" to="Post Job" />
 
       <form
-        className=" shadow-lg lg:p-10 p-4 rounded-2xl  gap-3 bg-white "
+        className=" shadow-lg lg:p-10 p-4 rounded-2xl lg:mt-5 gap-3 bg-white "
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="w-full text-2xl font-semibold mb-5 lg:pt-0 pt-2">
@@ -45,7 +63,7 @@ const PostJob = () => {
             </label>
             <input
               type="text"
-              id="position"
+              id="jobTitle"
               required
               placeholder="eg. Web Developer"
               {...register('jobTitle')}
@@ -62,7 +80,7 @@ const PostJob = () => {
               className="bg-slate-100 w-full focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
               type="text"
               id="companyName"
-              value="Brain Quest"
+              value={companyName}
               {...register('companyName')}
             />
           </div>
@@ -124,13 +142,13 @@ const PostJob = () => {
           </div>
           <div className="flex flex-col ">
             <label className="mb-2" htmlFor="location">
-              End Time
+              Dateline
             </label>
             <input
               type="date"
               required
-              id="location"
-              {...register('location')}
+              id="dateline"
+              {...register('dateline')}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -154,7 +172,7 @@ const PostJob = () => {
             </label>
             <input
               required
-              type="number"
+              type="text"
               id="vacancy"
               {...register('vacancy')}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"

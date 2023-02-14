@@ -66,7 +66,7 @@ const CandidateProfile = () => {
               <h1 className='font-semibold col-span-2'>Date of Birth</h1>
 
               <p className='col-span-4 text-end text-ellipsis'>
-                {/* {date} */}
+                {date}
               </p>
             </div>
             <hr className='my-2' />

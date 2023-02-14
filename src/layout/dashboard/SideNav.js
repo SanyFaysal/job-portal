@@ -43,6 +43,16 @@ const SideNav = () => {
       </Link>
 
     </> : role === 'employee' ? <>
+
+      <Link
+        to="/dashboard"
+        className={`p-3 inline-block rounded-lg mt-1 hover:bg-blue-50 flex items-center  ease-in ${isActive('') && 'bg-blue-100'
+          }`}
+      >
+        <RxDashboard className="inline mr-2 text-xl" />
+        <span className=""> Dashboard</span>
+      </Link>
+
       <Link
         to="/dashboard/employee-profile"
         className={`p-3 inline-block rounded-lg mt-1 hover:bg-blue-50 flex items-center  ease-in ${isActive('/profile') && 'bg-blue-100'

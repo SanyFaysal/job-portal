@@ -23,21 +23,23 @@ const Dashboard = () => {
             <SideNav />
           </div>
         </div> */}
-        <div className="w-full col-span-11 bg-blue-50 lg:px-5 px-4 py-8">
-          <label
-            htmlFor="dashboard"
-            className="btn btn-square btn-ghost lg:hidden"
-          >
-            <RxHamburgerMenu className="text-xl" />
-          </label>
-          <h1 className="text-3xl font-semibold mb-1">Dashboard</h1>
+        <div className="w-full  col-span-11 bg-blue-50 lg:px-5 px-4 py-8">
+          <div className='flex items-center'>
+            <label
+              htmlFor="dashboard"
+              className=" lg:hidden mr-5 rounded bg-blue-100 py-1 px-2 "
+            >
+              <RxHamburgerMenu className="text-xl" />
+            </label>
+            <h1 className="text-3xl font-semibold mb-1">Dashboard</h1>
+          </div>
           <Outlet />
         </div>
       </div>
       <div className="drawer-side ">
         <label htmlFor="dashboard" className="drawer-overlay"></label>
 
-        <div className='w-80 bg-white'>
+        <div className='w-60 bg-white'>
           <SideNav />
         </div>
 

@@ -27,58 +27,87 @@ const EmployerProfile = () => {
                     </div>
                     <div className=" my-auto text-center">
                         <h1 className="font-bold text-2xl capitalize ">{user?.fullName}</h1>
-                        <h1 className="font-semibold text-sm">{user?.designation}</h1>
-                        <h1 className=' badge badge-sm bg-slate-200 border-none font-semibold text-sky-500'>{user?.email}</h1>
+                        <h1 className="font-semibold text-sm">{user?.company?.roleInCompany}</h1>
+                        <h1 className=' badge badge-sm bg-slate-200 border-none font-semibold text-black'>{user?.email}</h1>
                     </div>
                     <div className=' lg:w-3/4 mt-4 mx-auto'>
                         <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
                             <div className='col-span-2'>
                                 <h1 className='font-semibold'>Contact Number</h1>
                             </div>
-                            <p className='col-span-4 text-end '>
+                            <p className='col-span-4 lg:text-end '>
                                 {user?.contactNumber}
-                            </p>
-                        </div>
-                        <hr className='my-2' />
-                        <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
-                            <div className='col-span-2'>
-                                <h1 className='font-semibold '>Address</h1>
-                            </div>
-                            <p className='col-span-4 text-end '>
-                                {user?.address}
-                            </p>
-                        </div>
-                        <hr className='my-2' />
-                        <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
-                            <div className='col-span-2'>
-                                <h1 className='font-semibold '>City</h1>
-                            </div>
-                            <p className='col-span-4 text-end '>
-                                {user?.city}
                             </p>
                         </div>
                         <hr className='my-2 ' />
                         <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
-
-                            <h1 className='font-semibold col-span-2'>Date of Birth</h1>
-
-                            <p className='col-span-4 text-end text-ellipsis'>
-                                {date}
+                            <div className='col-span-2'>
+                                <h1 className='font-semibold'>Designation</h1>
+                            </div>
+                            <p className='col-span-4 lg:text-end '>
+                                {user?.company?.roleInCompany}
                             </p>
                         </div>
-                        <hr className='my-2' />
+                        <hr className='my-2 ' />
+                        <h2 className='text-xl font-semibold text-center mt-1'>Company Details </h2>
+
+
                         <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
                             <div className='col-span-2'>
-                                <h1 className='font-semibold '>About you</h1>
+                                <h1 className='font-semibold '>Name</h1>
                             </div>
-                            <p className='col-span-4 text-justify'>
-                                {user?.bio} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias eos repellat nisi quas incidunt debitis officiis? Iure provident error dolore est velit, necessitatibus aperiam impedit doloribus cumque illum officiis. Perspiciatis quas corrupti ullam. Asperiores saepe distinctio, temporibus officia beatae repellat perferendis explicabo maiores consequuntur quam quasi libero quae eligendi fugiat.
+                            <p className='col-span-4 lg:text-end '>
+                                {user?.company?.companyName}
+                            </p>
+                        </div>
+                        <hr className='my-2 ' />
+                        <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
+                            <div className='col-span-2'>
+                                <h1 className='font-semibold '> Location</h1>
+                            </div>
+                            <p className='col-span-4 lg:text-end '>
+                                {user?.company?.companyLocation}
+                            </p>
+                        </div>
+                        <hr className='my-2 ' />
+                        <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
+                            <div className='col-span-2 my-auto'>
+                                <h1 className='font-semibold '> Category</h1>
+                            </div>
+
+
+                            <p className=' col-span-4 lg:text-end my-auto'>
+                                {user?.company?.companyCategory}
+                            </p>
+
+                        </div>
+                        <hr className='my-2 ' />
+                        <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
+                            <div className='col-span-2 my-auto'>
+                                <h1 className='font-semibold '>Employee Range</h1>
+                            </div>
+
+
+                            <p className=' col-span-4 lg:text-end my-auto'>
+                                {user?.company?.employeeRange}
+                            </p>
+
+                        </div>
+                        <hr className='my-2 ' />
+                        <div className='grid lg:grid-cols-6 lg:gap-5 mt-3'>
+                            <div className='col-span-2'>
+                                <h1 className='font-semibold'>Role in company</h1>
+                            </div>
+                            <p className='col-span-4 lg:text-end '>
+                                {user?.company?.roleInCompany}
                             </p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
+
     );
 };
 

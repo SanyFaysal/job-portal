@@ -1,9 +1,14 @@
+import moment from 'moment';
 import React from 'react';
 import { BiPencil } from 'react-icons/bi';
 import { IoMdEye } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
-const ManageJobsTableRow = () => {
+const ManageJobsTableRow = ({ job }) => {
+  const { jobTitle, applicants, createdAt, status, employmentType } = job;
+  const navigate = useNavigate()
+  const startDate = moment.utc(createdAt).format('MM/DD/YYYY')
   return (
     <tr>
       <td>
@@ -14,15 +19,15 @@ const ManageJobsTableRow = () => {
             </div>
           </div>
           <div>
-            <div className="font-bold">Hart Hagerty</div>
-            <div className="text-sm opacity-50">United States</div>
+            <div className="font-bold capitalize" >{jobTitle}</div>
+            <div className="text-sm capitalize">{employmentType}</div>
           </div>
         </div>
       </td>
-      <td className="text-blue-500 ">30+ Applied</td>
-      <td className="">30 January, 2023</td>
-      <td className=" ">Active</td>
-      <td>
+      <td className="text-blue-500 capitalize ">{applicants.length} applied</td>
+      <td className="">{startDate}</td>
+      <td className=" ">{status}</td>
+      {/* <td>
         {' '}
         <div className="form-control ">
           <input
@@ -31,10 +36,10 @@ const ManageJobsTableRow = () => {
             defaultChecked
           />
         </div>
-      </td>
+      </td> */}
       <th>
         <div className="tooltip " data-tip="View">
-          <button className="btn  btn-xs bg-blue-100 text-blue-500 border-none hover:bg-blue-500 hover:border-none hover:text-white duration-400">
+          <button onClick={() => navigate(`/jobsDetails/${job?._id}`)} className="btn  btn-xs bg-blue-100 text-blue-500 border-none hover:bg-blue-500 hover:border-none hover:text-white duration-400">
             <IoMdEye className="text-xl " />
           </button>
         </div>

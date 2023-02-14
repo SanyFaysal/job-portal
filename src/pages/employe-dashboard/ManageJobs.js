@@ -5,7 +5,10 @@ import { IoMdEye } from 'react-icons/io';
 import { BiPencil } from 'react-icons/bi';
 import { MdDelete, MdDeleteOutline } from 'react-icons/md';
 import ManageJobsTableRow from '../../components/employee-dashboard/ManageJobsTableRow';
+import { useGetJobsQuery } from '../../features/job/jobApi';
 const ManageJobs = () => {
+  const { data, isLoading, isSuccess, isError, error } = useGetJobsQuery()
+  console.log(data?.data);
   return (
     <div>
       <Path from="dashboard" to="Manage Jobs" />
@@ -21,18 +24,17 @@ const ManageJobs = () => {
                 <th>Applicants</th>
                 <th>Created at</th>
                 <th>Status</th>
-                <th>Publish</th>
+                {/* <th>Publish</th> */}
                 <th>Action</th>
               </tr>
             </thead>
 
             <tbody>
-              <ManageJobsTableRow />
-              <ManageJobsTableRow />
-              <ManageJobsTableRow />
-              <ManageJobsTableRow />
-              <ManageJobsTableRow />
-              <ManageJobsTableRow />
+
+              {
+                data?.data?.map(job => <ManageJobsTableRow job={job} key={job._id} />)
+              }
+
             </tbody>
           </table>
         </div>

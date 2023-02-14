@@ -3,9 +3,12 @@ import apiSlice from '../api/apiSlice';
 const jobApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createJob: builder.mutation({
-      query: (data) => ({
-        url: '/job',
+      query: ({ token, data }) => ({
+        url: '/jobs',
         method: 'POST',
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
         body: data,
       }),
       invalidatesTags: ['Jobs'],
@@ -24,5 +27,4 @@ const jobApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useCreateJobMutation, useGetJobsQuery, useJobByIdQuery } =
-  jobApi;
+export const { useCreateJobMutation, useGetJobsQuery, useJobByIdQuery } = jobApi;

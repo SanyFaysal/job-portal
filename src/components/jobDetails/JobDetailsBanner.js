@@ -4,7 +4,8 @@ import { GiClockwork, GiTimeBomb } from 'react-icons/gi';
 import { MdMoney } from 'react-icons/md';
 import { Navigate } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
-const JobDetailsBanner = () => {
+const JobDetailsBanner = ({ job }) => {
+  const { jobTitle, employmentType } = job;
   return (
     <div
       className={` bg-indigo-50 px-16 py-20 rounded-lg  transition duration-400 `}
@@ -19,8 +20,8 @@ const JobDetailsBanner = () => {
           />
         </div>
         <div>
-          <h1 className="text-2xl font-semibold">
-            Software Engineer (Android), Libraries
+          <h1 className="text-2xl font-semibold capitalize">
+            {jobTitle} ({employmentType})
           </h1>
 
           <div className="text-sm flex items-center mt-1">

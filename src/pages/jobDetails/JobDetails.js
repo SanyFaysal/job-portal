@@ -9,23 +9,26 @@ import JobInfo from '../../components/jobDetails/JobInfo';
 import JobOverView from '../../components/jobDetails/JobOverView';
 import JobQusAns from '../../components/jobDetails/JobQusAns';
 import Footer from '../../components/reuseable/Footer';
+import { useJobByIdQuery } from '../../features/job/jobApi';
 
 const JobDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
+  const { data, isSuccess, isError, error } = useJobByIdQuery(id)
+  console.log(data?.data);
+  const job = data?.data;
   return (
     <div className="">
-      <JobDetailsBanner />
+      <JobDetailsBanner job={job} />
       <div className="grid lg:grid-cols-6 gap-7 lg:px-16 px-6 mt-8">
         <div className="col-span-4">
-          <JobInfo />
-          <JobQusAns />
+          <JobInfo job={job} />
+          <JobQusAns job={job} />
         </div>
         <div className="col-span-2">
-          <JobOverView />
+          <JobOverView job={job} />
           <div className="my-8"></div>
-          <CompanyProfile />
+          <CompanyProfile job={job} />
         </div>
       </div>
       <Footer />
