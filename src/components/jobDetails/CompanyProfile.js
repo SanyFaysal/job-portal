@@ -1,10 +1,8 @@
 import React from 'react';
-import { BsClockFill, BsFillPersonFill } from 'react-icons/bs';
-import { CiLocationOn } from 'react-icons/ci';
-import { FaRegMoneyBillAlt } from 'react-icons/fa';
-import { GiSandsOfTime } from 'react-icons/gi';
-import companypic from '../../assets/images/banner-img-1.png';
+
+import companyPic from '../../assets/images/banner-img-1.png';
 const CompanyProfile = ({ job }) => {
+  console.log(job);
   const { postedBy: { id: { company } } } = job;
   const { companyName, companyCategory, companyLocation, employeeRange } = company;
   return (
@@ -12,7 +10,7 @@ const CompanyProfile = ({ job }) => {
       <div className="px-6 py-8">
         <h1 className="font-semibold text-xl  mb-3">Company Profile</h1>
         <div className="flex gap-3 mt-5 ">
-          <img src={companypic} className="w-20 h-20" alt="" />
+          <img src={companyPic} className="w-20 h-20" alt="" />
           <div className="my-auto">
             <h3 className="font-semibold">
               {companyName}

@@ -6,11 +6,13 @@ import { BsClock, BsClockFill, BsFillPersonFill } from 'react-icons/bs';
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 import moment from 'moment';
+import { useJobPostDateLine } from '../../hook/useJobPostDateline';
 const JobOverView = ({ job }) => {
   const { dateline, location, jobTitle, workingTime, salaryRange } = job;
   const { postedDate } = useJobPostedDate(job);
 
-  const datelineFormative = moment.utc(dateline).format('MM/DD/YYYY')
+  const datelineFormative = moment.utc(dateline).format('MM/DD/YYYY');
+  const { msg: datelineFormat } = useJobPostDateLine(job)
   return (
     <div className="bg-slate-100 rounded-lg">
       <div className="px-6 py-8">
@@ -26,7 +28,10 @@ const JobOverView = ({ job }) => {
           <GiSandsOfTime className="text-xl mt-2" />
           <div>
             <h3 className="font-semibold">Expired Date</h3>
-            <p className="text-sm">{datelineFormative}</p>
+            <p className="text-sm">{datelineFormative} - <span className='text-red-500
+            
+            
+            '>{datelineFormat}</span></p>
           </div>
         </div>
         <div className="flex gap-3 mt-5">

@@ -4,8 +4,17 @@ import JobFilter from '../../components/jobs/JobFilter';
 import JobHeader from '../../components/jobs/JobHeader';
 import PathBanner from '../../components/reuseable/PathBanner';
 import Footer from '../../components/reuseable/Footer';
+import { useGetJobsQuery } from '../../features/job/jobApi';
+import Loading from '../../components/reuseable/Loading';
 
 const Jobs = () => {
+  const { data, isLoading, isSuccess } = useGetJobsQuery();
+  if (isLoading) {
+    return <Loading />
+  }
+  const jobs = data?.data;
+
+
   return (
     <div>
       <PathBanner />
@@ -14,22 +23,11 @@ const Jobs = () => {
           <JobFilter />
         </div>
         <div className=" col-span-9 px-8">
-          <JobHeader />
+          <JobHeader jobs={jobs} />
           <div className="grid  gap-5">
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
-            <Job />
+            {
+              jobs?.map(job => <Job key={job?._id} job={job} />)
+            }
           </div>
         </div>
       </div>

@@ -21,12 +21,12 @@ const JobDetails = () => {
 
   const job = data?.data;
 
-  useEffect(() => {
 
-    if (isLoading) {
-      <Loading />
-    }
-  }, [isLoading])
+
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <div className="">
       <JobDetailsBanner job={job} />
