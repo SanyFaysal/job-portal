@@ -1,11 +1,14 @@
+import moment from 'moment';
 import React from 'react';
-import { BsBag } from 'react-icons/bs';
-import { GiClockwork, GiTimeBomb } from 'react-icons/gi';
+import { CgOpenCollective } from 'react-icons/cg';
+import { GiTimeBomb } from 'react-icons/gi';
 import { MdMoney } from 'react-icons/md';
 import { Navigate } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
+import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const JobDetailsBanner = ({ job }) => {
-  const { jobTitle, employmentType } = job;
+  const { postedDate } = useJobPostedDate(job)
+
   return (
     <div
       className={` bg-indigo-50 px-16 py-20 rounded-lg  transition duration-400 `}
@@ -21,25 +24,22 @@ const JobDetailsBanner = ({ job }) => {
         </div>
         <div>
           <h1 className="text-2xl font-semibold capitalize">
-            {jobTitle} ({employmentType})
+            {job?.jobTitle} ({job?.employmentType})
           </h1>
 
           <div className="text-sm flex items-center mt-1">
-            <p className="flex items-center mr-3">
-              <BsBag className="inline mr-1 my-auto" />
-              <span className="my-auto"> Segment</span>
-            </p>
+
             <p className="flex items-center mr-3">
               <MdMoney className="inline" />
-              <span>$ 30k - $ 35k / year</span>
+              <span className='ml-2'> {job?.salaryRange}</span>
             </p>
             <p className="flex items-center mr-3">
               <GiTimeBomb className="inline" />
-              <span>11 years ago</span>
+              <span className='ml-1'>{postedDate}</span>
             </p>
           </div>
 
-          <div className="grid grid-cols-4 mt-2">
+          {/* <div className="grid grid-cols-4 mt-2">
             <div className="m-1">
               <p className="  py-[0.5px] rounded-full bg-green-100 text-green-500 text-xs text-center ">
                 {' '}
@@ -58,7 +58,7 @@ const JobDetailsBanner = ({ job }) => {
                 Full Time
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="flex justify-end h-full my-auto ml-auto">
           <button

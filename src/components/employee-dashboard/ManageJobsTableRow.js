@@ -5,10 +5,11 @@ import { IoMdEye } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
+import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const ManageJobsTableRow = ({ job }) => {
-  const { jobTitle, applicants, createdAt, status, employmentType } = job;
+  const { jobTitle, applicants, status, employmentType } = job;
   const navigate = useNavigate()
-  const startDate = moment.utc(createdAt).format('MM/DD/YYYY')
+  const { different } = useJobPostedDate(job)
   return (
     <tr>
       <td>
@@ -25,7 +26,7 @@ const ManageJobsTableRow = ({ job }) => {
         </div>
       </td>
       <td className="text-blue-500 capitalize ">{applicants.length} applied</td>
-      <td className="">{startDate}</td>
+      <td className="">{different}</td>
       <td className=" ">{status}</td>
       {/* <td>
         {' '}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsBag } from 'react-icons/bs';
 import { GiClockwork, GiTimeBomb } from 'react-icons/gi';
 import { MdMoney } from 'react-icons/md';
@@ -9,14 +9,24 @@ import JobInfo from '../../components/jobDetails/JobInfo';
 import JobOverView from '../../components/jobDetails/JobOverView';
 import JobQusAns from '../../components/jobDetails/JobQusAns';
 import Footer from '../../components/reuseable/Footer';
+import Loading from '../../components/reuseable/Loading';
 import { useJobByIdQuery } from '../../features/job/jobApi';
+
 
 const JobDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { data, isSuccess, isError, error } = useJobByIdQuery(id)
-  console.log(data?.data);
+
+  const { data, isLoading, isSuccess, isError, error } = useJobByIdQuery(id)
+
   const job = data?.data;
+
+  useEffect(() => {
+
+    if (isLoading) {
+      <Loading />
+    }
+  }, [isLoading])
   return (
     <div className="">
       <JobDetailsBanner job={job} />
