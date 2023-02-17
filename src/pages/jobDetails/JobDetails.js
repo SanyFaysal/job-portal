@@ -31,14 +31,23 @@ const JobDetails = () => {
     <div className="">
       <JobDetailsBanner job={job} />
       <div className="grid lg:grid-cols-6 gap-7 lg:px-16 px-6 mt-8">
-        <div className="col-span-4">
+        <div className="lg:col-span-4">
           <JobInfo job={job} />
+          <div className='block lg:hidden'>
+            <JobOverView job={job} />
+            <div className="my-8"></div>
+            <CompanyProfile job={job} />
+          </div>
           <JobQusAns job={job} />
+
         </div>
-        <div className="col-span-2">
-          <JobOverView job={job} />
-          <div className="my-8"></div>
-          <CompanyProfile job={job} />
+        <div className="lg:col-span-2 lg:my-0 my-4">
+          <div className='hidden lg:block'>
+            <JobOverView job={job} />
+            <div className="my-8"></div>
+            <CompanyProfile job={job} />
+          </div>
+
         </div>
       </div>
       <Footer />

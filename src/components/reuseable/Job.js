@@ -8,7 +8,8 @@ import { useJobPostDateLine } from '../../hook/useJobPostDateline';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 
 const Job = ({ job }) => {
-  const { jobTitle, employmentType, salaryRange, dateline } = job;
+  console.log(job);
+  const { jobTitle, employmentType, salaryRange, dateline } = job || {};
   const datelineFormat = moment.utc(dateline).format('MM/DD/YYYY')
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
@@ -22,17 +23,17 @@ const Job = ({ job }) => {
       className={`border bg-white px-6 py-4 rounded-lg  
       ${hover && 'shadow-lg transition duration-400 '}`}
     >
-      <div className="flex justify-around">
-        <div className="mr-4">
+      <div className="lg:flex justify-around">
+        {/* <div className="mr-4">
           <GiClockwork
             className={`text-6xl  p-2 rounded-lg
           `}
           />
-        </div>
+        </div> */}
         <div>
           <h1 className="text-xl capitalize">{jobTitle}</h1>
 
-          <div className="text-sm flex items-center ">
+          <div className="text-sm lg:flex items-center ">
             <p className="flex items-center mr-3">
               <BsBag className="inline mr-1 my-auto" />
               <span className="my-auto capitalize"> {employmentType}</span>
@@ -47,7 +48,7 @@ const Job = ({ job }) => {
             </p>
           </div>
 
-          <div className="flex gap-3 mt-2">
+          <div className="lg:flex gap-4 mt-2">
             {/* <div className="m-1">
               <p className=" px-2 py-[0.5px] rounded-full bg-green-100 text-green-500 text-xs  ">
                 {' '}
@@ -59,13 +60,13 @@ const Job = ({ job }) => {
                 {' '}
                 Full Time
               </p>
-            </div> 
+  </div> */}
             <div className="m-1">
               <p className=" px-2 py-[0.5px] rounded-full bg-[rgb(240,254,232)] text-black text-xs  ">
                 {' '}
                 Dateline : {datelineFormat}
               </p>
-            </div> */}
+            </div>
             <div className="m-1">
               <p className={`px-2 py-[0.5px] rounded-full   text-xs  ${color}`}>
                 {' '}
@@ -73,8 +74,8 @@ const Job = ({ job }) => {
               </p>
             </div>
           </div>
-        </div>
-        <div className="flex justify-end h-full mt-auto ml-auto">
+        </div >
+        <div className="flex justify-end h-full lg:mt-auto ml-auto  mt-4">
           <button
             onClick={() => navigate(`/jobsDetails/${job?._id}`)}
             className=" btn btn-sm rounded-lg bg-blue-100 text-blue-500 border-none hover:bg-blue-500 hover:text-white hover:border-none "
@@ -82,8 +83,8 @@ const Job = ({ job }) => {
             Details
           </button>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

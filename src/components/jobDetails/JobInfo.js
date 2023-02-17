@@ -27,7 +27,7 @@ const JobInfo = ({ job }) => {
 
       </div>
       <div className="my-4">
-        <h1 className="mb-2 mt-5 text-xl font-semibold">Skill </h1>
+        <h1 className="mb-2 mt-5 text-xl font-semibold">Skills </h1>
         <hr />
         {
           skills.map((skill, i) => <p key={i} className="my-2">

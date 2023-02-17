@@ -1,30 +1,37 @@
 import moment from 'moment';
 import React from 'react';
 import { CgOpenCollective } from 'react-icons/cg';
-import { GiTimeBomb } from 'react-icons/gi';
-import { MdMoney } from 'react-icons/md';
+import { GiComputerFan, GiTimeBomb } from 'react-icons/gi';
+import { HiOutlineOfficeBuilding } from 'react-icons/hi';
+import { MdMoney, MdWork } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const JobDetailsBanner = ({ job }) => {
   const { postedDate } = useJobPostedDate(job)
-
+  const { user } = useSelector(state => state.auth);
+  const role = user?.role;
+  const { company: { companyName }, fullName } = job.postedBy.id
   return (
     <div
-      className={` bg-indigo-50 px-16 py-20 rounded-lg  transition duration-400 `}
+      className={` bg-indigo-50 lg:px-16 px-4 lg:py-20 py-5 rounded-lg  transition duration-400 `}
     >
-      <div className="flex justify-around items-center">
-        <div className="mr-4">
-          <img
+      <div className="lg:flex justify-around items-center">
+        {/*  <div className="mr-4">
+        <img
             src={photo}
             alt=""
             className={`text-6xl  p-2 w-24 h-24  rounded-xl
         `}
-          />
-        </div>
+          /> 
+        </div>*/}
         <div>
           <h1 className="text-2xl font-semibold capitalize">
             {job?.jobTitle} ({job?.employmentType})
+          </h1>
+          <h1 className="text-lg font-medium capitalize flex items-center italic">
+            <HiOutlineOfficeBuilding className='inline mr-2' /> {companyName}
           </h1>
 
           <div className="text-sm flex items-center mt-1">
@@ -38,6 +45,7 @@ const JobDetailsBanner = ({ job }) => {
               <span className='ml-1'>{postedDate}</span>
             </p>
           </div>
+          <p className='capitalize text-sm'>Posted By : <span className='font-semibold'>{fullName}</span> </p>
 
           {/* <div className="grid grid-cols-4 mt-2">
             <div className="m-1">
@@ -60,10 +68,11 @@ const JobDetailsBanner = ({ job }) => {
             </div>
           </div> */}
         </div>
-        <div className="flex justify-end h-full my-auto ml-auto">
+        <div className="flex lg:justify-end justify-start my-3 h-full lg:my-auto ml-auto">
           <button
+            disabled={role === 'employee' ? true : false}
             onClick={() => Navigate('/jobsDetails/1')}
-            className=" py-3 px-10 font-semibold text-md rounded-md bg-blue-300 text-blue-600 duration-500 ease-in-out border-none hover:bg-blue-500 hover:text-white hover:border-none "
+            className=" py-3 px-10 font-semibold text-md rounded-md disabled:hover:cursor-not-allowed disabled:bg-blue-100 disabled:text-slate-300 bg-blue-300 text-blue-600 duration-500 ease-in-out border-none hover:bg-blue-500 hover:text-white hover:border-none "
           >
             Apply Now
           </button>

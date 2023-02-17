@@ -11,10 +11,7 @@ import { MdSearch, MdWorkOutline } from 'react-icons/md';
 const JobFilter = () => {
   return (
     <div
-      className=" px-8 py-5 rounded h-[90vh]
-  shadow
-      bg-gradient-to-l from-white  via-white to-slate-50
-    sticky top-10 "
+      className=" h-[100vh]  px-8 py-5 rounded shadow bg-gradient-to-l from-white  via-white to-slate-50  "
     >
       <div>
         <h3 className="font-semibold  mt-3 mb-1">Search by keywords</h3>
@@ -167,6 +164,7 @@ const JobFilter = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

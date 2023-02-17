@@ -18,11 +18,11 @@ const Jobs = () => {
   return (
     <div>
       <PathBanner />
-      <div className="px-16 lg:px-6 grid grid-cols-12 pt-4 mb-5">
-        <div className="col-span-3 ">
+      <div className="lg:px-16 px-4 grid lg:grid-cols-12 pt-4 mb-5">
+        <div className="col-span-3  ">
           <JobFilter />
         </div>
-        <div className=" col-span-9 px-8">
+        <div className=" lg:col-span-9 lg:px-8 ">
           <JobHeader jobs={jobs} />
           <div className="grid  gap-5">
             {
