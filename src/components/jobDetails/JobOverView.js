@@ -7,15 +7,17 @@ import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 import moment from 'moment';
 import { useJobPostDateLine } from '../../hook/useJobPostDateline';
+import { useLocation } from 'react-router-dom';
 
 const JobOverView = ({ job }) => {
+  const { pathname } = useLocation()
   const { dateline, location, jobTitle, workingTime, salaryRange } = job;
   const { postedDate } = useJobPostedDate(job);
-
+  const isDashboard = pathname === `/dashboard/jobsDetails/${job?._id}`
   const datelineFormative = moment.utc(dateline).format('MM/DD/YYYY');
   const { msg: datelineFormat, color } = useJobPostDateLine(job)
   return (
-    <div className="bg-amber-50 rounded  bg-">
+    <div className={`${!isDashboard ? 'bg-amber-50' : 'bg-white'} rounded  bg-`}>
       <div className="pl-6 pr-2 py-8">
         <h1 className="font-semibold text-xl  mb-3">Job Overview</h1>
         <div className="flex gap-3 mt-5">

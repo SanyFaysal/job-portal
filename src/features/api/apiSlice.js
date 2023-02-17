@@ -5,7 +5,7 @@ const apiSlice = createApi({
     // baseUrl: process.env.REACT_APP_DEV_URL,
     baseUrl: 'http://localhost:5000/api/v1',
   }),
-  tagTypes: ['User'],
+  tagTypes: ['User', 'Job', 'JobDetails'],
   endpoints: (builder) => ({}),
 });
 

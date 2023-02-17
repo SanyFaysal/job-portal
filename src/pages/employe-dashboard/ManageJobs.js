@@ -6,7 +6,7 @@ import { BiPencil } from 'react-icons/bi';
 import { MdDelete, MdDeleteOutline } from 'react-icons/md';
 import ManageJobsTableRow from '../../components/employee-dashboard/ManageJobsTableRow';
 import { useGetJobsQuery } from '../../features/job/jobApi';
-import EditJobModal from '../../components/modal/EditJobModal';
+
 const ManageJobs = () => {
   const { data, isLoading, isSuccess, isError, error } = useGetJobsQuery()
   console.log(data?.data);

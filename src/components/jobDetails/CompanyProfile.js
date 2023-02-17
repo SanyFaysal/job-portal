@@ -1,12 +1,14 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import companyPic from '../../assets/images/banner-img-1.png';
 const CompanyProfile = ({ job }) => {
-  console.log(job);
+  const { pathname } = useLocation()
   const { postedBy: { id: { company } } } = job;
+  const isDashboard = pathname === `/dashboard/jobsDetails/${job?._id}`
   const { companyName, companyCategory, companyLocation, employeeRange } = company;
   return (
-    <div className="bg-slate-100 rounded-lg">
+    <div className={`${isDashboard ? 'bg-white rounded-lg' : 'bg-slate-100 rounded-lg'}`}>
       <div className="px-6 py-8">
         <h1 className="font-semibold text-xl  mb-3">Company Profile</h1>
         <div className="flex gap-3 mt-5 ">

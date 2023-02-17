@@ -5,17 +5,20 @@ import { GiComputerFan, GiTimeBomb } from 'react-icons/gi';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import { MdMoney, MdWork } from 'react-icons/md';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const JobDetailsBanner = ({ job }) => {
+
+  const { pathname } = useLocation()
   const { postedDate } = useJobPostedDate(job)
   const { user } = useSelector(state => state.auth);
   const role = user?.role;
+  const isDashboard = pathname === `/dashboard/jobsDetails/${job?._id}`
   const { company: { companyName }, fullName } = job.postedBy.id
   return (
     <div
-      className={` bg-indigo-50 lg:px-16 px-4 lg:py-20 py-5 rounded-lg  transition duration-400 `}
+      className={`${isDashboard ? 'bg-white lg:px-8 py-12' : 'bg-indigo-50 lg:px-16 lg:py-20'} mt-4 px-4  py-5 rounded-lg  transition duration-400 `}
     >
       <div className="lg:flex justify-around items-center">
         {/*  <div className="mr-4">
@@ -45,7 +48,7 @@ const JobDetailsBanner = ({ job }) => {
               <span className='ml-1'>{postedDate}</span>
             </p>
           </div>
-          <p className='capitalize text-sm'>Posted By : <span className='font-semibold'>{fullName}</span> </p>
+          <p className='capitalize text-sm mt-1'>Posted By : <span className='font-semibold'>{fullName}</span> </p>
 
           {/* <div className="grid grid-cols-4 mt-2">
             <div className="m-1">

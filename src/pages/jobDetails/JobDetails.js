@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BsBag } from 'react-icons/bs';
 import { GiClockwork, GiTimeBomb } from 'react-icons/gi';
 import { MdMoney } from 'react-icons/md';
-import { useNavigate, useParams } from 'react-router-dom';
+import { RxArrowLeft } from 'react-icons/rx';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import CompanyProfile from '../../components/jobDetails/CompanyProfile';
 import JobDetailsBanner from '../../components/jobDetails/JobDetailsBanner';
 import JobInfo from '../../components/jobDetails/JobInfo';
@@ -16,12 +17,12 @@ import { useJobByIdQuery } from '../../features/job/jobApi';
 const JobDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-
+  const { pathname } = useLocation()
   const { data, isLoading, isSuccess, isError, error } = useJobByIdQuery(id)
-
+  console.log(pathname);
   const job = data?.data;
 
-
+  const isDashboard = pathname === `/dashboard/jobsDetails/${id}`
 
   if (isLoading) {
     return <Loading />
@@ -29,8 +30,13 @@ const JobDetails = () => {
 
   return (
     <div className="">
+      {
+        isDashboard && <div>
+          <Link to='/dashboard/manage-jobs' className='flex items-center gap-x-2 mt-2 mb-3 font-medium'><RxArrowLeft />Back to Manage Jobs</Link>
+        </div>
+      }
       <JobDetailsBanner job={job} />
-      <div className="grid lg:grid-cols-6 gap-7 lg:px-16 px-6 mt-8">
+      <div className={`grid lg:grid-cols-6 gap-7  px-6 mt-8 ${isDashboard ? 'lg:px-4' : 'lg:px-16'}`}>
         <div className="lg:col-span-4">
           <JobInfo job={job} />
           <div className='block lg:hidden'>
@@ -50,7 +56,7 @@ const JobDetails = () => {
 
         </div>
       </div>
-      <Footer />
+      {!isDashboard && <Footer />}
     </div>
   );
 };

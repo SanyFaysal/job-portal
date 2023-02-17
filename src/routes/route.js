@@ -19,6 +19,7 @@ import JobDetails from '../pages/jobDetails/JobDetails';
 import PrivateRoute from '../utils/PrivateRoute';
 import CandidateProfile from '../pages/candidate-dashboard/CandidateProfile';
 import EmployerProfile from '../pages/employe-dashboard/EmployerProfile';
+import EditJob from '../pages/employe-dashboard/EditJob';
 
 const routes = createBrowserRouter([
   {
@@ -110,6 +111,14 @@ const routes = createBrowserRouter([
       {
         path: '/dashboard/post-job',
         element: <PostJob />,
+      },
+      {
+        path: '/dashboard/jobsDetails/:id',
+        element: <JobDetails />,
+      },
+      {
+        path: '/dashboard/edit-job/:id',
+        element: <EditJob />,
       },
       {
         path: '/dashboard/all-applicants',

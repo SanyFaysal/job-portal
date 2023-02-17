@@ -2,7 +2,7 @@ import React from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
-import EditJobModal from '../../components/modal/EditJobModal';
+
 import Loading from '../../components/reuseable/Loading';
 import SideNav from './SideNav';
 
@@ -45,7 +45,7 @@ const Dashboard = () => {
         </div>
 
       </div>
-      <EditJobModal />
+
     </div>
   );
 };
