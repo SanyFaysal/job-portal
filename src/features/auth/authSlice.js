@@ -15,6 +15,7 @@ export const fetchUser = createAsyncThunk('auth/fetchUser', async (token) => {
     },
   });
   const data = await response.json();
+  console.log(data);
   return data?.data;
 });
 

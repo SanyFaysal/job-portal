@@ -1,19 +1,36 @@
 import moment from 'moment';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { BiPencil } from 'react-icons/bi';
 import { IoMdEye } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
+
 import { useNavigate } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
+import { useDeleteJobMutation } from '../../features/job/jobApi';
 import { setJob } from '../../features/job/jobSlice';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const ManageJobsTableRow = ({ job }) => {
-  const dispatch = useDispatch();
-  const { jobTitle, applicants, status, employmentType, createdAt } = job;
+  const [deleteJob, { isSuccess, isError, error }] = useDeleteJobMutation()
+  const { jobTitle, applicants, status, employmentType, createdAt, _id: id, postedBy } = job;
+
   const navigate = useNavigate()
   const postedOn = moment.utc(createdAt).format('DD/MM/YYYY')
   const { postedDate } = useJobPostedDate(job)
+  const employeeId = postedBy?.id?._id
+  const handleDeletePost = (id, employeeId) => {
+    const token = localStorage.getItem('accessToken')
+    deleteJob({ id, employeeId, token });
+  }
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Delete Success', { id: 'deleteJob' })
+    }
+    if (isError) {
+      toast.error(error?.data?.error, { id: 'deleteJob' })
+    }
+  }, [isSuccess, isError, error])
+  console.log({ isSuccess, isError, error });
   return (
     <tr>
       <td>
@@ -61,7 +78,7 @@ const ManageJobsTableRow = ({ job }) => {
           </label>
         </div>
         <div className="tooltip " data-tip="Delete">
-          <button className="btn  btn-xs bg-red-100 text-red-500 border-none hover:bg-red-500 hover:border-none hover:text-white duration-400">
+          <button onClick={() => handleDeletePost(id, employeeId)} className="btn  btn-xs bg-red-100 text-red-500 border-none hover:bg-red-500 hover:border-none hover:text-white duration-400">
             <MdDeleteOutline className="text-xl " />
           </button>
         </div>

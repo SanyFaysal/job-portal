@@ -7,15 +7,21 @@ import { MdMoney, MdWork } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import photo from '../../assets/images/photo1.jpg';
+import { useApplyJobMutation } from '../../features/job/jobApi';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const JobDetailsBanner = ({ job }) => {
 
   const { pathname } = useLocation()
   const { postedDate } = useJobPostedDate(job)
   const { user } = useSelector(state => state.auth);
+  const [applyJob, { isSuccess, isError, error }] = useApplyJobMutation();
+  const token = localStorage.getItem('accessToken')
   const role = user?.role;
   const isDashboard = pathname === `/dashboard/jobsDetails/${job?._id}`
-  const { company: { companyName }, fullName } = job.postedBy.id
+  const { company: { companyName }, fullName } = job.postedBy.id;
+
+  console.log({ isSuccess, isError, error });
+
   return (
     <div
       className={`${isDashboard ? 'bg-white lg:px-8 py-12' : 'bg-indigo-50 lg:px-16 lg:py-20'} mt-4 px-4  py-5 rounded-lg  transition duration-400 `}
@@ -74,7 +80,7 @@ const JobDetailsBanner = ({ job }) => {
         <div className="flex lg:justify-end justify-start my-3 h-full lg:my-auto ml-auto">
           <button
             disabled={role === 'employee' ? true : false}
-            onClick={() => Navigate('/jobsDetails/1')}
+            onClick={() => applyJob({ token, id: job?._id })}
             className=" py-3 px-10 font-semibold text-md rounded-md disabled:hover:cursor-not-allowed disabled:bg-blue-100 disabled:text-slate-300 bg-blue-300 text-blue-600 duration-500 ease-in-out border-none hover:bg-blue-500 hover:text-white hover:border-none "
           >
             Apply Now

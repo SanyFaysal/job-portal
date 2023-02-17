@@ -5,11 +5,12 @@ import { IoMdEye } from 'react-icons/io';
 import { BiPencil } from 'react-icons/bi';
 import { MdDelete, MdDeleteOutline } from 'react-icons/md';
 import ManageJobsTableRow from '../../components/employee-dashboard/ManageJobsTableRow';
-import { useGetJobsQuery } from '../../features/job/jobApi';
+import { useGetEmployeeJobsQuery, useGetJobsQuery } from '../../features/job/jobApi';
 
 const ManageJobs = () => {
-  const { data, isLoading, isSuccess, isError, error } = useGetJobsQuery()
-  console.log(data?.data);
+  const token = localStorage.getItem('accessToken')
+  const { data, isLoading, isSuccess, isError, error } = useGetEmployeeJobsQuery(token)
+  console.log({ isLoading, isSuccess, isError, error, data });
   return (
     <div>
       <Path from="dashboard" to="Manage Jobs" />
