@@ -6,13 +6,16 @@ import PathBanner from '../../components/reuseable/PathBanner';
 import Footer from '../../components/reuseable/Footer';
 import { useGetJobsQuery } from '../../features/job/jobApi';
 import Loading from '../../components/reuseable/Loading';
+import { useSelector } from 'react-redux';
 
 const Jobs = () => {
   const { data, isLoading, isSuccess } = useGetJobsQuery();
+
+  const jobs = data?.data;
+
   if (isLoading) {
     return <Loading />
   }
-  const jobs = data?.data;
 
 
   return (

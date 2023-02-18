@@ -19,9 +19,8 @@ const JobDetails = () => {
   const { id } = useParams();
   const { pathname } = useLocation()
   const { data, isLoading, isSuccess, isError, error } = useJobByIdQuery(id)
-  console.log(pathname);
-  const job = data?.data;
 
+  const job = data?.data;
   const isDashboard = pathname === `/dashboard/jobsDetails/${id}`
 
   if (isLoading) {

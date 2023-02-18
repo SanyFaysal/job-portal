@@ -39,6 +39,7 @@ const jobApi = apiSlice.injectEndpoints({
       }),
       providesTags: ['Job'],
     }),
+
     jobById: builder.query({
       query: (id) => ({
         url: `/job/${id}`,
@@ -61,7 +62,7 @@ const jobApi = apiSlice.injectEndpoints({
     applyJob: builder.mutation({
       query: ({ token, id }) => ({
         url: `/job/apply/${id}`,
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           authorization: `Bearer ${token}`,
         },

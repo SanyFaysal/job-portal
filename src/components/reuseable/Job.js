@@ -8,14 +8,14 @@ import { useJobPostDateLine } from '../../hook/useJobPostDateline';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 
 const Job = ({ job }) => {
-  console.log(job);
+
   const { jobTitle, employmentType, salaryRange, dateline } = job || {};
   const datelineFormat = moment.utc(dateline).format('MM/DD/YYYY')
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
   const { postedDate } = useJobPostedDate(job)
   const { msg, color } = useJobPostDateLine(job)
-  console.log(msg);
+
   return (
     <div
       onMouseEnter={() => setHover(true)}
@@ -62,7 +62,7 @@ const Job = ({ job }) => {
               </p>
   </div> */}
             <div className="m-1">
-              <p className=" px-2 py-[0.5px] rounded-full bg-[rgb(240,254,232)] text-black text-xs  ">
+              <p className=" px-2 py-[0.5px] rounded-full bg-gray-200 text-black text-xs  ">
                 {' '}
                 Dateline : {datelineFormat}
               </p>
