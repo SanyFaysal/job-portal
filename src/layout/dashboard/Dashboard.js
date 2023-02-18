@@ -12,9 +12,7 @@ const Dashboard = () => {
   if (!user.role) {
     navigate('/register')
   }
-  if (isLoading) {
-    return <Loading />
-  }
+
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard" type="checkbox" className="drawer-toggle" />

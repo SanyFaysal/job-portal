@@ -34,14 +34,14 @@ const LoginPage = () => {
   console.log(error?.data?.error);
   return (
     <div className="h-[90vh]  w-full grid lg:grid-cols-11 duration-700 ease-in">
-      <div className="col-span-6 px-1">
+      <div className="lg:col-span-6 px-1  lg:block hidden">
         <img
           src={sideImg}
           alt=""
-          className=" h-[88vh] mx-20 lg:block hidden  bg-none my-auto"
+          className=" lg:h-[88vh] mx-20  bg-none my-auto"
         />
       </div>
-      <div className="  flex flex-col col-span-5  border-l border-blue-100 px-20">
+      <div className="  flex flex-col lg:col-span-5  border-l border-blue-100 lg:px-20 px-4">
         <div className=" my-auto   rounded-lg ">
           <AnimatePresence>
             <motion.div

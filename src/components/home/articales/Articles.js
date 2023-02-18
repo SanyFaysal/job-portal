@@ -12,7 +12,7 @@ const Articles = () => {
           Fresh job related news content posted each day.
         </p>
       </div>
-      <div className="grid grid-cols-3 gap-7 my-12">
+      <div className="grid lg:grid-cols-3 gap-7 my-12">
         <ArticleCard />
         <ArticleCard />
         <ArticleCard />

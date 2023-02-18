@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../components/reuseable/Loading';
+import { useGetMeQuery } from '../features/auth/authApi';
 import LoginPage from '../pages/authentication/Login';
 
 const PrivateRoute = ({ children }) => {
-  const { pathname } = useLocation();
 
-  const { user, isLoading, isSuccess } = useSelector((state) => state.auth);
+
   const token = localStorage?.getItem('accessToken');
+  const { data, isLoading, isSuccess } = useGetMeQuery(token)
+  const user = data?.data;
+  console.log(user);
   if (!token) {
     return <Navigate to="/login" replace={true} />
   }
+
   if (token && isLoading) {
     return <Loading />;
   }
@@ -19,7 +23,6 @@ const PrivateRoute = ({ children }) => {
   if (token && user?.email && !isLoading && isSuccess) {
     return children;
   }
-
 
 };
 

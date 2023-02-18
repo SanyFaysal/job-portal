@@ -22,7 +22,7 @@ const FeaturedJob = () => {
 
       <div className="grid lg:grid-cols-2 gap-5  mt-16">
         {
-          jobs.slice(0, 6).map(job => <Job key={job?._id} job={job} />)
+          jobs?.slice(0, 6)?.map(job => <Job key={job?._id} job={job} />)
         }
       </div>
       <div className="my-12 flex justify-center ">

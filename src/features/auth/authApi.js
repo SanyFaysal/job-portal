@@ -27,12 +27,17 @@ const authApi = apiSlice.injectEndpoints({
       invalidatesTags: ['User'],
     }),
 
-    // jobById: builder.query({
-    //   query: (id) => ({
-    //     url: `/job/${id}`,
-    //   }),
-    // }),
+    getMe: builder.query({
+      query: (token) => ({
+        url: `/user/me`,
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+      providesTags: ['User']
+    }),
+
   }),
 });
 
-export const { useSignupMutation, useLoginMutation, useUserRegisterMutation } = authApi;
+export const { useSignupMutation, useLoginMutation, useUserRegisterMutation, useGetMeQuery } = authApi;

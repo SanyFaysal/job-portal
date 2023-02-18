@@ -9,7 +9,7 @@ const JobCategories = () => {
       </h1>
       <p className="text-center font-semibold">Total jobs : 2255 </p>
 
-      <div className="grid grid-cols-4 gap-5  mt-12">
+      <div className="grid lg:grid-cols-4 grid-cols-1 gap-5  mt-12">
         <Category />
         <Category />
         <Category />

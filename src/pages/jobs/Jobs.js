@@ -22,7 +22,7 @@ const Jobs = () => {
     <div>
       <PathBanner />
       <div className="lg:px-16 px-4 grid lg:grid-cols-12 pt-4 mb-5">
-        <div className="col-span-3  ">
+        <div className="lg:col-span-3  ">
           <JobFilter />
         </div>
         <div className=" lg:col-span-9 lg:px-8 ">
