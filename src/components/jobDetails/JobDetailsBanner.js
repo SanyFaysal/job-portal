@@ -24,29 +24,37 @@ const JobDetailsBanner = ({ job }) => {
   const isDashboard = pathname === `/dashboard/jobsDetails/${job?._id}`
   const { company: { companyName }, fullName } = job.postedBy.id;
 
-  const isApplied = user?.applications?.find(apply => apply._id === job._id)
+  let isApplied = user?.applications?.find(apply => apply._id === job._id)
   console.log(isApplied);
   const { _id: id } = job;
-  const handleApply = (token, id) => {
-    console.log({ token, id })
-    applyJob({ token, id })
+\
+
+
+
+
+
+
+const handleApply = (token, id) => {
+  console.log({ token, id })
+  applyJob({ token, id })
+}
+useEffect(() => {
+
+  if (isSuccess) {
+    toast.success('Apply success', { id: 'jobApply' });
+
   }
-  useEffect(() => {
+  if (isError) {
+    toast.error(error?.data.error, { id: 'jobApply' })
+  }
 
-    if (isSuccess) {
-      toast.success('Apply success', { id: 'jobApply' })
-    }
-    if (isError) {
-      toast.error(error?.data.error, { id: 'jobApply' })
-    }
-
-  }, [isSuccess, isError, error])
-  return (
-    <div
-      className={`${isDashboard ? 'bg-white lg:px-8 py-12' : 'bg-indigo-50 lg:px-16 lg:py-20'} mt-4 px-4  py-5 rounded-lg  transition duration-400 `}
-    >
-      <div className="lg:flex justify-around items-center">
-        {/*  <div className="mr-4">
+}, [isSuccess, isError, error])
+return (
+  <div
+    className={`${isDashboard ? 'bg-white lg:px-8 py-12' : 'bg-indigo-50 lg:px-16 lg:py-20'} mt-4 px-4  py-5 rounded-lg  transition duration-400 `}
+  >
+    <div className="lg:flex justify-around items-center">
+      {/*  <div className="mr-4">
         <img
             src={photo}
             alt=""
@@ -54,28 +62,29 @@ const JobDetailsBanner = ({ job }) => {
         `}
           /> 
         </div>*/}
-        <div>
-          <h1 className="text-2xl font-semibold capitalize">
-            {job?.jobTitle} ({job?.employmentType})
-          </h1>
-          <h1 className="text-lg font-medium capitalize flex items-center italic">
-            <HiOutlineOfficeBuilding className='inline mr-2' /> {companyName}
-          </h1>
+      <div>
+        <h1 className="text-2xl font-semibold capitalize">
+          {job?.jobTitle} ({job?.employmentType})
 
-          <div className="text-sm flex items-center mt-1">
+        </h1>
+        <h1 className="text-lg font-medium capitalize flex items-center italic">
+          <HiOutlineOfficeBuilding className='inline mr-2' /> {companyName}
+        </h1>
 
-            <p className="flex items-center mr-3">
-              <MdMoney className="inline" />
-              <span className='ml-2'> {job?.salaryRange}</span>
-            </p>
-            <p className="flex items-center mr-3">
-              <GiTimeBomb className="inline" />
-              <span className='ml-1'>{postedDate}</span>
-            </p>
-          </div>
-          <p className='capitalize text-sm mt-1'>Posted By : <span className='font-semibold'>{fullName}</span> </p>
+        <div className="text-sm flex items-center mt-1">
 
-          {/* <div className="grid grid-cols-4 mt-2">
+          <p className="flex items-center mr-3">
+            <MdMoney className="inline" />
+            <span className='ml-2'> {job?.salaryRange}</span>
+          </p>
+          <p className="flex items-center mr-3">
+            <GiTimeBomb className="inline" />
+            <span className='ml-1'>{postedDate}</span>
+          </p>
+        </div>
+        <p className='capitalize text-sm mt-1'>Posted By : <span className='font-semibold'>{fullName}</span> </p>
+
+        {/* <div className="grid grid-cols-4 mt-2">
             <div className="m-1">
               <p className="  py-[0.5px] rounded-full bg-green-100 text-green-500 text-xs text-center ">
                 {' '}
@@ -95,19 +104,19 @@ const JobDetailsBanner = ({ job }) => {
               </p>
             </div>
           </div> */}
-        </div>
-        <div className="flex lg:justify-end justify-start my-3 h-full lg:my-auto ml-auto">
-          <button
-            disabled={role === 'employee' || !status || isApplied || !user?.email ? true : false}
-            onClick={() => handleApply(token, id)}
-            className=" py-3 px-10 font-semibold text-md rounded-md disabled:hover:cursor-not-allowed disabled:bg-blue-200 disabled:text-slate-100 bg-blue-300 text-blue-600 duration-500 ease-in-out border-none hover:bg-blue-500 hover:text-white hover:border-none "
-          >
-            {isApplied ? 'Already Applied' : 'Apply Now'}
-          </button>
-        </div>
+      </div>
+      <div className="flex lg:justify-end justify-start my-3 h-full lg:my-auto ml-auto">
+        <button
+          disabled={role === 'employee' || !status || isApplied || !user?.email ? true : false}
+          onClick={() => handleApply(token, id)}
+          className=" py-3 px-10 font-semibold text-md rounded-md disabled:hover:cursor-not-allowed disabled:bg-blue-200 disabled:text-slate-100 bg-blue-300 text-blue-600 duration-500 ease-in-out border-none hover:bg-blue-500 hover:text-white hover:border-none "
+        >
+          {isApplied ? 'Already Applied' : 'Apply Now'}
+        </button>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default JobDetailsBanner;

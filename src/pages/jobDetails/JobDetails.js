@@ -29,11 +29,11 @@ const JobDetails = () => {
 
   return (
     <div className="">
-      {
+      {/* {
         isDashboard && <div>
           <Link to='/dashboard/manage-jobs' className='flex items-center gap-x-2 mt-2 mb-3 font-medium'><RxArrowLeft />Back to Manage Jobs</Link>
         </div>
-      }
+      } */}
       <JobDetailsBanner job={job} />
       <div className={`grid lg:grid-cols-6 gap-7  px-6 mt-8 ${isDashboard ? 'lg:px-4' : 'lg:px-16'}`}>
         <div className="lg:col-span-4">

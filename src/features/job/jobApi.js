@@ -67,7 +67,7 @@ const jobApi = apiSlice.injectEndpoints({
           authorization: `Bearer ${token}`,
         },
       }),
-      invalidatesTags: ['Job', 'User'],
+      invalidatesTags: ['Job', 'User', 'JobDetails'],
     }),
   }),
 });
