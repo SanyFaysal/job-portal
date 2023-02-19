@@ -44,7 +44,7 @@ const CandidateRegister = () => {
   return (
     <div className="">
       <div className="flex justify-center items-center overflow-auto lg:h-[90vh]">
-        <div className="bg-gradient-to-t from-gray-100 via-blue-300 to-gray-100 p-2 rounded-2xl">
+        <div className=" p-2 rounded-2xl">
           <form
             className=" shadow-2lg lg:p-8 p-4 bg-white border rounded-2xl  gap-3  justify-between"
             onSubmit={handleSubmit(onSubmit)}

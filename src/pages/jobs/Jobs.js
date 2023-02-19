@@ -31,6 +31,15 @@ const Jobs = () => {
             {
               jobs?.map(job => <Job key={job?._id} job={job} />)
             }
+            {
+              jobs?.map(job => <Job key={job?._id} job={job} />)
+            }
+            {
+              jobs?.map(job => <Job key={job?._id} job={job} />)
+            }
+            {
+              jobs?.map(job => <Job key={job?._id} job={job} />)
+            }
           </div>
         </div>
       </div>

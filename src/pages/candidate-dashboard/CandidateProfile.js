@@ -6,17 +6,18 @@ import human1 from '../../assets/images/photo1.jpg';
 
 import { BiEdit } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const CandidateProfile = () => {
+  const navigate = useNavigate()
   const { user } = useSelector(state => state.auth);
   const date = moment.utc(user?.dob).format('MM/DD/YYYY')
-
   return (
     <div>
       <Path from="dashboard" to="Profile" />
       <div className="bg-white  mt-4 px-10 py-5 rounded-lg">
         <div className='flex justify-between items-center'>
           <h1 className="w-full text-2xl font-semibold ">Profile</h1>
-          <button className="btn btn-sm  border-none hover:border-none rounded hover:bg-blue-500 hover:text-white duration-400 ease-in px-4 bg-blue-100 text-blue-500">
+          <button onClick={() => navigate('/dashboard/edit-candidate-profile')} className="btn btn-sm  border-none hover:border-none rounded hover:bg-blue-500 hover:text-white duration-400 ease-in px-4 bg-blue-100 text-blue-500">
             <span className="mr-2">Edit</span> 🖊{' '}
           </button>
         </div>

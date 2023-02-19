@@ -21,6 +21,8 @@ import CandidateProfile from '../pages/candidate-dashboard/CandidateProfile';
 import EmployerProfile from '../pages/employe-dashboard/EmployerProfile';
 import EditJob from '../pages/employe-dashboard/EditJob';
 import AppliedJob from '../pages/candidate-dashboard/AppliedJob';
+import EditCandidateProfile from '../pages/candidate-dashboard/EditCandidateProfile';
+import EditEmployerProfile from '../pages/employe-dashboard/EditEmployerProfile';
 
 const routes = createBrowserRouter([
   {
@@ -128,6 +130,14 @@ const routes = createBrowserRouter([
       {
         path: '/dashboard/candidate-profile',
         element: <CandidateProfile />,
+      },
+      {
+        path: '/dashboard/edit-candidate-profile',
+        element: <EditCandidateProfile />,
+      },
+      {
+        path: '/dashboard/edit-employer-profile',
+        element: <EditEmployerProfile />,
       },
       {
         path: '/dashboard/applied-jobs',

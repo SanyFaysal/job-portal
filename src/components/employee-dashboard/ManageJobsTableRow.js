@@ -17,9 +17,11 @@ const ManageJobsTableRow = ({ job }) => {
   const navigate = useNavigate()
   const postedOn = moment.utc(createdAt).format('DD/MM/YYYY')
   const { postedDate } = useJobPostedDate(job)
-  const employeeId = postedBy?.id?._id
+  const employeeId = postedBy?.id
+
   const handleDeletePost = (id, employeeId) => {
     const token = localStorage.getItem('accessToken')
+    console.log({ id, employeeId, token });
     deleteJob({ id, employeeId, token });
   }
   useEffect(() => {
