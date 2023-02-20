@@ -55,7 +55,7 @@ const SideNav = () => {
 
       <Link
         to="/dashboard/employee-profile"
-        className={`p-3 inline-block rounded-lg mt-1 hover:bg-blue-50 flex items-center  ease-in ${isActive('/profile') && 'bg-blue-100'
+        className={`p-3 inline-block rounded-lg mt-1 hover:bg-blue-50 flex items-center  ease-in ${isActive('/employee-profile') && 'bg-blue-100'
           }`}
       >
         <CgProfile className="inline mr-2 text-xl" />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Job from '../../components/reuseable/Job';
 import JobFilter from '../../components/jobs/JobFilter';
 import JobHeader from '../../components/jobs/JobHeader';
@@ -7,17 +7,23 @@ import Footer from '../../components/reuseable/Footer';
 import { useGetJobsQuery } from '../../features/job/jobApi';
 import Loading from '../../components/reuseable/Loading';
 import { useSelector } from 'react-redux';
+import Pagination from '../../components/reuseable/Pagination';
 
 const Jobs = () => {
-  const { data, isLoading, isSuccess } = useGetJobsQuery();
-
-  const jobs = data?.data;
+  const [sort, setSort] = useState('')
+  const [pagination, setPagination] = useState(1)
+  const [limit, setLimit] = useState(5)
+  const { data, isLoading, isError, error } = useGetJobsQuery({
+    sort: sort,
+    page: pagination,
+    limit: limit
+  });
+  console.log({ data, isError, error });
+  const { data: jobs, total, page } = data || {}
 
   if (isLoading) {
     return <Loading />
   }
-
-
   return (
     <div>
       <PathBanner />
@@ -26,20 +32,15 @@ const Jobs = () => {
           <JobFilter />
         </div>
         <div className=" lg:col-span-9 lg:px-8 ">
-          <JobHeader jobs={jobs} />
+          <JobHeader sort={sort} total={total} setLimit={setLimit} setSort={setSort} />
           <div className="grid  gap-5">
             {
               jobs?.map(job => <Job key={job?._id} job={job} />)
             }
-            {
-              jobs?.map(job => <Job key={job?._id} job={job} />)
-            }
-            {
-              jobs?.map(job => <Job key={job?._id} job={job} />)
-            }
-            {
-              jobs?.map(job => <Job key={job?._id} job={job} />)
-            }
+
+          </div>
+          <div className='flex my-10 justify-end'>
+            <Pagination page={page} total={total} setPagination={setPagination} />
           </div>
         </div>
       </div>

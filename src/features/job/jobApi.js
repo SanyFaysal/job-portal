@@ -25,11 +25,18 @@ const jobApi = apiSlice.injectEndpoints({
       invalidatesTags: ['Job', 'JobDetails'],
     }),
     getJobs: builder.query({
-      query: () => ({
-        url: '/jobs',
+      query: ({ sort, page, limit }) => ({
+        url: `/jobs?sort=${sort}&page=${page}&limit=${limit}`,
       }),
       providesTags: ['Job'],
     }),
+    // getJobsByFilter: builder.query({
+    //   query: ({ sort }) => ({
+    //     url: `/jobs?sort=${sort}`,
+
+    //   }),
+    //   providesTags: ['Job'],
+    // }),
     getEmployeeJobs: builder.query({
       query: (token) => ({
         url: '/employee/jobs',
