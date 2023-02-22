@@ -85,20 +85,23 @@ const PostJob = () => {
             />
           </div>
 
-          <div className="flex flex-col  ">
-            <label className="mb-2" htmlFor="experience">
-              Experience
-            </label>
-            <input
-              type="text"
-              required
-              id="experience"
-              placeholder="Enter experience"
-              {...register('experience')}
-              className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
-            />
-          </div>
 
+
+          <div className="flex flex-col  ">
+            <label className="mb-2" htmlFor="employmentType">
+              Job Type
+            </label>
+            <select
+              type="text"
+              id="employmentType"
+              {...register('employmentType')}
+              className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
+            >
+              <option value="fullTime">Full Time</option>
+              <option value="partTime">Part Time</option>
+              <option value="freelance">Freelance</option>
+            </select>
+          </div>
           <div className="flex flex-col  ">
             <label className="mb-2" htmlFor="employmentType">
               Employment Type
@@ -114,7 +117,23 @@ const PostJob = () => {
               <option value="hybrid">Hybrid</option>
             </select>
           </div>
-
+          <div className="flex flex-col  ">
+            <label className="mb-2" htmlFor="experience">
+              Experience
+            </label>
+            <select
+              type="text"
+              id="employmentType"
+              {...register('employmentType')}
+              className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
+            >
+              <option value="fresher">Fresher </option>
+              <option value="1 year experience">1 year experience</option>
+              <option value="2 - 3 years experience">2 - 3 years experience</option>
+              <option value="3 - 5 years experience">3 - 5 years experience</option>
+              <option value="5 years + experience">5 years + experience</option>
+            </select>
+          </div>
           <div className="flex flex-col  ">
             <label className="mb-2" htmlFor="salaryRange">
               Salary Range

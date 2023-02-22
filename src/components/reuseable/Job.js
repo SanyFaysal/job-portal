@@ -9,7 +9,7 @@ import { useJobPostedDate } from '../../hook/useJobPostedDate';
 
 const Job = ({ job }) => {
 
-  const { jobTitle, employmentType, salaryRange, dateline, postedBy } = job || {};
+  const { jobTitle, employmentType, jobType, salaryRange, dateline, postedBy } = job || {};
   const datelineFormat = moment.utc(dateline).format('MM/DD/YYYY')
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
@@ -65,12 +65,19 @@ const Job = ({ job }) => {
               </p>
   </div> */}
             {!isAppliedJob ?
-              <> <div className="m-1">
-                <p className=" px-2 py-[0.5px] rounded-full bg-gray-200 text-black text-xs  ">
-                  {' '}
-                  Dateline : {datelineFormat}
-                </p>
-              </div>
+              <>
+                <div className="m-1">
+                  <p className=" px-2 py-[0.5px] rounded-full bg-gray-200 text-black text-xs  ">
+                    {' '}
+                    JobType : <span className='capitalize'> {jobType}</span>
+                  </p>
+                </div>
+                <div className="m-1">
+                  <p className=" px-2 py-[0.5px] rounded-full bg-gray-200 text-black text-xs  ">
+                    {' '}
+                    Dateline : {datelineFormat}
+                  </p>
+                </div>
                 <div className="m-1">
                   <p className={`px-2 py-[0.5px] rounded-full   text-xs  ${color}`}>
                     {' '}

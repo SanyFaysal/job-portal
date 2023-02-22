@@ -48,7 +48,7 @@ const ManageJobsTableRow = ({ job }) => {
           </div>
         </div>
       </td>
-      <td className="text-blue-500 capitalize ">{applicants.length} applied</td>
+      <td onClick={() => navigate(`/dashboard/applicants/${job?._id}`)} className="text-blue-500 capitalize hover:underline cursor-pointer">{applicants.length} applied</td>
       <td className="text-sm"><div>
         <p className={``}>{postedDate}</p>
         <p className='text-xs '>{postedOn}</p>

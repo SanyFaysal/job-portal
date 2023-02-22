@@ -25,8 +25,8 @@ const jobApi = apiSlice.injectEndpoints({
       invalidatesTags: ['Job', 'JobDetails'],
     }),
     getJobs: builder.query({
-      query: ({ sort, page, limit }) => ({
-        url: `/jobs?sort=${sort}&page=${page}&limit=${limit}`,
+      query: ({ sort, page, limit, filter }) => ({
+        url: `/jobs?sort=${sort}&page=${page}&limit=${limit}&jobTitle=${filter?.jobTitle}&jobType=${filter?.jobType}&experience=${filter?.experience}`,
       }),
       providesTags: ['Job'],
     }),

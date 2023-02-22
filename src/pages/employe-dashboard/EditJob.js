@@ -128,18 +128,20 @@ const EditJob = () => {
                     </div>
 
                     <div className="flex flex-col  ">
-                        <label className="mb-2" htmlFor="experience">
-                            Experience
+                        <label className="mb-2" htmlFor="employmentType">
+                            Job Type
                         </label>
-                        <input
+                        <select
                             type="text"
-                            required
-                            defaultValue={job.experience}
-                            id="experience"
-                            placeholder="Enter experience"
-                            {...register('experience')}
+                            id="jobType"
+                            defaultValue={job?.jobType}
+                            {...register('jobType')}
                             className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
-                        />
+                        >
+                            <option value="fullTime" selected={job?.jobType === 'fullTime'}>Full Time</option>
+                            <option value="partTime" selected={job?.jobType === 'partTime'}>Part Time</option>
+                            <option value="freelance" selected={job?.jobType === 'freelance'}>Freelance</option>
+                        </select>
                     </div>
 
                     <div className="flex flex-col  ">
@@ -157,7 +159,23 @@ const EditJob = () => {
 
                         </select>
                     </div>
-
+                    <div className="flex flex-col  ">
+                        <label className="mb-2" htmlFor="experience">
+                            Experience
+                        </label>
+                        <select
+                            type="text"
+                            id="experience"
+                            {...register('experience')}
+                            defaultValue={job?.experience}
+                            className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
+                        >
+                            <option value="1 year experience" selected={job?.experience === '1 year experience'}>1 year experience </option>
+                            <option value="2 - 3 years experience" selected={job?.experience === '2 - 3 years experience'}>2 - 3 years experience</option>
+                            <option value="3- 5 years experience" selected={job?.experience === '3 - 5 years experience'}>3- 5 years experience</option>
+                            <option value="5 years + experience" selected={job?.experience === '5 years + experience'}>5 years + experience</option>
+                        </select>
+                    </div>
                     <div className="flex flex-col  ">
                         <label className="mb-2" htmlFor="salaryRange">
                             Salary Range

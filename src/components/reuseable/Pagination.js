@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { } from 'react-icons/md';
 
-const Pagination = ({ page, total, setPagination }) => {
+const Pagination = ({ pageFound, setPagination }) => {
     const [selected, setSelected] = useState(1);
     const array = [];
-    for (let index = 0; index < page; index++) {
+    for (let index = 0; index < pageFound; index++) {
         array.push(index);
     }
     const handleClick = (arr) => {

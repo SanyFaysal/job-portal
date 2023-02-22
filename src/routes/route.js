@@ -123,10 +123,10 @@ const routes = createBrowserRouter([
         path: '/dashboard/edit-job/:id',
         element: <EditJob />,
       },
-      {
-        path: '/dashboard/all-applicants',
-        element: <AllApplicants />,
-      },
+      // {
+      //   path: '/dashboard/all-applicants',
+      //   element: <AllApplicants />,
+      // },
       {
         path: '/dashboard/candidate-profile',
         element: <CandidateProfile />,
@@ -138,6 +138,10 @@ const routes = createBrowserRouter([
       {
         path: '/dashboard/edit-employer-profile',
         element: <EditEmployerProfile />,
+      },
+      {
+        path: '/dashboard/applicants/:id',
+        element: <AllApplicants />,
       },
       {
         path: '/dashboard/applied-jobs',
