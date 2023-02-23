@@ -1,8 +1,10 @@
 import moment from 'moment';
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ApplicantsCard = ({ candidate }) => {
     const formattedDOB = moment.utc(candidate.dob).format('DD-MM-YYYY')
+    const navigate = useNavigate()
     return (
         <div className='py-2 bg-blue-50  w-full rounded-lg mb-3  '>
 
@@ -12,7 +14,8 @@ const ApplicantsCard = ({ candidate }) => {
                     <h1 className='text-xl capitalize font-bold my-0'> {candidate.fullName}</h1>
 
                     <h1 className='text-sm capitalize  text-orange-500 px-2 rounded-full my-auto'> {candidate.email}</h1>
-                    <h1 className='btn btn-sm'>More</h1>
+                    {/* <h1 onClick={() => navigate(`/dashboard/applicant-profile/${candidate?._id}`)} className='btn btn-sm bg-blue-200 text-blue-500 border-none hover:bg-blue-500 hover:text-white duration-400 ease-in-out'>Details</h1> */}
+                    <Link to={`/dashboard/applicant-profile/${candidate?._id}`} className='btn btn-sm bg-blue-200 text-blue-500 border-none hover:bg-blue-500 hover:text-white duration-400 ease-in-out'>Details</Link>
                 </div>
                 <hr className='mt-1' />
                 <div className='grid grid-cols-8 gap-x-4 mt-1 text-md font-medium w-full  px-6'>

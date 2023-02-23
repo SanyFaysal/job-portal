@@ -37,9 +37,7 @@ const Applicants = () => {
                         {
                             applicants?.map(candidate => <ApplicantsCard candidate={candidate} key={candidate?._id} />)
                         }
-                        {
-                            applicants?.map(candidate => <ApplicantsCard candidate={candidate} key={candidate?._id} />)
-                        }
+
                     </div>
                 </div>
                 {/* <div className='mb-4 flex justify-between'>
