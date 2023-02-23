@@ -10,7 +10,7 @@ import { useGetEmployeeJobsQuery, useGetJobsQuery } from '../../features/job/job
 const ManageJobs = () => {
   const token = localStorage.getItem('accessToken')
   const { data, isLoading, isSuccess, isError, error } = useGetEmployeeJobsQuery(token)
-  console.log({ isLoading, isSuccess, isError, error, data });
+
   return (
     <div>
       <Path from="dashboard" to="Manage Jobs" />
