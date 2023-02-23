@@ -21,7 +21,7 @@ export const useJobPostedDate = (job) => {
     if (diffDays > 1 && 7 > diffDays) {
         different = `${diffDays} Days ago`
     }
-    if (diffDays > 7 && 30 > diffDays) {
+    if (diffDays >= 7 && 30 > diffDays) {
         const week = Math.round(diffDays / 7)
         if (week === 1) {
             different = `${week} week ago`
