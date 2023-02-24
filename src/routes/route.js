@@ -7,9 +7,7 @@ import Home from '../pages/home/Home';
 import Jobs from '../pages/jobs/Jobs';
 import ManageJobs from '../pages/employe-dashboard/ManageJobs';
 import AllApplicants from '../pages/employe-dashboard/AllApplicants';
-import Profile from '../pages/candidate-dashboard/CandidateProfile';
 import ShortlistedResumes from '../pages/employe-dashboard/ShortlistedResumes';
-import EmployeeDashboardHome from '../pages/employe-dashboard/EmployeeDashboardHome';
 import Login from '../pages/authentication/Login';
 import Signup from '../pages/authentication/Signup';
 import Register from '../pages/authentication/Register';
@@ -25,6 +23,7 @@ import EditCandidateProfile from '../pages/candidate-dashboard/EditCandidateProf
 import EditEmployerProfile from '../pages/employe-dashboard/EditEmployerProfile';
 import Applicants from '../pages/employe-dashboard/Applicants';
 import ApplicantProfile from '../pages/employe-dashboard/ApplicantProfile';
+import DashboardHome from '../layout/dashboard/DashboardHome';
 
 const routes = createBrowserRouter([
   {
@@ -107,7 +106,7 @@ const routes = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <EmployeeDashboardHome />,
+        element: <DashboardHome />,
       },
       {
         path: '/dashboard/manage-jobs',

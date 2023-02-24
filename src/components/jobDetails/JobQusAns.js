@@ -1,26 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Comment from './Comment';
 import { IoSend } from 'react-icons/io5';
-const JobQusAns = () => {
+import { useSelect } from '@mui/base';
+import { useSelector } from 'react-redux';
+import { useCommentOnJobMutation } from '../../features/job/jobApi';
+const JobQusAns = ({ job }) => {
+  const { queries, _id } = job;
+  const token = localStorage.getItem('accessToken')
+  const [question, setQuestion] = useState('');
+  const { user } = useSelector(state => state.auth);
+
+  const [postComment, isLoading, isSuccess, isError, error] = useCommentOnJobMutation()
+  const handleQuestion = (_id) => {
+    const data = {
+      question: {
+        qus: question,
+        quesBy: user?._id
+      }
+    }
+    console.log({ _id, data, token });
+    postComment({ id: _id, data, token })
+  }
+
+  console.log({ isLoading, isSuccess, isError, error });
   return (
     <div>
-      <h1 className="mb-2 mt-5 text-xl font-semibold my-5">All Comments</h1>
+      <h1 className="mb-2 mt-5 text-xl font-semibold my-5">All Comments : <span className='text-blue-500'>{queries.length}</span></h1>
       <div className="flex gap-4 my-5">
         <input
           placeholder="Write your comment here..."
           type="text"
+          onChange={(e) => setQuestion(e.target.value)}
           className="input input-bordered w-full c"
         />
         <div>
-          <button className="btn rounded py-2  bg-blue-100 border-none text-blue-500  hover:bg-blue-500 hover:text-white duration-500 ease-in-out ">
+          <button onClick={() => handleQuestion(_id)} className="btn rounded py-2  bg-blue-100 border-none text-blue-500  hover:bg-blue-500 hover:text-white duration-500 ease-in-out ">
             <IoSend className="text-2xl" />
           </button>
         </div>
       </div>
       <div>
-        <Comment />
-        <Comment />
-        <Comment />
+        {
+          queries?.map(query => <Comment query={query} />)
+        }
+
       </div>
     </div>
   );

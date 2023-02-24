@@ -76,7 +76,7 @@ const CandidateProfile = () => {
                 <h1 className='font-semibold '>About you</h1>
               </div>
               <p className='col-span-4 text-justify'>
-                {user?.bio} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias eos repellat nisi quas incidunt debitis officiis? Iure provident error dolore est velit, necessitatibus aperiam impedit doloribus cumque illum officiis. Perspiciatis quas corrupti ullam. Asperiores saepe distinctio, temporibus officia beatae repellat perferendis explicabo maiores consequuntur quam quasi libero quae eligendi fugiat.
+                {user?.bio}.
               </p>
             </div>
           </div>
