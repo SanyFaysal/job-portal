@@ -13,7 +13,7 @@ export const useJobPostDateLine = (job) => {
     }
     if (diffDays === 0) {
 
-        return { status: true, msg: 'Today is remaining to apply', color: 'bg-[#edffeaf9] text-red-500' };
+        return { status: true, msg: 'Today is remaining to apply', color: 'bg-red-100 text-red-500' };
     }
 
     return { status: false, msg: 'Dateline in over !', color: 'bg-[#f9eaea] text-red-500 font-bold' };

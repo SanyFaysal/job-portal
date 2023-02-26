@@ -87,6 +87,17 @@ const jobApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Job', 'User', 'JobDetails'],
     }),
+    answerOnJob: builder.mutation({
+      query: ({ id, data, token }) => ({
+        url: `/job/comment/${id}`,
+        method: 'POST',
+        // headers: {
+        //   authorization: `Bearer ${token}`,
+        // },
+        body: data
+      }),
+      invalidatesTags: ['Job', 'User', 'JobDetails'],
+    }),
   }),
 });
 
@@ -99,4 +110,5 @@ export const {
   useGetEmployeeJobsQuery,
   useApplyJobMutation,
   useCommentOnJobMutation,
+  useAnswerOnJobMutation
 } = jobApi;

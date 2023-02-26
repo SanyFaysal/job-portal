@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Comment from './Comment';
 import { IoSend } from 'react-icons/io5';
 import { useSelect } from '@mui/base';
 import { useSelector } from 'react-redux';
 import { useCommentOnJobMutation } from '../../features/job/jobApi';
+import { toast } from 'react-hot-toast';
 const JobQusAns = ({ job }) => {
   const { queries, _id } = job;
   const token = localStorage.getItem('accessToken')
@@ -20,9 +21,15 @@ const JobQusAns = ({ job }) => {
     }
     console.log({ _id, data, token });
     postComment({ id: _id, data, token })
+    setQuestion('')
   }
 
-  console.log({ isLoading, isSuccess, isError, error });
+  useEffect(() => {
+    if (isLoading === true) {
+      toast.loading('Loading...', { id: 'comment' })
+    }
+  }, [isLoading])
+
   return (
     <div>
       <h1 className="mb-2 mt-5 text-xl font-semibold my-5">All Comments : <span className='text-blue-500'>{queries.length}</span></h1>
@@ -30,6 +37,7 @@ const JobQusAns = ({ job }) => {
         <input
           placeholder="Write your comment here..."
           type="text"
+          value={question}
           onChange={(e) => setQuestion(e.target.value)}
           className="input input-bordered w-full c"
         />
@@ -41,7 +49,7 @@ const JobQusAns = ({ job }) => {
       </div>
       <div>
         {
-          queries?.map(query => <Comment query={query} />)
+          queries?.map(query => <Comment query={query} user={user} />)
         }
 
       </div>
