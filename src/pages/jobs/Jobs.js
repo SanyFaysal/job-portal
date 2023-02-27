@@ -24,7 +24,7 @@ const Jobs = () => {
     limit: limit,
     filter: filter
   });
-
+  
   const { data: jobs, total, page, pageFound, totalFound } = data || {}
 
   if (isLoading) {

@@ -8,23 +8,41 @@ import { useJobPostedDate } from '../../hook/useJobPostedDate';
 import moment from 'moment';
 import { useJobPostDateLine } from '../../hook/useJobPostDateline';
 import { useLocation } from 'react-router-dom';
+import { MdCall } from 'react-icons/md';
 
 const JobOverView = ({ job }) => {
   const { pathname } = useLocation()
-  const { dateline, location, jobTitle, workingTime, salaryRange } = job;
+  const { dateline, location, jobTitle, workingTime, salaryRange, createdAt, contactNumber } = job;
   const { postedDate } = useJobPostedDate(job);
   const isDashboard = pathname === `/dashboard/jobsDetails/${job?._id}`
   const datelineFormative = moment.utc(dateline).format('MM/DD/YYYY');
+  const datedPosted = moment.utc(createdAt).format('MM/DD/YYYY');
   const { msg: datelineFormat, color } = useJobPostDateLine(job)
   return (
-    <div className={`${!isDashboard ? 'bg-amber-50' : 'bg-white'} rounded  bg-`}>
+    <div className={`${!isDashboard ? 'bg-indigo-50 text-indigo-500' : 'bg-white'} rounded  `}>
       <div className="pl-6 pr-2 py-8">
+
+
         <h1 className="font-semibold text-xl  mb-3">Job Overview</h1>
+        <div className="flex gap-3 mt-5">
+          <BsFillPersonFill className="text-xl mt-2" />
+          <div>
+            <h3 className="font-semibold">Job Title</h3>
+            <p className="text-sm capitalize">{jobTitle}</p>
+          </div>
+        </div>
+        <div className="flex gap-3 mt-5">
+          <FaRegMoneyBillAlt className="text-xl mt-2" />
+          <div>
+            <h3 className="font-semibold">Salary</h3>
+            <p className="text-sm workingTime">{salaryRange}</p>
+          </div>
+        </div>
         <div className="flex gap-3 mt-5">
           <SlCalender className="text-xl mt-2" />
           <div>
             <h3 className="font-semibold">Dated Post</h3>
-            <p className="text-sm">{postedDate}</p>
+            <p className="text-sm">{datedPosted} - {postedDate}</p>
           </div>
         </div>
         <div className="flex gap-3 mt-5">
@@ -41,13 +59,7 @@ const JobOverView = ({ job }) => {
             <p className="text-sm capitalize">{location}</p>
           </div>
         </div>
-        <div className="flex gap-3 mt-5">
-          <BsFillPersonFill className="text-xl mt-2" />
-          <div>
-            <h3 className="font-semibold">Job Title</h3>
-            <p className="text-sm capitalize">{jobTitle}</p>
-          </div>
-        </div>
+
         <div className="flex gap-3 mt-5">
           <BsClockFill className="text-xl mt-2" />
           <div>
@@ -56,10 +68,10 @@ const JobOverView = ({ job }) => {
           </div>
         </div>
         <div className="flex gap-3 mt-5">
-          <FaRegMoneyBillAlt className="text-xl mt-2" />
+          <MdCall className="text-xl mt-2" />
           <div>
-            <h3 className="font-semibold">Salary</h3>
-            <p className="text-sm workingTime">{salaryRange}</p>
+            <h3 className="font-semibold">Contact Number</h3>
+            <p className="text-sm capitalize">{contactNumber}</p>
           </div>
         </div>
       </div>

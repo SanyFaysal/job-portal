@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsRecord2 } from 'react-icons/bs';
+import { BsDot, BsRecord2 } from 'react-icons/bs';
 const JobInfo = ({ job }) => {
   const { jobDescription, responsibilities, skills } = job;
   return (
@@ -19,7 +19,7 @@ const JobInfo = ({ job }) => {
 
         {
           responsibilities.map((res, i) => <p key={i} className="mt-3">
-            <BsRecord2 className="inline mr-2 text-2xl" />
+            <BsDot className="inline mr-2 text-2xl" />
             {res}
           </p>)
         }
@@ -31,7 +31,7 @@ const JobInfo = ({ job }) => {
         <hr />
         {
           skills.map((skill, i) => <p key={i} className="my-2">
-            <BsRecord2 className="inline mr-2 text-2xl" />
+            <BsDot className="inline mr-2 text-2xl" />
             {skill}
           </p>)
         }

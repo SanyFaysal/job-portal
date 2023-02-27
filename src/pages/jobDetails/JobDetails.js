@@ -18,7 +18,7 @@ const JobDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { pathname } = useLocation()
-  const { data, isLoading, isSuccess, isError, error } = useJobByIdQuery(id)
+  const { data, isLoading, isSuccess, isError, error } = useJobByIdQuery(id, { pollingInterval: 1000 })
 
   const job = data?.data;
   const isDashboard = pathname === `/dashboard/jobsDetails/${id}`

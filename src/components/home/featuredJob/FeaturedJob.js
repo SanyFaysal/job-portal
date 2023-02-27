@@ -6,8 +6,17 @@ import Loading from '../../reuseable/Loading';
 import Category from '../JobCategory/CategoryCard';
 
 const FeaturedJob = () => {
-  const { data, isSuccess, isLoading, isError, error } = useGetJobsQuery();
-
+  const { data, isSuccess, isLoading, isError, error } = useGetJobsQuery({
+    sort: '',
+    page: 1,
+    limit: 4,
+    filter: {
+      experience: "",
+      jobTitle: "",
+      jobType: '',
+    }
+  });
+  console.log(data);
   if (isLoading) {
     return <Loading />
   }
@@ -26,7 +35,7 @@ const FeaturedJob = () => {
         }
       </div>
       <div className="my-12 flex justify-center ">
-        <Link to='/jobs' className="btn  px-5 bg-blue-500 hover:bg-blue-500 border-none hover:border-none ">
+        <Link to='/jobs' className="btn  px-5 bg-blue-200 hover:bg-blue-500 text-blue-500 hover:text-white border-none hover:border-none ">
           Load more jobs
         </Link>
       </div>

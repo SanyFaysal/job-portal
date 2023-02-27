@@ -26,7 +26,6 @@ const JobDetailsBanner = ({ job }) => {
   const { company: { companyName }, fullName } = job.postedBy.id;
 
   let isApplied = user?.applications?.find(apply => apply._id === job._id)
-
   const { _id: id } = job;
 
   const handleApply = (token, id) => {

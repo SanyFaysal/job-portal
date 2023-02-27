@@ -1,76 +1,94 @@
 .bannerBg {
-    animation:  changeBg 15s ease  infinite ;
-    
-    transition: background 1s;
+    animation: changeBg 15s ease infinite;
+
+    /* transition: background 1s; */
 }
+
 .textColor {
-    animation:  changeColor 15s ease  infinite ;
+    animation: changeColor 15s ease infinite;
     transition: background 1s;
 }
+
 .featureCard1 {
-    animation:  changePosition1 5s ease  infinite ;
+    animation: changePosition1 5s ease infinite;
 }
+
 .featureCard2 {
-    animation:  changePosition2 5s ease  infinite ;
+    animation: changePosition2 5s ease infinite;
 }
 
 
 @keyframes changeBg {
-    0%{
-        background: linear-gradient(to right,  #ffffff,  #e0c4b4ec);      
-    }   
-    25%{
-        background: linear-gradient(to right, #ffffff,  #dadba0ef);     
+    0% {
+        background: linear-gradient(to right, #ffffff, #e0c4b4ec);
     }
-    50%{
-        background: linear-gradient(to right, #ffffff,  #a0d89be8);
-        
+
+    25% {
+        background: linear-gradient(to right, #ffffff, #dadba0ef);
     }
-    75%{
-        background: linear-gradient(to right, #ffffff,  #9adad4e8);
-        
+
+    50% {
+        background: linear-gradient(to right, #ffffff, #9bd8c6e8);
+
     }
-    100%{
-        background: linear-gradient(to right, #ffffff,  #cca5dfe7);
-    }     
-    
-   }
+
+    75% {
+        background: linear-gradient(to right, #ffffff, #9abbdae8);
+
+    }
+
+    100% {
+        background: linear-gradient(to right, #ffffff, #b2a5dfe7);
+    }
+
+}
+
 @keyframes changeColor {
-    0%{
-        color:  #e0bca8      
-    }   
-    25%{
-        color:  #dddf98; 
+    0% {
+        color: #e7ad8cec
     }
-    50%{
-       color: #8dd886; 
+
+    25% {
+        color: #e2e477ef;
     }
-    75%{
-       color:  #84ddd4;
+
+    50% {
+        color: #73dabbe8;
     }
-    100%{
-    color: #ca98e2; 
-    }     
-   }
+
+    75% {
+        color: #7aabd9e8;
+    }
+
+    100% {
+        color: #8972dce7;
+    }
+}
+
 @keyframes changePosition1 {
-    0%{
-        translate: 0px 0px;       
-    }   
-    50%{
-        translate: 0px 15px;       
-    }   
-    100%{
-        translate: 0px 0px;   
-    }   
-   }
+    0% {
+        translate: 0px 0px;
+    }
+
+    50% {
+        translate: 0px 15px;
+    }
+
+    100% {
+        translate: 0px 0px;
+    }
+}
+
 @keyframes changePosition2 {
-    0%{
-        translate: 0px 0px;       
-    }   
-    50%{
-        translate: 0px -15px;       
-    }   
-    100%{
-        translate: 0px 0px;   
-    }   
-   }
+    0% {
+        translate: 0px 0px;
+    }
+
+    50% {
+        translate: 0px -15px;
+    }
+
+    100% {
+        translate: 0px 0px;
+    }
+}

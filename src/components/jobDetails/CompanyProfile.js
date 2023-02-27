@@ -8,7 +8,7 @@ const CompanyProfile = ({ job }) => {
   const isDashboard = pathname === `/dashboard/jobsDetails/${job?._id}`
   const { companyName, companyCategory, companyLocation, employeeRange } = company;
   return (
-    <div className={`${isDashboard ? 'bg-white rounded-lg' : 'bg-slate-100 rounded-lg'}`}>
+    <div className={`${isDashboard ? 'bg-white rounded-lg' : 'bg-indigo-50 text-indigo-500 rounded-lg'}`}>
       <div className="px-6 py-8">
         <h1 className="font-semibold text-xl  mb-3">Company Profile</h1>
         <div className="flex gap-3 mt-5 ">

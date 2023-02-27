@@ -1,28 +1,59 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+import ArticleCard from '../articales/ArticleCard';
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+
+
+// import required modules
+import { Pagination } from "swiper";
+
 
 const Testimonials = () => {
   return (
     <div className="lg:px-16  px-6 mt-16">
-      <div>
-        <h1 className="text-3xl font-semibold text-center ">
-          Testimonials From Our Customers
-        </h1>
-        <p className="text-center font-semibold">
-          Lets see, what our customers say-{' '}
-        </p>
-      </div>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={3}
+        modules={[Pagination]}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ArticleCard />
+        </SwiperSlide>
 
-      <div className="my-16">
-        <p className="text-center">
-          {' '}
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non sint
-          incidunt harum quam pariatur eveniet veritatis labore rerum possimus
-          ipsum nihil a consectetur illum reprehenderit sed, aspernatur quo.
-          Accusamus eaque sunt quia voluptas molestias, sed error fugit optio ex
-          libero velit ipsum perferendis animi aliquam nihil fugiat modi dolorem
-          saepe.
-        </p>
-      </div>
+
+      </Swiper>
     </div>
   );
 };

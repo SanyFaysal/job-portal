@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BsList } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +16,26 @@ const Navbar = () => {
     toast('Logout Successful')
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+
   const li = (
     <>
       <Link to="/jobs">
@@ -32,8 +52,8 @@ const Navbar = () => {
 
   return (
     <div
-      className={` navbar  lg:px-16 px-6 h-[10vh] sticky top-0  font-semibold  z-40 ${!isHome && 'bg-white'
-        }`}
+      className={`navbar lg:px-16 px-6 h-[10vh] sticky top-0  font-semibold  z-40 ${!isHome && 'bg-white'
+        }   ${isHome && isScrolled ? 'bg-white border-b duration-400 ease-in-out' : ""}`}
     >
       <div className="navbar-start">
         <Link to="/" className="">
@@ -59,6 +79,21 @@ const Navbar = () => {
               Dashboard
             </Link>
             <button onClick={handleLogOut}>Logout</button>
+            <div className='ml-4'>
+            </div>
+
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="">
+                <span className="capitalize  bg-blue-100 text-blue-500 text-xl rounded-full px-2 py-[1px] ">
+                  {user?.fullName.slice(0, 1)}
+                </span>
+              </label>
+              <ul tabIndex={0} className="dropdown-content menu px-3 py-5 shadow bg-base-100 rounded-box ">
+                <li className='capitalize text-center'>{user?.fullName}</li>
+                <li className='font-thin text-center  bg-gray-500 rounded-xl text-white px-2 my-2'>{user?.email}</li>
+                <li className='capitalize text-center'>{user?.role}</li>
+              </ul>
+            </div>
           </>
         )}
         {!user?.email && (

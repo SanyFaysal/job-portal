@@ -19,16 +19,22 @@ const JobQusAns = ({ job }) => {
         quesBy: user?._id
       }
     }
-    console.log({ _id, data, token });
+
     postComment({ id: _id, data, token })
     setQuestion('')
   }
 
   useEffect(() => {
-    if (isLoading === true) {
-      toast.loading('Loading...', { id: 'comment' })
+    // if (isLoading === true) {
+    //   toast.loading('Loading...', { id: 'comment' })
+    // }
+    if (isError) {
+      toast.error('Something went wrong', { id: 'comment' })
     }
-  }, [isLoading])
+
+
+
+  }, [isLoading, isError])
 
   return (
     <div>
