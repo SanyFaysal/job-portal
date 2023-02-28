@@ -28,7 +28,7 @@ with actual time stamps
 - RTK Query
 - Tailwind CSS 
 
-<h2 style='color:skyblue  ; '>Backend Development</h2>
+<h2 style='color:skyblue  ; ' align="center">Backend Development</h2>
 
 - Node Js
 - Express Js
@@ -50,6 +50,7 @@ You can post a job. Then you can manage it like - update your job post, delete y
 
 ## As a candidate - 
 If you are registered as a candidate then you can apply on job. You can see all of your applied job in your dashboard. You can update your profile and also you can <em style='color:yellow'>comment</em> on any job post. Then any one can also reply on this also. 
+
 
 
 
