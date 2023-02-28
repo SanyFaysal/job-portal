@@ -9,7 +9,7 @@ let initialState = {
 };
 
 export const fetchUser = createAsyncThunk('auth/fetchUser', async (token) => {
-  const response = await fetch(`http://localhost:5000/api/v1/user/me`, {
+  const response = await fetch(`https://job-portal-server-b7p7.onrender.com/api/v1/user/me`, {
     headers: {
       authorization: `Bearer ${token}`,
     },
