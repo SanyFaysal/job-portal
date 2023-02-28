@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import CompanyProfile from '../../components/jobDetails/CompanyProfile';
 import JobDetailsBanner from '../../components/jobDetails/JobDetailsBanner';
 import JobInfo from '../../components/jobDetails/JobInfo';

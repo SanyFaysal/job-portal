@@ -2,19 +2,17 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import { useGetMeQuery, useUserRegisterMutation } from '../../features/auth/authApi';
 
 const EditEmployerProfile = () => {
     const [countries, setCountries] = useState([]);
     const token = localStorage.getItem('accessToken')
-    const { handleSubmit, register, control, reset } = useForm();
+    const { handleSubmit, register, reset } = useForm();
     const { data: { data: user } } = useGetMeQuery(token);
     const { _id, email, fullName, gender, dob, contactNumber, country, company } = user;
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const [employeeRegister, { data: updated, isLoading, isSuccess, isError, error }] = useUserRegisterMutation();
+
+    const [employeeRegister, { data: updated, isSuccess, isError, error }] = useUserRegisterMutation();
     console.log(updated);
     const businessCategory = [
         'Automotive',

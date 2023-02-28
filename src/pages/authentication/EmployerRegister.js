@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useForm, useWatch } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { setUser } from '../../features/auth/authSlice';
 const EmployerRegister = () => {
   const [countries, setCountries] = useState([]);
 
-  const { handleSubmit, register, control, reset } = useForm();
+  const { handleSubmit, register, reset } = useForm();
   const { user: { email, fullName, _id } } = useSelector(state => state.auth)
   const navigate = useNavigate();
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+
 import Path from '../../components/reuseable/Path';
 import human1 from '../../assets/images/photo1.jpg';
 import { useNavigate } from 'react-router-dom';
