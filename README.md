@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Job Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Live site    [Live Site]()
 
-## Available Scripts
 
-In the project directory, you can run:
+# Key Features Of This Project 
 
-### `npm start`
+- <span style='color:yellow'>Authentication </span>  and  <span style='color:yellow'>Authorization </span>  with <span style='color:orange'>NodeJs</span> 
+- <span style='color:yellow'>Multi Role </span>  Management by <span style='color:orange'>NodeJs</span> 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Job <span style='color:yellow'>Searching </span>  with  <span style='color:yellow'>Multiple </span> 
+fields along with <span style='color:yellow'>Sorting </span> and <span style='color:yellow'>  Pagination by </span> <span style='color:orange'>NodeJs</span>
+- <span style='color:yellow'>Comment </span> on any Job Details and <span style='color:yellow'>Reply </span>
+with actual time stamps
+- Candidate job apply <span style='color:yellow'>Timeline </span> Management
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+-  Different<span style='color:yellow'> Dashboard</span> for both  <span style='color:yellow'>Candidate </span>    and   <span style='color:yellow'>Employee </span> 
+-  All  <span style='color:yellow'>State </span>  are  managed  by <span style='color:orange'>RTK Query
+-  <span style='color:yellow'>  Clean code</span> and well-organized   <span style='color:yellow'> Folder structure For  <span style='color:orange'>React Component</span>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Technologies are used here - 
 
-### `npm run build`
+<h2 style='color:skyblue  ; '>Frontend Development</h2>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React Js 
+- Redux 
+- RTK Query
+- Tailwind CSS 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2 style='color:skyblue  ; '>Backend Development</h2>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node Js
+- Express Js
+- MongoDB
+- Mongoose 
 
-### `npm run eject`
+Backend Code : [Job Portal Server]()
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# About This project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This is a job portal service website. It works depending on two role - employee and candidate. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can initially signup an account then you can register as employee or as a candidate. 
 
-## Learn More
+## As an employee - 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can post a job. Then you can manage it like - update your job post, delete your job post, and also you can see number of applied candidate and specially you can see all candidates's personal profile. You can also update your profile 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## As a candidate - 
+If you are registered as a candidate then you can apply on job. You can see all of your applied job in your dashboard. You can update your profile and also you can <em style='color:yellow'>comment</em> on any job post. Then any one can also reply on this also. 
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
