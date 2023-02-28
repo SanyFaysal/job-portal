@@ -17,7 +17,7 @@ const Comment = ({ query, user }) => {
   const [openReply, setOpenReply] = useState(true)
   const [answer, setAnswer] = useState('')
   const { user: { _id: userId } } = useSelector(state => state.auth)
-  const [reply, isLoading, isSuccess, isError, error] = useAnswerOnJobMutation()
+  const [reply] = useAnswerOnJobMutation()
   const handleReply = (questionId) => {
     const data = {
       questionId,

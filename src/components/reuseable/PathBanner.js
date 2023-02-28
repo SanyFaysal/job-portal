@@ -1,5 +1,5 @@
 import React from 'react';
-import pathBanner from '../../assets/images/path-banner.png';
+
 const PathBanner = () => {
   return (
     <div className="w-full h-[25vh]  bg-slate-100   my-auto">

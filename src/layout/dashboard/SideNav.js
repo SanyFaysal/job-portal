@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { MdOutlineArrowBackIosNew, MdOutlineWorkOutline } from 'react-icons/md';
 import { CgProfile } from 'react-icons/cg';
 import { IoMdSend } from 'react-icons/io';
-import { AiOutlineAppstore, AiOutlineFileText } from 'react-icons/ai';
+import { AiOutlineFileText } from 'react-icons/ai';
 import { BiBookmark, BiSliderAlt } from 'react-icons/bi';
 import { RxDashboard } from 'react-icons/rx';
 import { useSelector } from 'react-redux';

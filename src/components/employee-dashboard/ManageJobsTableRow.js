@@ -6,9 +6,9 @@ import { IoMdEye } from 'react-icons/io';
 import { MdDeleteOutline } from 'react-icons/md';
 
 import { useNavigate } from 'react-router-dom';
-import photo from '../../assets/images/photo1.jpg';
+
 import { useDeleteJobMutation } from '../../features/job/jobApi';
-import { setJob } from '../../features/job/jobSlice';
+
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const ManageJobsTableRow = ({ job }) => {
   const [deleteJob, { isSuccess, isError, error }] = useDeleteJobMutation()

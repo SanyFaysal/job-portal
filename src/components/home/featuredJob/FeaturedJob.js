@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useGetJobsQuery } from '../../../features/job/jobApi';
 import Job from '../../reuseable/Job';
 import Loading from '../../reuseable/Loading';
-import Category from '../JobCategory/CategoryCard';
+
 
 const FeaturedJob = () => {
   const { data, isSuccess, isLoading, isError, error } = useGetJobsQuery({

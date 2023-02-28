@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const ApplicantsCard = ({ candidate }) => {
     const formattedDOB = moment.utc(candidate.dob).format('DD-MM-YYYY')
-    const navigate = useNavigate()
+
     return (
         <div className='py-2 bg-blue-50  w-full rounded-lg mb-3  '>
 

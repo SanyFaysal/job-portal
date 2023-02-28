@@ -1,12 +1,9 @@
 import React from 'react';
-import { BiBookmark } from 'react-icons/bi';
-import { CgWorkAlt } from 'react-icons/cg';
-import { IoIosPaper } from 'react-icons/io';
-import { useSelector } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 
 const CandidateDashboardHome = () => {
-    const { user: { fullName, designation, applications } } = useSelector(state => state.auth)
+    // const { user } = useSelector(state => state.auth)
     return (
         <div className='mt-5 ml-4 '>
             {/* <div className='grid lg:grid-cols-3 grid-cols-1 lg:gap-5 gap-3 items-center justify-between my-8 '>

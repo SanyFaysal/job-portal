@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Comment from './Comment';
 import { IoSend } from 'react-icons/io5';
-import { useSelect } from '@mui/base';
+
 import { useSelector } from 'react-redux';
 import { useCommentOnJobMutation } from '../../features/job/jobApi';
 import { toast } from 'react-hot-toast';
@@ -11,7 +11,7 @@ const JobQusAns = ({ job }) => {
   const [question, setQuestion] = useState('');
   const { user } = useSelector(state => state.auth);
 
-  const [postComment, isLoading, isSuccess, isError, error] = useCommentOnJobMutation()
+  const [postComment, { isLoading, isError, }] = useCommentOnJobMutation()
   const handleQuestion = (_id) => {
     const data = {
       question: {

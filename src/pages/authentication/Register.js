@@ -1,11 +1,11 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import candidate from '../../assets/images/candidate.svg';
 import employer from '../../assets/images/employer.svg';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { pathname } = useLocation('');
+
 
   return (
     <div className="h-[80vh] ">

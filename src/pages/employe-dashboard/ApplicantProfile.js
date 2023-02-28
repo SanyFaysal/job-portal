@@ -1,13 +1,13 @@
 import moment from 'moment';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+
+import { useParams } from 'react-router-dom';
 import human1 from '../../assets/images/photo1.jpg';
 import { useGetApplicantQuery } from '../../features/auth/authApi';
 const ApplicantProfile = () => {
-    const navigate = useNavigate();
+
     const { id } = useParams();
-    const { data, isLoading, error } = useGetApplicantQuery(id);
+    const { data } = useGetApplicantQuery(id);
     const user = data?.data || {};
     const date = moment.utc(user?.dob).format('MM/DD/YYYY')
     return (

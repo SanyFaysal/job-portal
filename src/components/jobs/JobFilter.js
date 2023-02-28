@@ -1,12 +1,6 @@
-import {
-  FormControl,
-  InputAdornment,
-  MenuItem,
-  OutlinedInput,
-  Select,
-} from '@mui/material';
-import React, { useState } from 'react';
-import { MdSearch, MdWorkOutline } from 'react-icons/md';
+
+import React from 'react';
+
 
 const JobFilter = ({ setFilter }) => {
 

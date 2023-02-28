@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsDot, BsRecord2 } from 'react-icons/bs';
+import { BsDot } from 'react-icons/bs';
 const JobInfo = ({ job }) => {
   const { jobDescription, responsibilities, skills } = job;
   return (

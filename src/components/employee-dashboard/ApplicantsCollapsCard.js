@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
-import { BsFillCameraVideoFill, BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs';
-import { CgUnavailable } from 'react-icons/cg';
 import ApplicantsCard from './ApplicantsCard';
 
 const ApplicantsCollapsCard = ({ job }) => {

@@ -6,7 +6,7 @@ import PathBanner from '../../components/reuseable/PathBanner';
 import Footer from '../../components/reuseable/Footer';
 import { useGetJobsQuery } from '../../features/job/jobApi';
 import Loading from '../../components/reuseable/Loading';
-import { useSelector } from 'react-redux';
+
 import Pagination from '../../components/reuseable/Pagination';
 
 const Jobs = () => {
@@ -18,14 +18,14 @@ const Jobs = () => {
     jobType: '',
     experience: '',
   })
-  const { data, isLoading, isError, error } = useGetJobsQuery({
+  const { data, isLoading } = useGetJobsQuery({
     sort: sort,
     page: pagination,
     limit: limit,
     filter: filter
   });
-  
-  const { data: jobs, total, page, pageFound, totalFound } = data || {}
+
+  const { data: jobs, total, pageFound, totalFound } = data || {}
 
   if (isLoading) {
     return <Loading />

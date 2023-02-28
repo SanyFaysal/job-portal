@@ -7,7 +7,7 @@ import { useCreateJobMutation } from '../../features/job/jobApi';
 import { toast } from 'react-hot-toast';
 
 const PostJob = () => {
-  const { user: { _id, fullName, company: { companyName } } } = useSelector(state => state.auth);
+  const { user: { company: { companyName } } } = useSelector(state => state.auth);
   const [postJob, { data, isLoading, isSuccess, isError, error }] = useCreateJobMutation();
   const { handleSubmit, register, control, reset } = useForm();
   console.log(companyName);

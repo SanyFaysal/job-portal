@@ -3,7 +3,7 @@ import {
   MdComment,
   MdKeyboardArrowRight,
   MdTimer,
-  MdTimer3,
+
 } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import article1 from '../../../assets/images/article-1.jpg';

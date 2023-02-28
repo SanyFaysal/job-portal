@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
+
+import { Navigate } from 'react-router-dom';
 import Loading from '../components/reuseable/Loading';
 import { useGetMeQuery } from '../features/auth/authApi';
-import LoginPage from '../pages/authentication/Login';
+
 
 const PrivateRoute = ({ children }) => {
 

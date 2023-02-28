@@ -1,7 +1,5 @@
 import React from 'react';
-import { BiBookmark } from 'react-icons/bi';
-import { CgWorkAlt } from 'react-icons/cg';
-import { IoIosPaper } from 'react-icons/io';
+
 import { Link } from 'react-router-dom';
 
 

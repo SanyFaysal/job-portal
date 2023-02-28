@@ -4,7 +4,7 @@ import { useGetJobsQuery } from '../../features/job/jobApi';
 import Job from '../reuseable/Job';
 
 const HomeJobSearchModal = ({ jobTitle }) => {
-    const { data, isLoading, isError, error } = useGetJobsQuery({
+    const { data } = useGetJobsQuery({
         sort: '',
         page: 1,
         limit: 10,

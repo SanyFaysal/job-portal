@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { BsBag } from 'react-icons/bs';
-import { GiClockwork, GiTimeBomb } from 'react-icons/gi';
-import { MdMoney } from 'react-icons/md';
-import { RxArrowLeft } from 'react-icons/rx';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import CompanyProfile from '../../components/jobDetails/CompanyProfile';
 import JobDetailsBanner from '../../components/jobDetails/JobDetailsBanner';
 import JobInfo from '../../components/jobDetails/JobInfo';
@@ -15,10 +12,10 @@ import { useJobByIdQuery } from '../../features/job/jobApi';
 
 
 const JobDetails = () => {
-  const navigate = useNavigate();
+
   const { id } = useParams();
   const { pathname } = useLocation()
-  const { data, isLoading, isSuccess, isError, error } = useJobByIdQuery(id, { pollingInterval: 1000 })
+  const { data, isLoading } = useJobByIdQuery(id, { pollingInterval: 1000 })
 
   const job = data?.data;
   const isDashboard = pathname === `/dashboard/jobsDetails/${id}`

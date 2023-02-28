@@ -2,21 +2,21 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import { useGetMeQuery, useUserRegisterMutation } from '../../features/auth/authApi';
-import { setUser } from '../../features/auth/authSlice';
+
 
 const EditCandidateProfile = () => {
     const token = localStorage.getItem('accessToken')
     const [countries, setCountries] = useState([]);
 
-    const [updateUser, { data: updated, isLoading, isSuccess, isError, error }] = useUserRegisterMutation()
+    const [updateUser, { data: updated, isSuccess, isError, error }] = useUserRegisterMutation()
     const { data: { data: user } } = useGetMeQuery(token)
     console.log(updated);
-    const { address, bio, city, contactNumber, designation, dob, email, fullName, role, _id, gender, country } = user;
+    const { address, bio, city, contactNumber, designation, dob, email, fullName, _id, gender, country } = user;
     const [editGender, setEditGender] = useState(gender)
-    const { handleSubmit, register, control, reset } = useForm({
+    const { handleSubmit, register, reset } = useForm({
         defaultValues: {
             email: email,
             country: country,

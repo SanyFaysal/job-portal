@@ -3,12 +3,12 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import Loading from '../../components/reuseable/Loading';
+
 import SideNav from './SideNav';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { user, isLoading } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   if (!user.role) {
     navigate('/register')
   }

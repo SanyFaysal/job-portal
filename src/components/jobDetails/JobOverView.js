@@ -1,8 +1,8 @@
 import React from 'react';
-import { GiSandsOfTime, GiTimeTrap } from 'react-icons/gi';
+import { GiSandsOfTime } from 'react-icons/gi';
 import { SlCalender } from 'react-icons/sl';
 import { CiLocationOn } from 'react-icons/ci';
-import { BsClock, BsClockFill, BsFillPersonFill } from 'react-icons/bs';
+import { BsClockFill, BsFillPersonFill } from 'react-icons/bs';
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 import moment from 'moment';

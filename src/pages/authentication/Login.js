@@ -9,10 +9,10 @@ import sideImg from '../../assets/images/login-animate.gif';
 import { useLoginMutation } from '../../features/auth/authApi';
 import { setUser } from '../../features/auth/authSlice';
 const LoginPage = () => {
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register } = useForm();
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [loginUser, { data, isLoading, isSuccess, isError, error }] =
+  const [loginUser, { data, isSuccess, isError, error }] =
     useLoginMutation();
 
   const [open, setOpen] = useState(false);

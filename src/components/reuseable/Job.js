@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React, { useState } from 'react';
 import { BsBag } from 'react-icons/bs';
-import { GiClockwork, GiTimeBomb } from 'react-icons/gi';
+import { GiTimeBomb } from 'react-icons/gi';
 import { MdMoney } from 'react-icons/md';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useJobPostDateLine } from '../../hook/useJobPostDateline';
@@ -9,7 +9,7 @@ import { useJobPostedDate } from '../../hook/useJobPostedDate';
 
 const Job = ({ job }) => {
 
-  const { jobTitle, employmentType, jobType, salaryRange, dateline, postedBy } = job || {};
+  const { jobTitle, employmentType, jobType, salaryRange, dateline } = job || {};
   const datelineFormat = moment.utc(dateline).format('MM/DD/YYYY')
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();

@@ -1,9 +1,4 @@
-import {
-  FormControl,
-  FormHelperText,
-  InputAdornment,
-  OutlinedInput,
-} from '@mui/material';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -13,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import login from '../../assets/images/login-animate.gif';
 import { useSignupMutation } from '../../features/auth/authApi';
-import { fetchUser, setUser } from '../../features/auth/authSlice';
+import { fetchUser } from '../../features/auth/authSlice';
 const Signup = () => {
   const [open, setOpen] = useState(true);
   const dispatch = useDispatch()
@@ -25,7 +20,7 @@ const Signup = () => {
   } = useForm();
   const navigate = useNavigate();
 
-  const [signup, { data: result, isSuccess, error, isLoading, isError, data }] =
+  const [signup, { data: result, isSuccess, error, isError, data }] =
     useSignupMutation();
 
   const onSubmit = (data) => {

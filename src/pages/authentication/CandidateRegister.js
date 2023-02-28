@@ -1,17 +1,17 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useForm, useWatch } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { FaChevronLeft } from 'react-icons/fa';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useUserRegisterMutation } from '../../features/auth/authApi';
 import { toast } from 'react-hot-toast';
 import { setUser } from '../../features/auth/authSlice';
 const CandidateRegister = () => {
   const [countries, setCountries] = useState([]);
-  const { handleSubmit, register, control, reset } = useForm();
+  const { handleSubmit, register, reset } = useForm();
   const { user: { fullName, email, _id } } = useSelector(state => state.auth)
-  const [candidateRegister, { data, isLoading, isSuccess, isError, error }] = useUserRegisterMutation()
+  const [candidateRegister, { data, isSuccess, isError, error }] = useUserRegisterMutation()
   const dispatch = useDispatch()
   const navigate = useNavigate();
 

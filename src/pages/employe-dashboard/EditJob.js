@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { FiTrash } from 'react-icons/fi';
-import { RxArrowLeft, RxCross1 } from 'react-icons/rx';
-import { useDispatch, useSelector } from 'react-redux';
+import { RxArrowLeft } from 'react-icons/rx';
+import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Loading from '../../components/reuseable/Loading';
-import Path from '../../components/reuseable/Path';
+
 import { useJobByIdQuery, useUpdateJobMutation } from '../../features/job/jobApi';
 
 const EditJob = () => {
@@ -16,7 +16,7 @@ const EditJob = () => {
     // isLoading: loadLoading, isSuccess: loadSuccess, isError: loadErr, error: loadErrMsg
     const { data: loadJob, isLoading: loading, } = useJobByIdQuery(id);
     const job = loadJob?.data || {};
-    const { user: { _id, fullName, company: { companyName } } } = useSelector(state => state.auth);
+    const { user: { company: { companyName } } } = useSelector(state => state.auth);
     const [updateJob, { data, isLoading, isSuccess, isError, error }] = useUpdateJobMutation();
     const { handleSubmit, register, control, reset } = useForm({
         defaultValues: {

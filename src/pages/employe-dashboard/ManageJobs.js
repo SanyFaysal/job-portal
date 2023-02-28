@@ -1,15 +1,12 @@
 import React from 'react';
 import Path from '../../components/reuseable/Path';
-import photo from '../../assets/images/photo1.jpg';
-import { IoMdEye } from 'react-icons/io';
-import { BiPencil } from 'react-icons/bi';
-import { MdDelete, MdDeleteOutline } from 'react-icons/md';
+
 import ManageJobsTableRow from '../../components/employee-dashboard/ManageJobsTableRow';
-import { useGetEmployeeJobsQuery, useGetJobsQuery } from '../../features/job/jobApi';
+import { useGetEmployeeJobsQuery } from '../../features/job/jobApi';
 
 const ManageJobs = () => {
   const token = localStorage.getItem('accessToken')
-  const { data, isLoading, isSuccess, isError, error } = useGetEmployeeJobsQuery(token)
+  const { data } = useGetEmployeeJobsQuery(token)
 
   return (
     <div>

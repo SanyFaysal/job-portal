@@ -1,10 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+
 import Job from '../../components/reuseable/Job';
-import Loading from '../../components/reuseable/Loading';
+
 import Path from '../../components/reuseable/Path';
 import { useGetMeQuery } from '../../features/auth/authApi';
-import { useApplyJobMutation } from '../../features/job/jobApi';
+
 
 const AppliedJob = () => {
     const token = localStorage.getItem('accessToken')

@@ -8,7 +8,7 @@ import { useGetMeQuery } from '../../features/auth/authApi';
 const EmployerProfile = () => {
     const token = localStorage.getItem('accessToken');
     // const { user } = useSelector(state => state.auth);
-    const { data: { data: user }, error } = useGetMeQuery(token)
+    const { data: { data: user } } = useGetMeQuery(token)
     const navigate = useNavigate()
 
     return (

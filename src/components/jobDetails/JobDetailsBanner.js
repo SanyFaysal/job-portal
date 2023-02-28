@@ -1,20 +1,20 @@
-import moment from 'moment';
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import { CgOpenCollective } from 'react-icons/cg';
-import { GiComputerFan, GiTimeBomb } from 'react-icons/gi';
+import { GiTimeBomb } from 'react-icons/gi';
+
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
-import { MdMoney, MdWork } from 'react-icons/md';
-import { useSelector } from 'react-redux';
-import { Navigate, useLocation } from 'react-router-dom';
-import photo from '../../assets/images/photo1.jpg';
+import { MdMoney } from 'react-icons/md';
+
+import { useLocation } from 'react-router-dom';
+
 import { useGetMeQuery } from '../../features/auth/authApi';
 import { useApplyJobMutation } from '../../features/job/jobApi';
 import { useJobPostDateLine } from '../../hook/useJobPostDateline';
 import { useJobPostedDate } from '../../hook/useJobPostedDate';
 const JobDetailsBanner = ({ job }) => {
   const token = localStorage.getItem('accessToken')
-  const [loading, setLoading] = useState(false)
+
   const { pathname } = useLocation()
   const { postedDate } = useJobPostedDate(job)
   const { status } = useJobPostDateLine(job)
@@ -37,7 +37,7 @@ const JobDetailsBanner = ({ job }) => {
 
     if (isSuccess) {
       toast.success('Apply success', { id: 'jobApply' });
-      setLoading(true)
+
     }
     if (isError) {
       toast.error(error?.data.error, { id: 'jobApply' })

@@ -1,10 +1,9 @@
 import React from 'react';
 import Path from '../../components/reuseable/Path';
 import moment from 'moment';
-import human from '../../assets/images/human.jpg';
 import human1 from '../../assets/images/photo1.jpg';
 
-import { BiEdit } from 'react-icons/bi';
+
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 const CandidateProfile = () => {
