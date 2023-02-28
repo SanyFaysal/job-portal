@@ -21,14 +21,14 @@ with actual time stamps
 
 # Technologies are used here - 
 
-<h2 style='color:skyblue  ; '>Frontend Development</h2>
+<h2 style='color:skyblue  ; ' >Frontend Development</h2>
 
 - React Js 
 - Redux 
 - RTK Query
 - Tailwind CSS 
 
-<h2 style='color:skyblue  ; ' align="center">Backend Development</h2>
+<h2 style='color:skyblue  ; ' >Backend Development</h2>
 
 - Node Js
 - Express Js
