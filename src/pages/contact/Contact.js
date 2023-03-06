@@ -90,7 +90,7 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className=" my-auto lg:mt-0 md:mt-0 sm:mt-5 h-full ">
+                        <div className="  lg:mt-5 md:mt-0 sm:mt-5 h-full ">
                             <form onSubmit={handleSubmit} className=" my-auto">
                                 <div className="grid lg:grid-cols-2 md:grid-cols-2 mb-4">
                                     <input
