@@ -107,7 +107,7 @@ const Contact = () => {
                                         required={true}
                                         placeholder="Your email"
                                         autoComplete="off"
-                                        className="input  bg-transparent text-black bg-sky-50"
+                                        className="input   text-black bg-sky-50"
                                     />
                                 </div>
                                 <div className="form-control mb-4 flex ">
@@ -116,7 +116,7 @@ const Contact = () => {
                                         type="text"
                                         autoComplete="off"
                                         placeholder="Subject"
-                                        className="input bg-sky-50 w-full bg-transparent text-black"
+                                        className="input bg-sky-50 w-full  text-black"
                                     />
                                 </div>
                                 <div className="form-control mb-3">
