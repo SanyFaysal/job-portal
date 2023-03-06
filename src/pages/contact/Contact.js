@@ -38,7 +38,7 @@ const Contact = () => {
 
         <>
             <PathBanner to='contact us' />
-            <div className=" mt-12 text-black relative overflow-x-hidden overflow-y-auto lg:px-28 md:px-16 px-5 pb-10">
+            <div className=" mt-12 text-black pt-5 lg:px-28 md:px-16 px-5 pb-10">
 
                 <div>
 
