@@ -3,7 +3,7 @@ import React from 'react';
 import { toast } from 'react-hot-toast';
 import { BiPhone } from 'react-icons/bi';
 import { IoHomeOutline } from 'react-icons/io5';
-import { MdEmail, MdOutlineEmail, MdWork } from 'react-icons/md';
+import { MdOutlineEmail } from 'react-icons/md';
 import PathBanner from '../../components/reuseable/PathBanner';
 
 const Contact = () => {

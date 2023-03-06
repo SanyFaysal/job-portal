@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   MdComment,
   MdKeyboardArrowRight,
@@ -8,12 +8,11 @@ import {
 import { useNavigate } from 'react-router-dom';
 import article1 from '../../../assets/images/article-1.jpg';
 const ArticleCard = () => {
-  const [hover, setHover] = useState(false);
+  ;
   const navigate = useNavigate()
   return (
     <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+
       className=" p-4
       rounded-lg grid lg:grid-cols-2 gap-4 shadow hover:shadow-lg h-full"
     >
