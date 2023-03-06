@@ -14,15 +14,13 @@ const ArticleCard = () => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className=" px-6 py-7 
-     
-      
-      rounded-lg shadow hover:shadow-lg"
+      className=" p-4
+      rounded-lg grid lg:grid-cols-2 gap-4 shadow hover:shadow-lg h-full"
     >
       <img
         src={article1}
         alt=""
-        className={`rounded-lg h-[25vh] ${hover && '  transition duration-300 	 overflow-hidden'
+        className={`rounded-lg h-[25vh]
           }`}
       />
       <div>
@@ -44,7 +42,7 @@ const ArticleCard = () => {
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos,
           esse??...
         </p>
-        <div className="flex justify-end mt-2 ">
+        <div className="flex justify-end items-en h-full">
           <button onClick={() => navigate('/articles')} className="inline-block  text-blue-500 text- my-auto duration-500 font-semibold mt-3 bg-blue-100 hover:bg-blue-500 hover:text-white text-blue-500 rounded-full px-3  py-1">
             See more <MdKeyboardArrowRight className="ml-2 inline" />
           </button>

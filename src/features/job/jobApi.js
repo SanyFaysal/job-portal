@@ -30,13 +30,13 @@ const jobApi = apiSlice.injectEndpoints({
       }),
       providesTags: ['Job'],
     }),
-    // getJobsByFilter: builder.query({
-    //   query: ({ sort }) => ({
-    //     url: `/jobs?sort=${sort}`,
+    getAllJobs: builder.query({
+      query: () => ({
+        url: `/all-jobs`,
+      }),
+      providesTags: ['Job'],
+    }),
 
-    //   }),
-    //   providesTags: ['Job'],
-    // }),
     getEmployeeJobs: builder.query({
       query: (token) => ({
         url: '/employee/jobs',
@@ -110,5 +110,6 @@ export const {
   useGetEmployeeJobsQuery,
   useApplyJobMutation,
   useCommentOnJobMutation,
-  useAnswerOnJobMutation
+  useAnswerOnJobMutation,
+  useGetAllJobsQuery,
 } = jobApi;

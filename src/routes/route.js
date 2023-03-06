@@ -24,7 +24,10 @@ import EditEmployerProfile from '../pages/employe-dashboard/EditEmployerProfile'
 import Applicants from '../pages/employe-dashboard/Applicants';
 import ApplicantProfile from '../pages/employe-dashboard/ApplicantProfile';
 import DashboardHome from '../layout/dashboard/DashboardHome';
-import BlogDetails from '../pages/blog/BlogDetails';
+
+import Blogs from '../pages/blog/Blogs';
+import BlogDetails from '../pages/blogDetails/BlogDetails';
+import Contact from '../pages/contact/Contact';
 
 const routes = createBrowserRouter([
   {
@@ -52,12 +55,16 @@ const routes = createBrowserRouter([
         element: <Jobs />,
       },
       {
-        path: 'articles',
+        path: 'blogs',
+        element: <Blogs />,
+      },
+      {
+        path: 'blogDetails',
         element: <BlogDetails />,
       },
       {
         path: 'contact',
-        element: <BlogDetails />,
+        element: <Contact />,
       },
       {
         path: 'jobsDetails/:id',

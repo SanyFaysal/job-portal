@@ -65,7 +65,7 @@ const Comment = ({ query, user }) => {
             </div>
 
           </div>
-          <button className="text-blue-500 mt-1" onClick={() => setOpen(true)}>Reply</button>
+          <button className="text-blue-500 mt-1" onClick={() => setOpen(!open)}>Reply</button>
         </div>
       </div>
     </div>
