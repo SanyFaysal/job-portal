@@ -18,7 +18,7 @@ const Jobs = () => {
     jobType: '',
     experience: '',
   })
-  const { data: allJobs, isLoading: loading } = useGetAllJobsQuery();
+  const { data: allJobs } = useGetAllJobsQuery();
   const { data, isLoading } = useGetJobsQuery({
     sort: sort,
     page: pagination,
