@@ -42,7 +42,7 @@ const ArticleCard = () => {
           esse??...
         </p>
         <div className="flex justify-end items-en h-full">
-          <button onClick={() => navigate('/articles')} className="inline-block  text-blue-500 text- my-auto duration-500 font-semibold mt-3 bg-blue-100 hover:bg-blue-500 hover:text-white text-blue-500 rounded-full px-3  py-1">
+          <button onClick={() => navigate('/blogDetails')} className="inline-block  text-blue-500 text- my-auto duration-500 font-semibold mt-3 bg-blue-100 hover:bg-blue-500 hover:text-white text-blue-500 rounded-full px-3  py-1">
             See more <MdKeyboardArrowRight className="ml-2 inline" />
           </button>
         </div>
