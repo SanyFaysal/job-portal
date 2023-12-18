@@ -1,13 +1,13 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { server_url } from "../../server_url";
+
 const apiSlice = createApi({
-  reducerPath: 'apiSlice',
+  reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
-    // baseUrl: process.env.REACT_APP_DEV_URL,
-    // baseUrl: 'http://localhost:5000/api/v1',
-    baseUrl: 'https://job-portal-server-b7p7.onrender.com/api/v1',
+    baseUrl: server_url,
   }),
-  tagTypes: ['User', 'Job', 'JobDetails'],
+  tagTypes: ["User", "Job", "JobDetails"],
   endpoints: (builder) => ({}),
 });
-
+console.log(server_url);
 export default apiSlice;

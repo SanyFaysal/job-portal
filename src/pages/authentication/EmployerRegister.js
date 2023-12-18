@@ -1,58 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useUserRegisterMutation } from '../../features/auth/authApi';
-import { setUser } from '../../features/auth/authSlice';
-
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useUserRegisterMutation } from "../../features/auth/authApi";
+import { setUser } from "../../features/auth/authSlice";
+import { getAllCountryName } from "../../helpers/getAllCountryName";
 
 const EmployerRegister = () => {
   const [countries, setCountries] = useState([]);
 
   const { handleSubmit, register, reset } = useForm();
-  const { user: { email, fullName, _id } } = useSelector(state => state.auth)
+  const {
+    user: { email, fullName, _id },
+  } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [employeeRegister, { data, isLoading, isSuccess, isError, error }] = useUserRegisterMutation();
-
+  const [employeeRegister, { data, isLoading, isSuccess, isError, error }] =
+    useUserRegisterMutation();
 
   const businessCategory = [
-    'Automotive',
-    'Business Support & Supplies',
-    'Computers & Electronics',
-    'Construction & Contractors',
-    'Design Agency',
-    'Education',
-    'Entertainment',
-    'Food & Dining',
-    'Health & Medicine',
-    'Home & Garden',
-    'IT Farm',
-    'Legal & Financial',
-    'Manufacturing, Wholesale, Distribution',
-    'Merchants (Retail)',
-    'Miscellaneous',
-    'Personal Care & Services',
-    'Real Estate',
-    'Travel & Transportation',
+    "Automotive",
+    "Business Support & Supplies",
+    "Computers & Electronics",
+    "Construction & Contractors",
+    "Design Agency",
+    "Education",
+    "Entertainment",
+    "Food & Dining",
+    "Health & Medicine",
+    "Home & Garden",
+    "IT Farm",
+    "Legal & Financial",
+    "Manufacturing, Wholesale, Distribution",
+    "Merchants (Retail)",
+    "Miscellaneous",
+    "Personal Care & Services",
+    "Real Estate",
+    "Travel & Transportation",
   ];
 
-  const employeeRange = ['1 - 10', '11 - 50', '51 - 100', 'Above 100'];
+  const employeeRange = ["1 - 10", "11 - 50", "51 - 100", "Above 100"];
 
-  useEffect(() => {
-    fetch('https://restcountries.com/v3.1/all')
-      .then((res) => res.json())
-      .then((data) => setCountries(data));
+  useEffect(async () => {
+    const allCountries = await getAllCountryName();
+    setCountries(allCountries);
   }, []);
 
   const onSubmit = (data) => {
-    const { fullName, gender, companyLocation, companyCategory, companyName, companyWebsite, contactNumber, country, employeeRange, roleInCompany } = data;
+    const {
+      fullName,
+      gender,
+      companyLocation,
+      companyCategory,
+      companyName,
+      companyWebsite,
+      contactNumber,
+      country,
+      employeeRange,
+      roleInCompany,
+    } = data;
     const user = {
       fullName,
       gender,
       email: email,
-      role: 'employee',
+      role: "employee",
       contactNumber,
       country,
       company: {
@@ -62,26 +74,25 @@ const EmployerRegister = () => {
         companyWebsite,
         roleInCompany,
         employeeRange,
-      }
-    }
+      },
+    };
     console.log(user);
-    employeeRegister({ id: _id, user })
-
-  }
+    employeeRegister({ id: _id, user });
+  };
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success('Register success..', { id: 'register' });
-      reset()
-      dispatch(setUser(data?.data))
-      navigate('/');
+      toast.success("Register success..", { id: "register" });
+      reset();
+      dispatch(setUser(data?.data));
+      navigate("/");
     }
     if (isError) {
-      toast.error(error?.data?.error, { id: 'register' });
-
+      toast.error(error?.data?.error, { id: "register" });
     }
   }, [isSuccess, isError, error, navigate, reset, data, dispatch]);
   console.log({ data, isLoading, isSuccess, isError, error });
+  console.log({ countries });
   return (
     <div className="">
       <div className="flex justify-center items-center lg:h-[90vh] my-4">
@@ -103,7 +114,7 @@ const EmployerRegister = () => {
                   required
                   defaultValue={fullName}
                   id="fullName"
-                  {...register('fullName')}
+                  {...register("fullName")}
                   className={` w-full bg-blue-50   capitalize focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
@@ -126,9 +137,8 @@ const EmployerRegister = () => {
                   type="email"
                   id="email"
                   value={email}
-
                   disabled
-                  {...register('email')}
+                  {...register("email")}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
@@ -142,7 +152,7 @@ const EmployerRegister = () => {
                       type="radio"
                       id="male"
                       required
-                      {...register('gender')}
+                      {...register("gender")}
                       value="male"
                       className="radio radio-sm "
                     />
@@ -154,7 +164,7 @@ const EmployerRegister = () => {
                     <input
                       type="radio"
                       id="female"
-                      {...register('gender')}
+                      {...register("gender")}
                       value="female"
                       className="radio radio-sm "
                     />
@@ -166,7 +176,7 @@ const EmployerRegister = () => {
                     <input
                       type="radio"
                       id="other"
-                      {...register('gender')}
+                      {...register("gender")}
                       value="other"
                       className="radio radio-sm "
                     />
@@ -184,7 +194,7 @@ const EmployerRegister = () => {
                   type="contactNumber"
                   id="contactNumber"
                   required
-                  {...register('contactNumber')}
+                  {...register("contactNumber")}
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
               </div>
@@ -193,18 +203,14 @@ const EmployerRegister = () => {
                   Country
                 </label>
                 <select
-                  {...register('country')}
+                  {...register("country")}
                   id="country"
                   required
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 >
-                  {countries
-                    .sort((a, b) =>
-                      a?.name?.common?.localeCompare(b?.name?.common)
-                    )
-                    .map(({ name }) => (
-                      <option value={name.common}>{name.common}</option>
-                    ))}
+                  {countries.map((name) => (
+                    <option value={name}>{name}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -217,7 +223,7 @@ const EmployerRegister = () => {
                 <input
                   type="text"
                   required
-                  {...register('companyName')}
+                  {...register("companyName")}
                   id="companyName"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
@@ -229,7 +235,7 @@ const EmployerRegister = () => {
                 <input
                   type="text"
                   required
-                  {...register('companyWebsite')}
+                  {...register("companyWebsite")}
                   id="companyWebsite"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
@@ -241,7 +247,7 @@ const EmployerRegister = () => {
                 <input
                   type="text"
                   required
-                  {...register('companyLocation')}
+                  {...register("companyLocation")}
                   id="companyLocation"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
@@ -252,7 +258,7 @@ const EmployerRegister = () => {
                 </label>
                 <select
                   required
-                  {...register('companyCategory')}
+                  {...register("companyCategory")}
                   id="companyCategory"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 >
@@ -269,7 +275,7 @@ const EmployerRegister = () => {
                 </label>
                 <select
                   required
-                  {...register('employeeRange')}
+                  {...register("employeeRange")}
                   id="employeeRange"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 >
@@ -288,7 +294,7 @@ const EmployerRegister = () => {
                 <input
                   required
                   type="text"
-                  {...register('roleInCompany')}
+                  {...register("roleInCompany")}
                   id="roleInCompany"
                   className={` w-full bg-blue-50    focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg`}
                 />
