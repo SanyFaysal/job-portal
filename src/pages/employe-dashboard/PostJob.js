@@ -1,51 +1,51 @@
-import React, { useEffect } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
-import Path from '../../components/reuseable/Path';
-import { FiTrash } from 'react-icons/fi';
-import { useSelector } from 'react-redux';
-import { useCreateJobMutation } from '../../features/job/jobApi';
-import { toast } from 'react-hot-toast';
+import React, { useEffect } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
+import Path from "../../components/reuseable/Path";
+import { FiTrash } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import { useCreateJobMutation } from "../../features/job/jobApi";
+import { toast } from "react-hot-toast";
 
 const PostJob = () => {
-  const { user: { company: { companyName } } } = useSelector(state => state.auth);
-  const [postJob, { data, isLoading, isSuccess, isError, error }] = useCreateJobMutation();
+  const { user } = useSelector((state) => state.auth);
+  const [postJob, { data, isLoading, isSuccess, isError, error }] =
+    useCreateJobMutation();
   const { handleSubmit, register, control, reset } = useForm();
-  console.log(companyName);
+
   const {
     fields: resFields,
     append: resAppend,
     remove: resRemove,
-  } = useFieldArray({ control, name: 'responsibilities' });
+  } = useFieldArray({ control, name: "responsibilities" });
   const {
     fields: skillFields,
     append: skillAppend,
     remove: skillRemove,
-  } = useFieldArray({ control, name: 'skills' });
+  } = useFieldArray({ control, name: "skills" });
   const {
     fields: reqFields,
     append: reqAppend,
     remove: reqRemove,
-  } = useFieldArray({ control, name: 'requirements' });
+  } = useFieldArray({ control, name: "requirements" });
 
   const onSubmit = (data) => {
-    data.companyName = companyName;
-    const token = localStorage.getItem('accessToken')
+    data.companyName = user?.company?.companyName;
+    const token = localStorage.getItem("accessToken");
     postJob({ token, data });
-
   };
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success('Success', { id: 'postJob' })
+      toast.success("Success", { id: "postJob" });
       reset();
     }
     if (isError) {
-      toast.error(error?.data?.error, { id: 'postJob' })
+      toast.error(error?.data?.error, { id: "postJob" });
     }
-  }, [data, isLoading, isSuccess, isError, error, reset])
+  }, [data, isLoading, isSuccess, isError, error, reset]);
   console.log({ data, isLoading, isSuccess, isError, error });
   return (
-    <div className=''>
+    <div className="">
       <Path from="dashboard" to="Post Job" />
 
       <form
@@ -66,7 +66,7 @@ const PostJob = () => {
               id="jobTitle"
               required
               placeholder="eg. Web Developer"
-              {...register('jobTitle')}
+              {...register("jobTitle")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -80,12 +80,10 @@ const PostJob = () => {
               className="bg-slate-100 w-full focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
               type="text"
               id="companyName"
-              value={companyName}
-              {...register('companyName')}
+              value={user?.company?.companyName}
+              {...register("companyName")}
             />
           </div>
-
-
 
           <div className="flex flex-col  ">
             <label className="mb-2" htmlFor="employmentType">
@@ -94,7 +92,7 @@ const PostJob = () => {
             <select
               type="text"
               id="employmentType"
-              {...register('employmentType')}
+              {...register("jobType")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             >
               <option value="fullTime">Full Time</option>
@@ -109,7 +107,7 @@ const PostJob = () => {
             <select
               type="text"
               id="employmentType"
-              {...register('employmentType')}
+              {...register("employmentType")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             >
               <option value="on-site">On site </option>
@@ -123,14 +121,18 @@ const PostJob = () => {
             </label>
             <select
               type="text"
-              id="employmentType"
-              {...register('employmentType')}
+              id="experience"
+              {...register("experience")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             >
               <option value="fresher">Fresher </option>
               <option value="1 year experience">1 year experience</option>
-              <option value="2 - 3 years experience">2 - 3 years experience</option>
-              <option value="3 - 5 years experience">3 - 5 years experience</option>
+              <option value="2 - 3 years experience">
+                2 - 3 years experience
+              </option>
+              <option value="3 - 5 years experience">
+                3 - 5 years experience
+              </option>
               <option value="5 years + experience">5 years + experience</option>
             </select>
           </div>
@@ -142,7 +144,7 @@ const PostJob = () => {
               type="text"
               required
               id="salaryRange"
-              {...register('salaryRange')}
+              {...register("salaryRange")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -155,7 +157,7 @@ const PostJob = () => {
               type="text"
               required
               id="location"
-              {...register('location')}
+              {...register("location")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -167,7 +169,7 @@ const PostJob = () => {
               type="date"
               required
               id="dateline"
-              {...register('dateline')}
+              {...register("dateline")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -180,7 +182,7 @@ const PostJob = () => {
               type="text"
               id="workingTime"
               required
-              {...register('workingTime')}
+              {...register("workingTime")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -193,7 +195,7 @@ const PostJob = () => {
               required
               type="text"
               id="vacancy"
-              {...register('vacancy')}
+              {...register("vacancy")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -206,7 +208,7 @@ const PostJob = () => {
               required
               type="text"
               id="applyingEmail"
-              {...register('applyingEmail')}
+              {...register("applyingEmail")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -219,7 +221,7 @@ const PostJob = () => {
               required
               type="text"
               id="contactNumber"
-              {...register('contactNumber')}
+              {...register("contactNumber")}
               className="bg-slate-100  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"
             />
           </div>
@@ -230,7 +232,7 @@ const PostJob = () => {
             <textarea
               required
               rows={8}
-              {...register('jobDescription')}
+              {...register("jobDescription")}
               id="jobDescription"
               className=' bg-slate-100 rounded-lg  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded-lg"'
             />
@@ -268,7 +270,7 @@ const PostJob = () => {
               <div>
                 <button
                   type="button"
-                  onClick={() => skillAppend('')}
+                  onClick={() => skillAppend("")}
                   className="btn   bg-blue-50 text-blue-500 border-none hover:border-none hover:bg-blue-500 hover:text-white duration-400 ease-in py-3 "
                 >
                   Add Skill
@@ -310,7 +312,7 @@ const PostJob = () => {
               <div>
                 <button
                   type="button"
-                  onClick={() => resAppend('')}
+                  onClick={() => resAppend("")}
                   className="btn   bg-blue-50 text-blue-500 border-none hover:border-none hover:bg-blue-500 hover:text-white duration-400 ease-in py-3 "
                 >
                   Add Responsibility
@@ -351,7 +353,7 @@ const PostJob = () => {
               <div>
                 <button
                   type="button"
-                  onClick={() => reqAppend('')}
+                  onClick={() => reqAppend("")}
                   className="btn   bg-blue-50 text-blue-500 border-none hover:border-none hover:bg-blue-500 hover:text-white duration-400 ease-in py-3 "
                 >
                   Add Requirement

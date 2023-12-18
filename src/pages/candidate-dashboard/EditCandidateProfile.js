@@ -51,7 +51,7 @@ const EditCandidateProfile = () => {
         }
     }, [isSuccess, isError, error, reset, dispatch, user]);
 
-    console.log(gender);
+  
     return (
         <div className="">
             <div className="flex justify-center items-center overflow-auto lg:h-[90vh]">

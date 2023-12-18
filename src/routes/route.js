@@ -1,85 +1,86 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Dashboard from '../layout/dashboard/Dashboard';
+import { createBrowserRouter } from "react-router-dom";
+import Dashboard from "../layout/dashboard/Dashboard";
 
-import PostJob from '../pages/employe-dashboard/PostJob';
-import Main from '../layout/main/Main';
-import Home from '../pages/home/Home';
-import Jobs from '../pages/jobs/Jobs';
-import ManageJobs from '../pages/employe-dashboard/ManageJobs';
-import AllApplicants from '../pages/employe-dashboard/AllApplicants';
-import ShortlistedResumes from '../pages/employe-dashboard/ShortlistedResumes';
-import Login from '../pages/authentication/Login';
-import Signup from '../pages/authentication/Signup';
-import Register from '../pages/authentication/Register';
-import CandidateRegister from '../pages/authentication/CandidateRegister';
-import EmployeeRegister from '../pages/authentication/EmployerRegister';
-import JobDetails from '../pages/jobDetails/JobDetails';
-import PrivateRoute from '../utils/PrivateRoute';
-import CandidateProfile from '../pages/candidate-dashboard/CandidateProfile';
-import EmployerProfile from '../pages/employe-dashboard/EmployerProfile';
-import EditJob from '../pages/employe-dashboard/EditJob';
-import AppliedJob from '../pages/candidate-dashboard/AppliedJob';
-import EditCandidateProfile from '../pages/candidate-dashboard/EditCandidateProfile';
-import EditEmployerProfile from '../pages/employe-dashboard/EditEmployerProfile';
-import Applicants from '../pages/employe-dashboard/Applicants';
-import ApplicantProfile from '../pages/employe-dashboard/ApplicantProfile';
-import DashboardHome from '../layout/dashboard/DashboardHome';
+import PostJob from "../pages/employe-dashboard/PostJob";
+import Main from "../layout/main/Main";
+import Home from "../pages/home/Home";
+import Jobs from "../pages/jobs/Jobs";
+import ManageJobs from "../pages/employe-dashboard/ManageJobs";
+import AllApplicants from "../pages/employe-dashboard/AllApplicants";
+import ShortlistedResumes from "../pages/employe-dashboard/ShortlistedResumes";
+import Login from "../pages/authentication/Login";
+import Signup from "../pages/authentication/Signup";
+import Register from "../pages/authentication/Register";
+import CandidateRegister from "../pages/authentication/CandidateRegister";
+import EmployeeRegister from "../pages/authentication/EmployerRegister";
+import JobDetails from "../pages/jobDetails/JobDetails";
+import PrivateRoute from "../utils/PrivateRoute";
+import CandidateProfile from "../pages/candidate-dashboard/CandidateProfile";
+import EmployerProfile from "../pages/employe-dashboard/EmployerProfile";
+import EditJob from "../pages/employe-dashboard/EditJob";
+import AppliedJob from "../pages/candidate-dashboard/AppliedJob";
+import EditCandidateProfile from "../pages/candidate-dashboard/EditCandidateProfile";
+import EditEmployerProfile from "../pages/employe-dashboard/EditEmployerProfile";
+import Applicants from "../pages/employe-dashboard/Applicants";
+import ApplicantProfile from "../pages/employe-dashboard/ApplicantProfile";
+import DashboardHome from "../layout/dashboard/DashboardHome";
 
-import Blogs from '../pages/blog/Blogs';
-import BlogDetails from '../pages/blogDetails/BlogDetails';
-import Contact from '../pages/contact/Contact';
+import Blogs from "../pages/blog/Blogs";
+import BlogDetails from "../pages/blogDetails/BlogDetails";
+import Contact from "../pages/contact/Contact";
+import CreateBlog from "../pages/blogs/CreateBlog";
 
 const routes = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: 'home',
+        path: "home",
         element: <Home />,
       },
       {
-        path: 'about',
+        path: "about",
         element: <Home />,
       },
       {
-        path: 'home',
+        path: "home",
         element: <Home />,
       },
       {
-        path: 'jobs',
+        path: "jobs",
         element: <Jobs />,
       },
       {
-        path: 'blogs',
+        path: "blogs",
         element: <Blogs />,
       },
       {
-        path: 'blogDetails',
+        path: "blogDetails",
         element: <BlogDetails />,
       },
       {
-        path: 'contact',
+        path: "contact",
         element: <Contact />,
       },
       {
-        path: 'jobsDetails/:id',
+        path: "jobsDetails/:id",
         element: <JobDetails />,
       },
       {
-        path: 'signup',
+        path: "signup",
         element: <Signup />,
       },
       {
-        path: 'login',
+        path: "login",
         element: <Login />,
       },
       {
-        path: 'register',
+        path: "register",
         element: (
           <PrivateRoute>
             <Register />
@@ -97,86 +98,92 @@ const routes = createBrowserRouter([
         // ],
       },
       {
-        path: 'register/candidate',
-        element:
+        path: "register/candidate",
+        element: (
           <PrivateRoute>
             <CandidateRegister />
           </PrivateRoute>
-        ,
+        ),
       },
       {
-        path: 'register/employer',
-        element:
+        path: "register/employer",
+        element: (
           <PrivateRoute>
             <EmployeeRegister />
           </PrivateRoute>
+        ),
       },
     ],
   },
   {
-    path: '/dashboard',
-    element: <PrivateRoute>
-      <Dashboard />
-    </PrivateRoute>
-    ,
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
-        path: '/dashboard',
+        path: "/dashboard",
         element: <DashboardHome />,
       },
       {
-        path: '/dashboard/manage-jobs',
+        path: "/dashboard/manage-jobs",
         element: <ManageJobs />,
       },
       {
-        path: '/dashboard/post-job',
+        path: "/dashboard/post-job",
         element: <PostJob />,
       },
       {
-        path: '/dashboard/jobsDetails/:id',
+        path: "/dashboard/jobsDetails/:id",
         element: <JobDetails />,
       },
       {
-        path: '/dashboard/edit-job/:id',
+        path: "/dashboard/edit-job/:id",
         element: <EditJob />,
       },
       {
-        path: '/dashboard/all-applicants',
+        path: "/dashboard/all-applicants",
         element: <AllApplicants />,
       },
       {
-        path: '/dashboard/candidate-profile',
+        path: "/dashboard/candidate-profile",
         element: <CandidateProfile />,
       },
       {
-        path: '/dashboard/edit-candidate-profile',
+        path: "/dashboard/edit-candidate-profile",
         element: <EditCandidateProfile />,
       },
       {
-        path: '/dashboard/edit-employer-profile',
+        path: "/dashboard/edit-employer-profile",
         element: <EditEmployerProfile />,
       },
       {
-        path: '/dashboard/applicants/:id',
+        path: "/dashboard/applicants/:id",
         element: <Applicants />,
       },
       {
-        path: '/dashboard/applicant-profile/:id',
+        path: "/dashboard/applicant-profile/:id",
         element: <ApplicantProfile />,
       },
 
       {
-        path: '/dashboard/applied-jobs',
+        path: "/dashboard/applied-jobs",
         element: <AppliedJob />,
       },
 
       {
-        path: '/dashboard/employee-profile',
+        path: "/dashboard/employee-profile",
         element: <EmployerProfile />,
       },
       {
-        path: '/dashboard/shortlisted-resumes',
+        path: "/dashboard/shortlisted-resumes",
         element: <ShortlistedResumes />,
+      },
+      {
+        path: "/dashboard/create-blog",
+        element: <CreateBlog />,
       },
     ],
   },

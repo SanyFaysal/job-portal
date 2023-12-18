@@ -1,27 +1,26 @@
-import React from 'react';
+import React from "react";
 
-import { useLocation, useParams } from 'react-router-dom';
-import CompanyProfile from '../../components/jobDetails/CompanyProfile';
-import JobDetailsBanner from '../../components/jobDetails/JobDetailsBanner';
-import JobInfo from '../../components/jobDetails/JobInfo';
-import JobOverView from '../../components/jobDetails/JobOverView';
-import JobQusAns from '../../components/jobDetails/JobQusAns';
-import Footer from '../../components/reuseable/Footer';
-import Loading from '../../components/reuseable/Loading';
-import { useJobByIdQuery } from '../../features/job/jobApi';
-
+import { useLocation, useParams } from "react-router-dom";
+import CompanyProfile from "../../components/jobDetails/CompanyProfile";
+import JobDetailsBanner from "../../components/jobDetails/JobDetailsBanner";
+import JobInfo from "../../components/jobDetails/JobInfo";
+import JobOverView from "../../components/jobDetails/JobOverView";
+import JobQusAns from "../../components/jobDetails/JobQusAns";
+import Footer from "../../components/reuseable/Footer";
+import Loading from "../../components/reuseable/Loading";
+import { useJobByIdQuery } from "../../features/job/jobApi";
 
 const JobDetails = () => {
-
   const { id } = useParams();
-  const { pathname } = useLocation()
-  const { data, isLoading } = useJobByIdQuery(id, { pollingInterval: 1000 })
+  const { pathname } = useLocation();
+  // const { data, isLoading } = useJobByIdQuery(id, { pollingInterval: 1000 })
+  const { data, isLoading } = useJobByIdQuery(id);
 
   const job = data?.data;
-  const isDashboard = pathname === `/dashboard/jobsDetails/${id}`
+  const isDashboard = pathname === `/dashboard/jobsDetails/${id}`;
 
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -32,24 +31,26 @@ const JobDetails = () => {
         </div>
       } */}
       <JobDetailsBanner job={job} />
-      <div className={`grid lg:grid-cols-6 gap-7  px-6 mt-8 ${isDashboard ? 'lg:px-4' : 'lg:px-16'}`}>
+      <div
+        className={`grid lg:grid-cols-6 gap-7  px-6 mt-8 ${
+          isDashboard ? "lg:px-4" : "lg:px-16"
+        }`}
+      >
         <div className="lg:col-span-4">
           <JobInfo job={job} />
-          <div className='block lg:hidden'>
+          <div className="block lg:hidden">
             <JobOverView job={job} />
             <div className="my-8"></div>
             <CompanyProfile job={job} />
           </div>
           <JobQusAns job={job} />
-
         </div>
         <div className="lg:col-span-2 lg:my-0 my-4">
-          <div className='hidden lg:block'>
+          <div className="hidden lg:block">
             <JobOverView job={job} />
             <div className="my-8"></div>
             <CompanyProfile job={job} />
           </div>
-
         </div>
       </div>
       {!isDashboard && <Footer />}
