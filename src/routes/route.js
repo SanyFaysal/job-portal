@@ -25,10 +25,12 @@ import Applicants from "../pages/employe-dashboard/Applicants";
 import ApplicantProfile from "../pages/employe-dashboard/ApplicantProfile";
 import DashboardHome from "../layout/dashboard/DashboardHome";
 
-import Blogs from "../pages/blog/Blogs";
-import BlogDetails from "../pages/blogDetails/BlogDetails";
+import Blogs from "../pages/blogs/Blogs";
+
 import Contact from "../pages/contact/Contact";
 import CreateBlog from "../pages/blogs/CreateBlog";
+import MyBlogs from "../pages/blogs/MyBlogs";
+import BlogDetails from "../pages/blogDetails/BlogDetails";
 
 const routes = createBrowserRouter([
   {
@@ -60,7 +62,7 @@ const routes = createBrowserRouter([
         element: <Blogs />,
       },
       {
-        path: "blogDetails",
+        path: "blogDetails/:blogId",
         element: <BlogDetails />,
       },
       {
@@ -184,6 +186,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/create-blog",
         element: <CreateBlog />,
+      },
+      {
+        path: "/dashboard/my-blogs",
+        element: <MyBlogs />,
       },
     ],
   },
