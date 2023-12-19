@@ -24,10 +24,12 @@ const Blogs = () => {
     <div>
       <PathBanner to="Blogs" />
       <div className="grid grid-cols-4 gap-6 lg:px-16 px-6 ">
-        <div className="col-span-3 grid grid-cols-1  gap-4 my-6">
-          {data?.data?.map((blog) => (
-            <ArticleCard key={blog?._id} blog={blog} />
-          ))}
+        <div className="col-span-3">
+          <div className=" grid grid-cols-1  gap-4 my-6">
+            {data?.data?.map((blog) => (
+              <ArticleCard key={blog?._id} blog={blog} />
+            ))}
+          </div>
         </div>
         <div className="col-span-1 pl-7 py-8 ">
           <div className="lg:sticky top-20">

@@ -55,6 +55,12 @@ const blogApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["Blog"],
     }),
+    getMyBlogs: builder.query({
+      query: (id) => ({
+        url: `/blog/get/${id}`,
+      }),
+      providesTags: ["Blogs"],
+    }),
 
     // deleteJob: builder.mutation({
     //   query: ({ id, employeeId, token }) => ({
@@ -107,4 +113,5 @@ export const {
   useCreateBlogMutation,
   useGetAllBlogsQuery,
   useSingleBlogQuery,
+  useGetMyBlogsQuery,
 } = blogApi;

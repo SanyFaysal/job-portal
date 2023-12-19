@@ -30,7 +30,7 @@ import Blogs from "../pages/blogs/Blogs";
 import Contact from "../pages/contact/Contact";
 import CreateBlog from "../pages/blogs/CreateBlog";
 import MyBlogs from "../pages/blogs/MyBlogs";
-import BlogDetails from "../pages/blogDetails/BlogDetails";
+import BlogDetails from "../pages/blogs/BlogDetails";
 
 const routes = createBrowserRouter([
   {

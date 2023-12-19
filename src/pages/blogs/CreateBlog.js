@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 
 import Path from "../../components/reuseable/Path";
@@ -30,6 +30,10 @@ export default function CreateBlog() {
     };
     createBlog({ token, data });
   };
+
+  useEffect(() => {
+    if (isSuccess) toast.success("Created Successful", { id: 1 });
+  }, [isSuccess]);
   return (
     <div>
       <Path from="dashboard" to="Create Blog" />
