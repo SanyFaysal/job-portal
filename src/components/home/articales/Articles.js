@@ -1,7 +1,9 @@
-import React from 'react';
-import ArticleCard from './ArticleCard';
+import React from "react";
+import ArticleCard from "./ArticleCard";
+import { useGetAllBlogsQuery } from "../../../features/blog/blogApi";
 
 const Articles = () => {
+  const { data } = useGetAllBlogsQuery();
   return (
     <div className="lg:px-16 px-6 py-16 bg-gray-50">
       <div>
@@ -13,12 +15,9 @@ const Articles = () => {
         </p>
       </div>
       <div className="grid lg:grid-cols-2 gap-7 my-12">
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
-        <ArticleCard />
+        {data?.data?.map((blog) => (
+          <ArticleCard blog={blog} key={blog?._id} />
+        ))}
       </div>
     </div>
   );

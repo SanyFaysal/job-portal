@@ -10,12 +10,12 @@ const ArticleCard = ({ blog }) => {
       className=" p-4
       bg-slate-50 h-fit  border-sky-100 border-2  rounded-lg  "
     >
-      <h3 className="mt-3 font-semibold">{blog?.title}</h3>
+      <h3 className="mt-3 font-semibold h-12">{blog?.title}</h3>
 
       <div className="flex justify-between  items-center ">
         <p>
           by{" "}
-          <span className="font-semibold capitalize">
+          <span className="font-semibold text-sm capitalize">
             {blog?.author?.fullName}
           </span>
           {/* {" "}

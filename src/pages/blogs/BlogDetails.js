@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PathBanner from "../../components/reuseable/PathBanner";
 import { useParams } from "react-router-dom";
 import { useSingleBlogQuery } from "../../features/blog/blogApi";
 import { FaHeart, FaRegHeart, FaRegThumbsUp } from "react-icons/fa";
 import { BiMessageRoundedDetail } from "react-icons/bi";
-
+import loader from "../../assets/images/loader.gif";
+import toast from "react-hot-toast";
 const BlogDetails = () => {
   const { blogId } = useParams();
   const { data } = useSingleBlogQuery(blogId);
-  console.log({ data });
+
   return (
     <div className="px-16 py-10 bg-sky-50">
       <div className="mb-5 ">

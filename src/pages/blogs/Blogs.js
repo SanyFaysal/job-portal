@@ -9,7 +9,7 @@ import { useGetAllBlogsQuery } from "../../features/blog/blogApi";
 
 const Blogs = () => {
   const { data } = useGetAllBlogsQuery();
-  const blogs = [1, 2, 3, 2];
+
   const categories = [
     "education",
     "information",

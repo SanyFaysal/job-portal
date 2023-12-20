@@ -11,16 +11,13 @@ export default function MyBlogRow({ blog }) {
   const handleDeletePost = () => {};
   return (
     <tr>
-      <td>
-        <div className="">
-          {/* <div className="avatar">
-          <div className="mask mask-squircle w-12 h-12">
-            <img src={photo} alt="Avatar Tailwind CSS Component" />
-          </div>
-        </div> */}
-          <div className="max-w-min">
-            <div className="font-bold capitalize">{blog?.title}</div>
-          </div>
+      <td className="">
+        <div>
+          <p className="font-semibold">
+            {blog?.title?.length > 50
+              ? `${blog?.title?.slice(0, 50)}... `
+              : blog?.title}{" "}
+          </p>
         </div>
       </td>
 
@@ -29,7 +26,11 @@ export default function MyBlogRow({ blog }) {
           <p className={``}>{postedOn}</p>
         </div>
       </td>
-      <td className=" ">{blog?.status}</td>
+      <td>
+        <span className="rounded-full bg-green-100 text-green-500 py-1 text-sm font-medium capitalize px-3  ">
+          {blog?.status}
+        </span>
+      </td>
       {/* <td>
       {' '}
       <div className="form-control ">
