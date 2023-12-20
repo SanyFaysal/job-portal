@@ -1,14 +1,26 @@
 import moment from "moment";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiPencil } from "react-icons/bi";
 import { IoMdEye } from "react-icons/io";
 import { MdDeleteOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useDeleteBlogMutation } from "../../features/blog/blogApi";
+import { getToken } from "../../helpers/getToken";
+import toast from "react-hot-toast";
 
 export default function MyBlogRow({ blog }) {
   const navigate = useNavigate();
+  const token = getToken();
   const postedOn = moment.utc(blog?.createdAt).format("DD/MM/YYYY");
-  const handleDeletePost = () => {};
+  const [deleteBlog, { isSuccess }] = useDeleteBlogMutation();
+
+  const handleDeleteBlog = (id) => {
+    deleteBlog({ id, token });
+  };
+
+  useEffect(() => {
+    if (isSuccess) toast.success("Deletion Successful", { id: 1 });
+  }, [isSuccess]);
   return (
     <tr>
       <td className="">
@@ -56,7 +68,7 @@ export default function MyBlogRow({ blog }) {
         <div className="tooltip mx-2" data-tip="Edit">
           <label
             htmlFor="my-modal-5"
-            onClick={() => navigate(`/dashboard/edit-job/${blog?._id}`)}
+            onClick={() => navigate(`/dashboard/edit-blog/${blog?._id}`)}
             className="btn  btn-xs bg-blue-100 text-blue-500 border-none hover:bg-blue-500 hover:border-none hover:text-white duration-400"
           >
             <BiPencil className="text-xl " />
@@ -64,7 +76,7 @@ export default function MyBlogRow({ blog }) {
         </div>
         <div className="tooltip " data-tip="Delete">
           <button
-            onClick={() => handleDeletePost()}
+            onClick={() => handleDeleteBlog(blog?._id)}
             className="btn  btn-xs bg-red-100 text-red-500 border-none hover:bg-red-500 hover:border-none hover:text-white duration-400"
           >
             <MdDeleteOutline className="text-xl " />

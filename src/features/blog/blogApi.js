@@ -13,17 +13,17 @@ const blogApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Blogs"],
     }),
-    // updateJob: builder.mutation({
-    //   query: ({ token, id, data }) => ({
-    //     url: `/job/${id}`,
-    //     method: 'PATCH',
-    //     headers: {
-    //       authorization: `Bearer ${token}`,
-    //     },
-    //     body: data,
-    //   }),
-    //   invalidatesTags: ['Job', 'JobDetails'],
-    // }),
+    editBlog: builder.mutation({
+      query: ({ token, id, data }) => ({
+        url: `/blog/${id}`,
+        method: "PATCH",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        body: data,
+      }),
+      invalidatesTags: ["Blog", "Blogs"],
+    }),
     getAllBlogs: builder.query({
       query: () => ({
         // { sort, page, limit, filter }
@@ -62,17 +62,16 @@ const blogApi = apiSlice.injectEndpoints({
       providesTags: ["Blogs"],
     }),
 
-    // deleteJob: builder.mutation({
-    //   query: ({ id, employeeId, token }) => ({
-    //     url: `/job/${id}`,
-    //     method: 'DELETE',
-    //     body: { employeeId },
-    //     headers: {
-    //       authorization: `Bearer ${token}`,
-    //     },
-    //   }),
-    //   invalidatesTags: ['Job', 'JobDetails'],
-    // }),
+    deleteBlog: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `/blog/${id}`,
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+      invalidatesTags: ["Blog", "Blogs"],
+    }),
 
     // applyJob: builder.mutation({
     //   query: ({ token, id }) => ({
@@ -114,4 +113,6 @@ export const {
   useGetAllBlogsQuery,
   useSingleBlogQuery,
   useGetMyBlogsQuery,
+  useEditBlogMutation,
+  useDeleteBlogMutation,
 } = blogApi;

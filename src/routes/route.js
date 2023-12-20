@@ -31,6 +31,7 @@ import Contact from "../pages/contact/Contact";
 import CreateBlog from "../pages/blogs/CreateBlog";
 import MyBlogs from "../pages/blogs/MyBlogs";
 import BlogDetails from "../pages/blogs/BlogDetails";
+import EditBlog from "../pages/blogs/EditBlog";
 
 const routes = createBrowserRouter([
   {
@@ -65,6 +66,7 @@ const routes = createBrowserRouter([
         path: "blogDetails/:blogId",
         element: <BlogDetails />,
       },
+
       {
         path: "contact",
         element: <Contact />,
@@ -190,6 +192,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/my-blogs",
         element: <MyBlogs />,
+      },
+      {
+        path: "/dashboard/edit-blog/:blogId",
+        element: <EditBlog />,
       },
     ],
   },
