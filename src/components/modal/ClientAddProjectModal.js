@@ -100,8 +100,11 @@ export default function ClientAddProject({
                 Done
               </button>
             </div>
-            <label htmlFor="client_add_project" className="btn">
-              Yay!
+            <label
+              htmlFor="client_add_project"
+              className="btn bg-red-100  border-0 hover:bg-red-500 hover:text-white text-red-500 "
+            >
+              Close
             </label>
           </div>
         </div>

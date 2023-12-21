@@ -7,6 +7,7 @@ import { CgMail, CgSmartphone } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../../features/auth/authSlice";
+import CandidateProjectShow from "../../components/profileComponent/CandidateProjectShow";
 const CandidateProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,6 +77,19 @@ const CandidateProfile = () => {
         </div>
         <h1 className="text-xl font-semibold mt-5">Biodata</h1>
         <p>{user?.bio}</p>
+
+        <h1 className="text-xl font-semibold mt-5 mb-3">Projects</h1>
+        {user?.projects?.map((project, index) => (
+          <CandidateProjectShow
+            project={project}
+            key={index}
+            index={index}
+            setProjects={[]}
+            projects={[1, 2]}
+            projectData={{ title: "" }}
+            setProjectData={() => {}}
+          />
+        ))}
       </div>
     </div>
   );

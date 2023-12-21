@@ -32,7 +32,7 @@ import CreateBlog from "../pages/blogs/CreateBlog";
 import MyBlogs from "../pages/blogs/MyBlogs";
 import BlogDetails from "../pages/blogs/BlogDetails";
 import EditBlog from "../pages/blogs/EditBlog";
-import ClientAddProject from "../components/modal/ClientAddProject";
+import ClientAddProject from "../components/modal/ClientAddProjectModal";
 
 const routes = createBrowserRouter([
   {

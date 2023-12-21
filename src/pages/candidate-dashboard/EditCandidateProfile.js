@@ -11,7 +11,7 @@ import {
 import { useLocation, useParams, useRoutes } from "react-router-dom";
 import ReactQuill from "react-quill";
 import { BsTrash } from "react-icons/bs";
-import ClientAddProject from "../../components/modal/ClientAddProject";
+import ClientAddProject from "../../components/modal/ClientAddProjectModal";
 import { BiPlus } from "react-icons/bi";
 import CandidateProjectShow from "../../components/profileComponent/CandidateProjectShow";
 
@@ -70,7 +70,7 @@ const EditCandidateProfile = () => {
 
   const onSubmit = (data) => {
     data.gender = editGender;
-    console.log({ update: data });
+    data.projects = projects;
     updateUser({ id: _id, user: data });
   };
   const addProjectData = () => {
@@ -307,14 +307,22 @@ const EditCandidateProfile = () => {
                   </div>
                   {/* previous Project */}
                   {projects?.map((project, index) => (
-                    <CandidateProjectShow project={project} key={index} />
+                    <CandidateProjectShow
+                      project={project}
+                      key={index}
+                      index={index}
+                      setProjects={setProjects}
+                      projects={projects}
+                      projectData={projectData}
+                      setProjectData={setProjectData}
+                    />
                   ))}
                 </div>
               )}
               <div className="grid lg:grid-cols-1 grid-cols-1 gap-5 ">
                 <div className="flex lg:justify-end justify-center items-center w-full my-auto ">
                   <button
-                    className="btn inline-block lg:mt-20   bg-blue-200 text-blue-500 border-none hover:border-none hover:bg-slate-500  hover:text-white"
+                    className="btn inline-block    bg-blue-200 text-blue-500 border-none hover:border-none hover:bg-slate-500  hover:text-white"
                     type="submit"
                   >
                     Submit
