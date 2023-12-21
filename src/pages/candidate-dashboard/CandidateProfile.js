@@ -25,7 +25,7 @@ const CandidateProfile = () => {
             onClick={() => navigate("/dashboard/edit-candidate-profile")}
             className="btn btn-sm  border-none hover:border-none rounded hover:bg-blue-500 hover:text-white duration-400 ease-in px-4 bg-blue-100 text-blue-500"
           >
-            <span className="mr-2">Edit</span> 🖊{" "}
+            <span className="mr-2">Update</span> 🖊{" "}
           </button>
         </div>
 

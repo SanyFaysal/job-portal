@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import banner from '../../../assets/images/banner-img-1.png';
-import './banner.css';
-import { MdHomeWork, MdWorkspaces } from 'react-icons/md';
-import { IoIosPeople } from 'react-icons/io';
-import { GiClockwork } from 'react-icons/gi';
-import { BsSearch } from 'react-icons/bs';
-import HomeJobSearchModal from '../../modal/HomeJobSearchModal';
+import React, { useState } from "react";
+import banner from "../../../assets/images/banner-img-1.png";
+import "./banner.css";
+import { MdHomeWork, MdWorkspaces } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
+import { GiClockwork } from "react-icons/gi";
+import { BsSearch } from "react-icons/bs";
+import HomeJobSearchModal from "../../modal/HomeJobSearchModal";
 
 const Banner = () => {
-  const [jobTitle, setJobTitle] = useState('');
-  const [hover, setHover] = useState(false)
+  const [jobTitle, setJobTitle] = useState("");
+  const [hover, setHover] = useState(false);
 
   return (
     <div className="bannerBg lg:px-16 px-3 mt-[-100px] pt-[100px]">
@@ -21,7 +21,7 @@ const Banner = () => {
                 <MdHomeWork className="text-3xl " />
               </p>
               <p className="text-sm font-bold text-end textColor">
-                Work from home{' '}
+                Work from home{" "}
               </p>
             </div>
             <div className="featureCard2 lg:w-[150px]  h-[10vh] px-3 py-2 lg:ml-10 mr-5 rounded-xl flex justify-between items-center bg-white">
@@ -33,7 +33,11 @@ const Banner = () => {
               </p>
             </div>
           </div>
-          <img src={banner} className="w-full lg:mx-5 mt-[-25px]" alt="banner" />
+          <img
+            src={banner}
+            className="w-full lg:mx-5 mt-[-25px]"
+            alt="banner"
+          />
           <div className="flex justify-between mt-[-180px] ">
             <div className="featureCard2 w-[150px] h-[10vh] px-3 py-3 mr-5 lg:mr-26   rounded-xl flex justify-between items-center bg-white">
               <p className="ml-auto mr-5 textColor">
@@ -65,23 +69,41 @@ const Banner = () => {
           <div>
             <p className="my-3">Find Jobs, Employment & Career Opportunities</p>
 
-
-            <div className="grid lg:grid-cols-8 gap-5 lg:w-3/4 mt-4" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-              <div className=' col-span-5 mt-[-20px]'>
-                <p className={`text-xs mb-1 `}>{!jobTitle && hover ? <span className='text-red-500  rounded-lg '>Write something</span> : <span className='block h-4'></span>} </p>
+            <div
+              className="grid lg:grid-cols-8 gap-5 lg:w-3/4 mt-4"
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              <div className=" col-span-5 mt-[-20px]">
+                <p className={`text-xs mb-1 `}>
+                  {!jobTitle && hover ? (
+                    <span className="text-red-500  rounded-lg ">
+                      Write something
+                    </span>
+                  ) : (
+                    <span className="block h-4"></span>
+                  )}{" "}
+                </p>
                 <input
                   type="text"
                   onChange={(e) => setJobTitle(e.target.value)}
                   placeholder={`Job title, keywords or company `}
-                  className={`text-sm w-full  px-5 py-4  input input-bordered ${!jobTitle && hover && 'border border-red-500'}`}
+                  className={`text-sm w-full  px-5 py-4  input input-bordered ${
+                    !jobTitle && hover && "border border-red-500"
+                  }`}
                 />
               </div>
               <div className="lg:col-span-3 ">
-                <label htmlFor="my-modal-6" className={`btn w-full   btn-xl flex ${!jobTitle && 'btn-disabled cursor-not-allowed'} `}>
+                <label
+                  htmlFor="my-modal-6"
+                  className={`btn w-full   btn-xl flex ${
+                    !jobTitle && "btn-disabled cursor-not-allowed"
+                  } `}
+                >
                   {/* <label htmlFor="my-modal-6" className="btn">open modal</label> */}
-                  <BsSearch className="mx-2 inline-block" /> <span>Search Jobs</span>
+                  <BsSearch className="mx-2 inline-block" />{" "}
+                  <span>Search Jobs</span>
                 </label>
-
               </div>
             </div>
             <p className="my-4  text-xs">
@@ -91,8 +113,8 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <HomeJobSearchModal />
-    </div >
+      <HomeJobSearchModal jobTitle={jobTitle} />
+    </div>
   );
 };
 

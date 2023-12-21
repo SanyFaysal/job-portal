@@ -1,24 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useGetJobsQuery } from '../../../features/job/jobApi';
-import Job from '../../reuseable/Job';
-import Loading from '../../reuseable/Loading';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import { useGetJobsQuery } from "../../../features/job/jobApi";
+import Job from "../../reuseable/Job";
+import Loading from "../../reuseable/Loading";
 
 const FeaturedJob = () => {
   const { data, isSuccess, isLoading, isError, error } = useGetJobsQuery({
-    sort: '',
+    sort: "",
     page: 1,
     limit: 4,
     filter: {
       experience: "",
       jobTitle: "",
-      jobType: '',
-    }
+      jobType: "",
+    },
   });
-  console.log(data);
+
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   }
   const jobs = data?.data;
   console.log({ data, isSuccess, isLoading, isError, error });
@@ -30,12 +29,15 @@ const FeaturedJob = () => {
       </p>
 
       <div className="grid lg:grid-cols-2 gap-5  mt-16">
-        {
-          jobs?.slice(0, 6)?.map(job => <Job key={job?._id} job={job} />)
-        }
+        {jobs?.slice(0, 6)?.map((job) => (
+          <Job key={job?._id} job={job} />
+        ))}
       </div>
       <div className="my-12 flex justify-center ">
-        <Link to='/jobs' className="btn  px-5 bg-blue-200 hover:bg-blue-500 text-blue-500 hover:text-white border-none hover:border-none ">
+        <Link
+          to="/jobs"
+          className="btn  px-5 bg-blue-200 hover:bg-blue-500 text-blue-500 hover:text-white border-none hover:border-none "
+        >
           Load more jobs
         </Link>
       </div>
