@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { BsPencil, BsTrash } from "react-icons/bs";
 
 import { useLocation } from "react-router-dom";
-import { CiPaperplane } from "react-icons/ci";
-
-import EditProjectModal from "../modal/EditProjectModal";
+import { useDeleteProjectMutation } from "../../features/auth/authApi";
+import toast from "react-hot-toast";
+import { getToken } from "../../helpers/getToken";
 
 export default function CandidateProjectShow({ project, setSelectedProject }) {
   const location = useLocation();
-
+  const token = getToken();
   const isEditProjectsPage = location.pathname.includes(
     "edit-candidate-projects"
   );
+
+  const [deleteProject, { isSuccess, isLoading, isError, error }] =
+    useDeleteProjectMutation();
+
+  const handleDeleteProject = (projectId) => {
+    deleteProject({ projectId, token });
+  };
+
+  useEffect(() => {
+    if (isLoading) {
+      toast.loading("Loading...", { id: "delete" });
+    }
+    if (isSuccess) {
+      toast.success("Deletion successful", { id: "delete" });
+    }
+    if (isError) {
+      toast.error(error?.data?.error, { id: "delete" });
+    }
+  }, [isSuccess, isError, error]);
 
   return (
     <div>
@@ -37,7 +56,7 @@ export default function CandidateProjectShow({ project, setSelectedProject }) {
               </div>
 
               <button
-                onClick={() => {}}
+                onClick={() => handleDeleteProject(project?._id)}
                 className="border-red-500 rounded bg-red-50 border px-2"
               >
                 {" "}

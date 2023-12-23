@@ -48,6 +48,16 @@ const authApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    deleteProject: builder.mutation({
+      query: ({ projectId, token }) => ({
+        url: `/user/candidate/delete-project/${projectId}`,
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+      invalidatesTags: ["User"],
+    }),
 
     getMe: builder.query({
       query: (token) => ({
@@ -75,4 +85,5 @@ export const {
   useGetMeQuery,
   useGetApplicantQuery,
   useEditProjectMutation,
+  useDeleteProjectMutation,
 } = authApi;

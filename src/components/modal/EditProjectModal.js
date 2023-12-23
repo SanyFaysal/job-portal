@@ -21,7 +21,7 @@ export default function EditProjectModal({ selectedProject }) {
   const [editProject, { isLoading, isSuccess, isError, error }] =
     useEditProjectMutation();
 
-  const handleUpdateProject = () => {
+  const handleUpdateProject = async () => {
     const userId = user?._id;
     const projectId = selectedProject?._id;
 
@@ -34,7 +34,8 @@ export default function EditProjectModal({ selectedProject }) {
       },
       userId,
     };
-    editProject({ token, projectId, data });
+
+    editProject({ token, projectId, data }).unwrap();
   };
 
   useEffect(() => {

@@ -53,7 +53,6 @@ export default function ClientAddProject() {
           <div className="  rounded-xl px-5 pt-3">
             <p className="flex justify-between items-center">
               <span className="text-lg font-semibold">Project Data</span>
-              <BsTrash className="inline text-red-500" />
             </p>
             <div className=" grid grid-cols-2 gap-2 py-2">
               <div className="col-span-1">

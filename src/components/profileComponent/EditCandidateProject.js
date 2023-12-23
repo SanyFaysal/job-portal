@@ -19,7 +19,9 @@ import EditProjectModal from "../modal/EditProjectModal";
 
 const EditCandidateProjects = () => {
   const [selectedProject, setSelectedProject] = useState();
-  const { user } = useSelector((state) => state.auth);
+
+  const token = localStorage.getItem("accessToken");
+  const { data } = useGetMeQuery(token);
 
   return (
     <>
@@ -37,7 +39,7 @@ const EditCandidateProjects = () => {
           </div>
           {/* previous Project */}
           <div className="grid grid-cols-1">
-            {user?.projects?.map((project, index) => (
+            {data?.data?.projects?.map((project, index) => (
               <CandidateProjectShow
                 project={project}
                 key={index}

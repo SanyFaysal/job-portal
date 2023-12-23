@@ -1,23 +1,25 @@
 import moment from "moment";
 import React from "react";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import human1 from "../../assets/images/photo1.jpg";
 import { useGetApplicantQuery } from "../../features/auth/authApi";
 import { CgMail, CgSmartphone } from "react-icons/cg";
+import CandidateProjectShow from "../../components/profileComponent/CandidateProjectShow";
 const ApplicantProfile = () => {
   const { id } = useParams();
   const { data } = useGetApplicantQuery(id);
   const user = data?.data || {};
+  const navigate = useNavigate();
   const date = moment.utc(user?.dob).format("MM/DD/YYYY");
   return (
-    <div>
-      <div className="bg-white  mt-4 px-10 pt-5 pb-16 rounded-lg">
+    <div className="bg-white  mt-4 px-10 pt-5 pb-16 rounded-lg">
+      <div className="">
         <div className="flex justify-between items-center">
           <h1 className="w-full text-2xl font-semibold ">Applicant Profile</h1>
         </div>
 
-        <div className="  grid lg:grid-cols-6 gap-4 py-5 mt-4  rounded ">
+        <div className="  grid lg:grid-cols-6 gap-4 py-5 mt-3  rounded ">
           <div>
             <div className="avatar w-full">
               <img src={human1} alt="" className="rounded w-20 h-20" />
@@ -38,7 +40,7 @@ const ApplicantProfile = () => {
           </div>
         </div>
 
-        <h1 className="text-xl font-semibold my-5">More Info</h1>
+        <h1 className="text-xl font-semibold my-3">More Info</h1>
         <div className="grid lg:grid-cols-6 ">
           <div className="col-span-2">
             <h3 className="font-semibold">Address</h3>
@@ -64,6 +66,24 @@ const ApplicantProfile = () => {
         </div>
         <h1 className="text-xl font-semibold mt-5">Biodata</h1>
         <p>{user?.bio}</p>
+      </div>
+
+      <div className="mt-3">
+        <div className="flex justify-between items-start">
+          <h1 className="text-2xl font-semibold  mb-3">Projects</h1>
+        </div>
+
+        {user?.projects?.map((project, index) => (
+          <CandidateProjectShow
+            project={project}
+            key={index}
+            index={index}
+            setProjects={[]}
+            projects={[1, 2]}
+            projectData={{ title: "" }}
+            setProjectData={() => {}}
+          />
+        ))}
       </div>
     </div>
   );

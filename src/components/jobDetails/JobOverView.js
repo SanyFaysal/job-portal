@@ -28,11 +28,7 @@ const JobOverView = ({ job }) => {
   const datedPosted = moment.utc(createdAt).format("MM/DD/YYYY");
   const { msg: datelineFormat, color } = useJobPostDateLine(job);
   return (
-    <div
-      className={`${
-        !isDashboard ? "bg-indigo-50 text-indigo-500" : "bg-white"
-      } rounded  `}
-    >
+    <div className={`${!isDashboard ? "" : "bg-white"} rounded  `}>
       <div className="pl-6 pr-2 py-8">
         <h1 className="font-semibold text-xl  mb-3">Job Overview</h1>
         <div className="flex gap-3 mt-5">
