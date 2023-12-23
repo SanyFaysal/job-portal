@@ -1,16 +1,15 @@
-import React from 'react';
-import { RxHamburgerMenu } from 'react-icons/rx';
-import { useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { useSelector } from "react-redux";
+import { Outlet, useNavigate } from "react-router-dom";
 
-
-import SideNav from './SideNav';
+import SideNav from "./SideNav";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   if (!user.role) {
-    navigate('/register')
+    navigate("/register");
   }
 
   return (
@@ -23,7 +22,7 @@ const Dashboard = () => {
           </div>
         </div> */}
         <div className="w-full  col-span-11 bg-blue-50 lg:px-5 px-4 py-8">
-          <div className='flex items-center'>
+          <div className="flex items-center">
             <label
               htmlFor="dashboard"
               className=" lg:hidden mr-5 rounded bg-blue-100 py-1 px-2 "
@@ -38,12 +37,10 @@ const Dashboard = () => {
       <div className="drawer-side ">
         <label htmlFor="dashboard" className="drawer-overlay"></label>
 
-        <div className='w-60 bg-white'>
+        <div className="w-60 bg-white">
           <SideNav />
         </div>
-
       </div>
-
     </div>
   );
 };

@@ -1,30 +1,41 @@
-import apiSlice from '../api/apiSlice';
+import apiSlice from "../api/apiSlice";
 
 const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     signup: builder.mutation({
       query: (data) => ({
-        url: '/user/signup',
-        method: 'POST',
+        url: "/user/signup",
+        method: "POST",
         body: data,
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ["User"],
     }),
     login: builder.mutation({
       query: (data) => ({
-        url: '/user/login',
-        method: 'POST',
+        url: "/user/login",
+        method: "POST",
         body: data,
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ["User"],
     }),
     userRegister: builder.mutation({
       query: ({ id, user }) => ({
         url: `/user/register/${id}`,
-        method: 'PATCH',
+        method: "PATCH",
         body: user,
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ["User"],
+    }),
+    addProject: builder.mutation({
+      query: ({ id, data, token }) => ({
+        url: `/user/candidate/add-project/${id}`,
+        method: "PATCH",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        body: data,
+      }),
+      invalidatesTags: ["User"],
     }),
 
     getMe: builder.query({
@@ -34,16 +45,22 @@ const authApi = apiSlice.injectEndpoints({
           authorization: `Bearer ${token}`,
         },
       }),
-      providesTags: ['User']
+      providesTags: ["User"],
     }),
     getApplicant: builder.query({
       query: (id) => ({
         url: `/user/candidate/${id}`,
       }),
-      providesTags: ['User']
+      providesTags: ["User"],
     }),
-
   }),
 });
 
-export const { useSignupMutation, useLoginMutation, useUserRegisterMutation, useGetMeQuery, useGetApplicantQuery } = authApi;
+export const {
+  useSignupMutation,
+  useAddProjectMutation,
+  useLoginMutation,
+  useUserRegisterMutation,
+  useGetMeQuery,
+  useGetApplicantQuery,
+} = authApi;

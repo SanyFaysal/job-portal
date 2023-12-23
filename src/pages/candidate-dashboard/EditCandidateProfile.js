@@ -14,6 +14,10 @@ import { BsTrash } from "react-icons/bs";
 import ClientAddProject from "../../components/modal/ClientAddProjectModal";
 import { BiPlus } from "react-icons/bi";
 import CandidateProjectShow from "../../components/profileComponent/CandidateProjectShow";
+import useLoadCountry from "../../hook/useLoadCountry";
+import EditCandidateProjects from "../../components/profileComponent/EditCandidateProject";
+import EditProject from "../../components/modal/EditProjectModal";
+import EditProjectModal from "../../components/modal/EditProjectModal";
 
 const EditCandidateProfile = () => {
   const location = useLocation();
@@ -26,10 +30,9 @@ const EditCandidateProfile = () => {
     details: "",
   });
   const [haveNewProject, setHaveNewProject] = useState(false);
-
+  const countries = useLoadCountry();
   const [projects, setProjects] = useState([]);
   const token = localStorage.getItem("accessToken");
-  const [countries, setCountries] = useState([]);
 
   const [updateUser, { data: updated, isSuccess, isError, error }] =
     useUserRegisterMutation();
@@ -62,23 +65,15 @@ const EditCandidateProfile = () => {
   const dispatch = useDispatch();
 
   const dobFormat = moment.utc(dob).format("YYYY-MM-DD");
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => setCountries(data));
-  }, []);
 
   const onSubmit = (data) => {
     data.gender = editGender;
     data.projects = projects;
     updateUser({ id: _id, user: data });
   };
-  const addProjectData = () => {
-    const projectData = {
-      title: "",
-    };
-    setProjects();
-  };
+  const updateProfilePage = location.pathname?.includes(
+    "edit-candidate-profile"
+  );
 
   useEffect(() => {
     if (isSuccess) {
@@ -88,11 +83,10 @@ const EditCandidateProfile = () => {
       toast.error(error?.data?.error, { id: "register" });
     }
   }, [isSuccess, isError, error, reset, dispatch, user]);
-  const updateProfilePage = location.pathname?.includes(
-    "edit-candidate-profile"
-  );
 
-  console.log({ projectData });
+  useEffect(() => {
+    setProjects(user?.projects);
+  }, [user]);
   return (
     <>
       <div className="">
@@ -238,18 +232,14 @@ const EditCandidateProfile = () => {
                     defaultValue={country}
                     className={` w-full bg-slate-50 border   focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded`}
                   >
-                    {countries
-                      .sort((a, b) =>
-                        a?.name?.common?.localeCompare(b?.name?.common)
-                      )
-                      .map(({ name }) => (
-                        <option
-                          value={name.common}
-                          selected={country === name.common}
-                        >
-                          {name.common}
-                        </option>
-                      ))}
+                    {countries.map(({ name }) => (
+                      <option
+                        value={name.common}
+                        selected={country === name.common}
+                      >
+                        {name.common}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="flex flex-col w-full max-w-xs">
@@ -293,33 +283,8 @@ const EditCandidateProfile = () => {
                   className={` w-full bg-slate-50 border   focus:outline-none focus:ring-1 focus:ring-blue-500 px-4 py-3 rounded`}
                 />
               </div>
-              {updateProfilePage && (
-                <div>
-                  <div className="flex justify-between  mt-8 mb-3 items-center">
-                    <h1 className=" text-2xl  font-semibold ">Projects</h1>
 
-                    <label
-                      htmlFor="client_add_project"
-                      className="flex items-center gap-1  px-3 py-2 rounded bg-blue-50 text-blue-500"
-                    >
-                      <BiPlus className="text-xl" /> Add Project
-                    </label>
-                  </div>
-                  {/* previous Project */}
-                  {projects?.map((project, index) => (
-                    <CandidateProjectShow
-                      project={project}
-                      key={index}
-                      index={index}
-                      setProjects={setProjects}
-                      projects={projects}
-                      projectData={projectData}
-                      setProjectData={setProjectData}
-                    />
-                  ))}
-                </div>
-              )}
-              <div className="grid lg:grid-cols-1 grid-cols-1 gap-5 ">
+              <div className="grid lg:grid-cols-1 grid-cols-1 gap-5 mt-3 ">
                 <div className="flex lg:justify-end justify-center items-center w-full my-auto ">
                   <button
                     className="btn inline-block    bg-blue-200 text-blue-500 border-none hover:border-none hover:bg-slate-500  hover:text-white"
@@ -333,12 +298,6 @@ const EditCandidateProfile = () => {
           </div>
         </div>
       </div>
-      <ClientAddProject
-        projects={projects}
-        setProjects={setProjects}
-        setProjectData={setProjectData}
-        projectData={projectData}
-      />
     </>
   );
 };

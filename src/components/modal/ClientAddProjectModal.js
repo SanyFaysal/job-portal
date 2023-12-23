@@ -1,23 +1,54 @@
 import React, { useEffect, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import ReactQuill from "react-quill";
+import {
+  useAddProjectMutation,
+  useUserRegisterMutation,
+} from "../../features/auth/authApi";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { getToken } from "../../helpers/getToken";
 
-export default function ClientAddProject({
-  projects,
-  setProjects,
-  setProjectData,
-  projectData,
-}) {
+export default function ClientAddProject() {
+  const token = getToken();
+  const { user } = useSelector((state) => state.auth);
+  const [projectInfo, setProjectInfo] = useState({
+    title: "",
+    duration: {
+      from: "",
+      till: "",
+    },
+  });
   const [projectDetails, setProjectDetails] = useState();
 
+  const [addProject, { data: updated, isSuccess, isError, error }] =
+    useAddProjectMutation();
+
+  const handleAddProject = (e) => {
+    e.preventDefault();
+    if (!projectDetails) {
+      return toast.error("Please add project details", { id: "register" });
+    }
+    const data = {
+      ...projectInfo,
+      details: projectDetails,
+    };
+    addProject({ id: user?._id, data, token });
+  };
+
   useEffect(() => {
-    setProjectData({ ...projectData, details: projectDetails });
-  }, [projectDetails]);
-  console.log({ projects });
+    if (isSuccess) {
+      toast.success("Update successful", { id: "register" });
+    }
+    if (isError) {
+      toast.error(error?.data?.error, { id: "register" });
+    }
+  }, [isSuccess, isError, error]);
+
   return (
     <>
       <input type="checkbox" id="client_add_project" className="modal-toggle" />
-      <div className="modal  ">
+      <form onSubmit={handleAddProject} className="modal  ">
         <div className="modal-box w-2/3 lg:ml-36 max-w-5xl">
           <div className="  rounded-xl px-5 pt-3">
             <p className="flex justify-between items-center">
@@ -32,9 +63,10 @@ export default function ClientAddProject({
                 </label>
                 <input
                   type="text"
+                  required
                   onChange={(e) =>
-                    setProjectData({
-                      ...projectData,
+                    setProjectInfo({
+                      ...projectInfo,
                       title: e.target.value,
                     })
                   }
@@ -50,11 +82,12 @@ export default function ClientAddProject({
                   From
                   <input
                     type="text"
+                    required
                     onChange={(e) =>
-                      setProjectData({
-                        ...projectData,
+                      setProjectInfo({
+                        ...projectInfo,
                         duration: {
-                          ...projectData?.duration,
+                          ...projectInfo?.duration,
                           from: e.target.value,
                         },
                       })
@@ -64,11 +97,12 @@ export default function ClientAddProject({
                   Till{" "}
                   <input
                     type="text"
+                    required
                     onChange={(e) =>
-                      setProjectData({
-                        ...projectData,
+                      setProjectInfo({
+                        ...projectInfo,
                         duration: {
-                          ...projectData?.duration,
+                          ...projectInfo?.duration,
                           till: e.target.value,
                         },
                       })
@@ -94,7 +128,7 @@ export default function ClientAddProject({
           <div className="modal-action">
             <div className="flex justify-end col-span-2 ">
               <button
-                onClick={() => setProjects([...projects, projectData])}
+                type="submit"
                 className="btn bg-green-100  border-0 hover:bg-green-500 hover:text-white text-green-500 "
               >
                 Done
@@ -108,7 +142,7 @@ export default function ClientAddProject({
             </label>
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 }

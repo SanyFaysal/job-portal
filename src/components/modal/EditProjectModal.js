@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import ReactQuill from "react-quill";
+import { useUserRegisterMutation } from "../../features/auth/authApi";
+import { useSelector } from "react-redux";
 
-export default function EditClientProjectModal({
-  projects,
-  setProjects,
-  setProjectData,
-  projectData,
-}) {
+export default function EditProjectModal({ selectedProject }) {
   const [projectDetails, setProjectDetails] = useState();
+  const [projectInfo, setProjectInfo] = useState({
+    title: null,
+    duration: {
+      from: null,
+      till: null,
+    },
+  });
 
-  useEffect(() => {
-    setProjectData({ ...projectData, details: projectDetails });
-  }, [projectDetails]);
-  console.log({ projects });
+  const handleUpdateProject = () => {
+    const data = {
+      details: projectDetails ?? selectedProject?.details,
+      title: projectInfo?.title ?? selectedProject?.title,
+      duration: {
+        from: projectInfo?.duration?.from ?? selectedProject?.duration?.from,
+        till: projectInfo?.duration?.till ?? selectedProject?.duration?.till,
+      },
+    };
+  };
+
   return (
     <>
-      <input
-        type="checkbox"
-        id="client_edit_project"
-        className="modal-toggle"
-      />
+      <input type="checkbox" id="edit_project_modal" className="modal-toggle" />
       <div className="modal  ">
-        <div className="modal-box w-2/3 lg:ml-36 max-w-5xl">
-          <div className="  rounded-xl px-5 pt-3">
+        <div className="modal-box w-2/3 pb-8  lg:ml-36 max-w-5xl">
+          <div className="  rounded-xl px-3 ">
             <p className="flex justify-between items-center">
-              <span className="text-lg font-semibold">Project Data</span>
-              <BsTrash className="inline text-red-500" />
+              <span className="text-2xl font-semibold">
+                Update Project Data
+              </span>
             </p>
             <div className=" grid grid-cols-2 gap-2 py-2">
               <div className="col-span-1">
@@ -36,9 +44,10 @@ export default function EditClientProjectModal({
                 </label>
                 <input
                   type="text"
+                  defaultValue={selectedProject?.title}
                   onChange={(e) =>
-                    setProjectData({
-                      ...projectData,
+                    setProjectInfo({
+                      ...projectInfo,
                       title: e.target.value,
                     })
                   }
@@ -54,11 +63,12 @@ export default function EditClientProjectModal({
                   From
                   <input
                     type="text"
+                    defaultValue={selectedProject?.duration?.from}
                     onChange={(e) =>
-                      setProjectData({
-                        ...projectData,
+                      setProjectInfo({
+                        ...projectInfo,
                         duration: {
-                          ...projectData?.duration,
+                          ...projectInfo?.duration,
                           from: e.target.value,
                         },
                       })
@@ -68,11 +78,12 @@ export default function EditClientProjectModal({
                   Till{" "}
                   <input
                     type="text"
+                    defaultValue={selectedProject?.duration?.till}
                     onChange={(e) =>
-                      setProjectData({
-                        ...projectData,
+                      setProjectInfo({
+                        ...projectInfo,
                         duration: {
-                          ...projectData?.duration,
+                          ...projectInfo?.duration,
                           till: e.target.value,
                         },
                       })
@@ -88,7 +99,9 @@ export default function EditClientProjectModal({
                 <ReactQuill
                   theme="snow"
                   className={` w-full bg-white  focus:outline-none  focus:ring-1 focus:ring-blue-500  rounded-lg`}
-                  value={projectDetails}
+                  value={
+                    projectDetails ? projectDetails : selectedProject?.details
+                  }
                   onChange={setProjectDetails}
                 />
               </div>
@@ -98,14 +111,17 @@ export default function EditClientProjectModal({
           <div className="modal-action">
             <div className="flex justify-end col-span-2 ">
               <button
-                onClick={() => setProjects([...projects, projectData])}
+                onClick={handleUpdateProject}
                 className="btn bg-green-100  border-0 hover:bg-green-500 hover:text-white text-green-500 "
               >
-                Done
+                Update
               </button>
             </div>
-            <label htmlFor="client_add_project" className="btn">
-              Yay!
+            <label
+              htmlFor="edit_project_modal"
+              className="btn bg-red-100  border-0 hover:bg-red-500 hover:text-white text-red-500 "
+            >
+              Close
             </label>
           </div>
         </div>

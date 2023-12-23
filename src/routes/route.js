@@ -33,6 +33,7 @@ import MyBlogs from "../pages/blogs/MyBlogs";
 import BlogDetails from "../pages/blogs/BlogDetails";
 import EditBlog from "../pages/blogs/EditBlog";
 import ClientAddProject from "../components/modal/ClientAddProjectModal";
+import EditCandidateProject from "../components/profileComponent/EditCandidateProject";
 
 const routes = createBrowserRouter([
   {
@@ -163,6 +164,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/edit-candidate-profile",
         element: <EditCandidateProfile />,
+      },
+      {
+        path: "/dashboard/edit-candidate-projects",
+        element: <EditCandidateProject />,
       },
       {
         path: "/dashboard/edit-employer-profile",
