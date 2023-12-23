@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { BsDot } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -8,7 +8,8 @@ import PathBanner from "../../components/reuseable/PathBanner";
 import { useGetAllBlogsQuery } from "../../features/blog/blogApi";
 
 const Blogs = () => {
-  const { data } = useGetAllBlogsQuery();
+  const [searchTerm, setSearchTerm] = useState();
+  const { data } = useGetAllBlogsQuery(searchTerm);
 
   const categories = [
     "education",
@@ -36,17 +37,10 @@ const Blogs = () => {
             <div className="flex justify-between ">
               <input
                 type="text"
-                // onChange={(e) => setFilter({ jobTitle: e.target.value.toLowerCase() })}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="search here... "
-                className="border w-full bg-blue-50  focus:outline-none focus:ring focus:ring-1 focus:ring-blue-500 px-4 py-2 rounded-lg"
+                className="border w-full bg-blue-50  focus:outline-none  focus:ring-1 focus:ring-blue-500 px-4 py-2 rounded-lg"
               />
-
-              <Link
-                to="/blogDetails"
-                className=" bg-blue-50 hover:bg-blue-500 hover:text-white duration-500  py-1 rounded-lg ml-2 px-4"
-              >
-                <BiSearch className=" inline  text-xl" />
-              </Link>
             </div>
             <div>
               <h2 className="text-xl font-semibold mt-6 mb-4">Categories</h2>

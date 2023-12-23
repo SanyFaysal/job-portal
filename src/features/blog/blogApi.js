@@ -25,10 +25,10 @@ const blogApi = apiSlice.injectEndpoints({
       invalidatesTags: ["Blog", "Blogs"],
     }),
     getAllBlogs: builder.query({
-      query: () => ({
+      query: (searchTerm) => ({
         // { sort, page, limit, filter }
         // url: `/jobs?sort=${sort}&page=${page}&limit=${limit}&jobTitle=${filter?.jobTitle}&jobType=${filter?.jobType}&experience=${filter?.experience}`,
-        url: `/blog`,
+        url: `/blog?searchTerm=${searchTerm}`,
       }),
       providesTags: ["Blogs"],
     }),
