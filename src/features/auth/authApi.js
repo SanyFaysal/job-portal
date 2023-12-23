@@ -37,6 +37,17 @@ const authApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    editProject: builder.mutation({
+      query: ({ projectId, data, token }) => ({
+        url: `/user/candidate/edit-project/${projectId}`,
+        method: "PATCH",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        body: data,
+      }),
+      invalidatesTags: ["User"],
+    }),
 
     getMe: builder.query({
       query: (token) => ({
@@ -63,4 +74,5 @@ export const {
   useUserRegisterMutation,
   useGetMeQuery,
   useGetApplicantQuery,
+  useEditProjectMutation,
 } = authApi;

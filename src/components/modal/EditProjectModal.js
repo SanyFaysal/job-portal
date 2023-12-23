@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { BsTrash } from "react-icons/bs";
+
 import ReactQuill from "react-quill";
-import { useUserRegisterMutation } from "../../features/auth/authApi";
+import { useEditProjectMutation } from "../../features/auth/authApi";
+
+import toast from "react-hot-toast";
+import { getToken } from "../../helpers/getToken";
 import { useSelector } from "react-redux";
 
 export default function EditProjectModal({ selectedProject }) {
+  const { user } = useSelector((state) => state.auth);
+  const token = getToken();
   const [projectDetails, setProjectDetails] = useState();
   const [projectInfo, setProjectInfo] = useState({
     title: null,
@@ -13,8 +18,13 @@ export default function EditProjectModal({ selectedProject }) {
       till: null,
     },
   });
+  const [editProject, { isLoading, isSuccess, isError, error }] =
+    useEditProjectMutation();
 
   const handleUpdateProject = () => {
+    const userId = user?._id;
+    const projectId = selectedProject?._id;
+
     const data = {
       details: projectDetails ?? selectedProject?.details,
       title: projectInfo?.title ?? selectedProject?.title,
@@ -22,8 +32,22 @@ export default function EditProjectModal({ selectedProject }) {
         from: projectInfo?.duration?.from ?? selectedProject?.duration?.from,
         till: projectInfo?.duration?.till ?? selectedProject?.duration?.till,
       },
+      userId,
     };
+    editProject({ token, projectId, data });
   };
+
+  useEffect(() => {
+    if (isLoading) {
+      toast.success("Loading...", { id: "update" });
+    }
+    if (isSuccess) {
+      toast.success("Update successful", { id: "update" });
+    }
+    if (isError) {
+      toast.error(error?.data?.error, { id: "update" });
+    }
+  }, [isSuccess, isError, error]);
 
   return (
     <>
