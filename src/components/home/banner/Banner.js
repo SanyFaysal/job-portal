@@ -6,11 +6,22 @@ import { IoIosPeople } from "react-icons/io";
 import { GiClockwork } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
 import HomeJobSearchModal from "../../modal/HomeJobSearchModal";
+import {
+  useGetJobHomeSearchMutation,
+  useGetJobsQuery,
+} from "../../../features/job/jobApi";
 
 const Banner = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [hover, setHover] = useState(false);
 
+  const [getSearchJobs, { isLoading, isSuccess, data }] =
+    useGetJobHomeSearchMutation();
+
+  const handleSearch = () => {
+    console.log({ aichee: true });
+    getSearchJobs(jobTitle);
+  };
   return (
     <div className="bannerBg lg:px-16 px-3 mt-[-100px] pt-[100px]">
       <div className="flex lg:flex-row-reverse flex-col items-center">
@@ -96,6 +107,7 @@ const Banner = () => {
               <div className="lg:col-span-3 ">
                 <label
                   htmlFor="my-modal-6"
+                  onClick={handleSearch}
                   className={`btn w-full   btn-xl flex ${
                     !jobTitle && "btn-disabled cursor-not-allowed"
                   } `}
@@ -113,7 +125,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <HomeJobSearchModal jobTitle={jobTitle} />
+      <HomeJobSearchModal data={data} />
     </div>
   );
 };

@@ -1,27 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useGetJobsQuery } from "../../features/job/jobApi";
+
 import Job from "../reuseable/Job";
 
-const HomeJobSearchModal = ({ jobTitle }) => {
-  const { data } = useGetJobsQuery({
-    sort: "",
-    page: 1,
-    limit: 10,
-    filter: {
-      jobTitle: jobTitle,
-      jobType: "",
-      experience: "",
-    },
-  });
-
+const HomeJobSearchModal = ({ data }) => {
   return (
     <>
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal ">
         <div className="modal-box lg:w-11/12 lg:max-w-5xl">
           <div className="my-5 text-xl text-center font-semibold">
-            Total Job Found: {data?.totalFound}
+            Total Job Found:
           </div>
           <div className="grid grid-cols-1 gap-y-3">
             {data?.data.map((job) => (
